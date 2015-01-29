@@ -53,6 +53,11 @@ public class Home extends JFrame {
         mnu_clientes.setText("Clientes");
 
         mnu_cliente_nuevo.setText("Nuevo");
+        mnu_cliente_nuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnu_cliente_nuevoActionPerformed(evt);
+            }
+        });
         mnu_clientes.add(mnu_cliente_nuevo);
 
         mnu_cliente_asistencia.setText("Asistencia");
@@ -130,11 +135,19 @@ public class Home extends JFrame {
     
     
 /*---------------------------------------------------------
- $Menu cliente nuevo
+ $Menu cliente nuevo llamandio al formulario
  ----------------------------------------------------------*/
     private void mnu_cliente_asistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnu_cliente_asistenciaActionPerformed
        
     }//GEN-LAST:event_mnu_cliente_asistenciaActionPerformed
+
+    private void mnu_cliente_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnu_cliente_nuevoActionPerformed
+        
+        Form_clientes frm_clientes = new Form_clientes();
+        frm_clientes.setVisible(true);
+        dispose();
+        
+    }//GEN-LAST:event_mnu_cliente_nuevoActionPerformed
 
     
     
@@ -151,6 +164,10 @@ public class Home extends JFrame {
             }
         });
     }
+    
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;

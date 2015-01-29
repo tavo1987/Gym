@@ -1,9 +1,16 @@
 package Clases;
+import forms.*;
 
 public class Main {
     
     public static void main(String[] args){
-        System.out.println("hola mundo");
+
+ /*---------------------------------------------------------
+    $Home llamado desde la clase main 
+ ----------------------------------------------------------*/
+        Home home = new Home();
+        home.setVisible(true);
+        home.setLocationRelativeTo(null);
     
     }
     
