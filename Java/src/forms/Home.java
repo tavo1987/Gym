@@ -48,7 +48,6 @@ public class Home extends JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        setResizable(false);
 
         jLabel18.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(110, 110, 110));
