@@ -124,6 +124,14 @@ public class Form_clientes extends JFrame {
         jLabel55 = new javax.swing.JLabel();
         jLabel61 = new javax.swing.JLabel();
         jLabel62 = new javax.swing.JLabel();
+        jLabel63 = new javax.swing.JLabel();
+        jLabel64 = new javax.swing.JLabel();
+        jLabel65 = new javax.swing.JLabel();
+        jLabel66 = new javax.swing.JLabel();
+        jLabel67 = new javax.swing.JLabel();
+        jLabel68 = new javax.swing.JLabel();
+        jLabel69 = new javax.swing.JLabel();
+        jLabel70 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -626,7 +634,7 @@ public class Form_clientes extends JFrame {
         jLabel25.setForeground(new java.awt.Color(110, 110, 110));
         jLabel25.setText("Datos de Membresia");
         jPanel2.add(jLabel25);
-        jLabel25.setBounds(340, 480, 260, 30);
+        jLabel25.setBounds(400, 480, 260, 30);
 
         jLabel26.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(0, 153, 255));
@@ -808,6 +816,54 @@ public class Form_clientes extends JFrame {
         jPanel2.add(jLabel62);
         jLabel62.setBounds(740, 200, 63, 21);
 
+        jLabel63.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel63.setForeground(new java.awt.Color(0, 153, 255));
+        jLabel63.setText("Datos");
+        jPanel2.add(jLabel63);
+        jLabel63.setBounds(310, 550, 63, 21);
+
+        jLabel64.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel64.setForeground(new java.awt.Color(110, 110, 110));
+        jLabel64.setText("Tipo");
+        jPanel2.add(jLabel64);
+        jLabel64.setBounds(200, 550, 35, 21);
+
+        jLabel65.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel65.setForeground(new java.awt.Color(0, 153, 255));
+        jLabel65.setText("Datos");
+        jPanel2.add(jLabel65);
+        jLabel65.setBounds(310, 580, 63, 30);
+
+        jLabel66.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel66.setForeground(new java.awt.Color(110, 110, 110));
+        jLabel66.setText("cintura");
+        jPanel2.add(jLabel66);
+        jLabel66.setBounds(200, 580, 56, 30);
+
+        jLabel67.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel67.setForeground(new java.awt.Color(110, 110, 110));
+        jLabel67.setText("cintura");
+        jPanel2.add(jLabel67);
+        jLabel67.setBounds(200, 620, 56, 30);
+
+        jLabel68.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel68.setForeground(new java.awt.Color(0, 153, 255));
+        jLabel68.setText("Datos");
+        jPanel2.add(jLabel68);
+        jLabel68.setBounds(310, 620, 63, 30);
+
+        jLabel69.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel69.setForeground(new java.awt.Color(110, 110, 110));
+        jLabel69.setText("cintura");
+        jPanel2.add(jLabel69);
+        jLabel69.setBounds(200, 670, 56, 30);
+
+        jLabel70.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel70.setForeground(new java.awt.Color(0, 153, 255));
+        jLabel70.setText("Datos");
+        jPanel2.add(jLabel70);
+        jLabel70.setBounds(310, 670, 63, 30);
+
         spanel_finales.setViewportView(jPanel2);
 
         jTabbedPane1.addTab("Datos finales", spanel_finales);
@@ -821,7 +877,7 @@ public class Form_clientes extends JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1363, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1344, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -940,6 +996,14 @@ public class Form_clientes extends JFrame {
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel66;
+    private javax.swing.JLabel jLabel67;
+    private javax.swing.JLabel jLabel68;
+    private javax.swing.JLabel jLabel69;
+    private javax.swing.JLabel jLabel70;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

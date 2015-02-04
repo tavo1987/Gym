@@ -306,7 +306,6 @@
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -374,7 +373,7 @@
                   <Component id="btn_ingresar" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                   <Component id="btn_salir" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="239" max="32767" attributes="0"/>
+              <EmptySpace pref="266" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
