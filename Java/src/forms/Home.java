@@ -47,6 +47,7 @@ public class Home extends JFrame {
         jMenuItem3.setText("jMenuItem3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Bienvenidos");
         setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
 
         jLabel18.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
@@ -90,7 +91,7 @@ public class Home extends JFrame {
             }
         });
 
-        jMenuBar1.setBackground(new java.awt.Color(240, 240, 240));
+        jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jMenu1.setForeground(new java.awt.Color(110, 110, 110));
         jMenu1.setText("Archivo");

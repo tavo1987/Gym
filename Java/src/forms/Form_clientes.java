@@ -32,7 +32,7 @@ public class Form_clientes extends JFrame {
 
         buttonGroup_sexo = new javax.swing.ButtonGroup();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        spanel_personales = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -58,7 +58,14 @@ public class Form_clientes extends JFrame {
         btn_nuevo = new javax.swing.JButton();
         btn_guardar = new javax.swing.JButton();
         jScrollBar2 = new javax.swing.JScrollBar();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        spanel_membresia = new javax.swing.JScrollPane();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel52 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
+        jLabel54 = new javax.swing.JLabel();
+        jLabel55 = new javax.swing.JLabel();
+        jLabel56 = new javax.swing.JLabel();
+        spanel_ficha = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
@@ -73,7 +80,35 @@ public class Form_clientes extends JFrame {
         txt_cedula4 = new javax.swing.JTextField();
         btn_guardar1 = new javax.swing.JButton();
         btn_guardar2 = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        spanel_finales = new javax.swing.JScrollPane();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel46 = new javax.swing.JLabel();
+        jLabel47 = new javax.swing.JLabel();
+        jLabel48 = new javax.swing.JLabel();
+        jLabel49 = new javax.swing.JLabel();
+        jLabel50 = new javax.swing.JLabel();
+        jLabel51 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,12 +118,11 @@ public class Form_clientes extends JFrame {
         jTabbedPane1.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jTabbedPane1.setPreferredSize(new java.awt.Dimension(960, 600));
 
-        jScrollPane1.setBorder(null);
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(768, 600));
-        jScrollPane1.setVerticalScrollBar(jScrollBar2);
+        spanel_personales.setBorder(null);
+        spanel_personales.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        spanel_personales.setPreferredSize(new java.awt.Dimension(768, 600));
+        spanel_personales.setVerticalScrollBar(jScrollBar2);
 
-        jPanel4.setBackground(new java.awt.Color(236, 233, 233));
         jPanel4.setToolTipText("");
         jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel4.setPreferredSize(new java.awt.Dimension(768, 800));
@@ -154,7 +188,6 @@ public class Form_clientes extends JFrame {
         txt_celular.setForeground(new java.awt.Color(110, 110, 110));
         txt_celular.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
 
-        radio_masculino.setBackground(new java.awt.Color(252, 252, 252));
         buttonGroup_sexo.add(radio_masculino);
         radio_masculino.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         radio_masculino.setForeground(new java.awt.Color(110, 110, 110));
@@ -166,7 +199,6 @@ public class Form_clientes extends JFrame {
             }
         });
 
-        radio_femenino.setBackground(new java.awt.Color(252, 252, 252));
         buttonGroup_sexo.add(radio_femenino);
         radio_femenino.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         radio_femenino.setForeground(new java.awt.Color(110, 110, 110));
@@ -212,6 +244,7 @@ public class Form_clientes extends JFrame {
         btn_cancelar.setBorder(null);
         btn_cancelar.setBorderPainted(false);
         btn_cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_cancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         btn_nuevo.setBackground(new java.awt.Color(0, 153, 204));
         btn_nuevo.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -220,6 +253,7 @@ public class Form_clientes extends JFrame {
         btn_nuevo.setBorder(null);
         btn_nuevo.setBorderPainted(false);
         btn_nuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_nuevo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         btn_guardar.setBackground(new java.awt.Color(0, 153, 204));
         btn_guardar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -228,6 +262,7 @@ public class Form_clientes extends JFrame {
         btn_guardar.setBorder(null);
         btn_guardar.setBorderPainted(false);
         btn_guardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_guardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -285,14 +320,16 @@ public class Form_clientes extends JFrame {
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addComponent(radio_masculino)
                                         .addGap(43, 43, 43)
-                                        .addComponent(radio_femenino))))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(39, 39, 39)
-                                .addComponent(btn_nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(35, 35, 35)
-                                .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(185, Short.MAX_VALUE))))
+                                        .addComponent(radio_femenino)))))
+                        .addContainerGap(257, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(btn_nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(177, 177, 177))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -334,21 +371,81 @@ public class Form_clientes extends JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel17)
                     .addComponent(txt_celular, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
+                .addGap(73, 73, 73)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(192, Short.MAX_VALUE))
+                .addContainerGap(696, Short.MAX_VALUE))
         );
 
-        jScrollPane1.setViewportView(jPanel4);
+        spanel_personales.setViewportView(jPanel4);
 
-        jTabbedPane1.addTab("Datos Personales", jScrollPane1);
+        jTabbedPane1.addTab("Datos personales", spanel_personales);
 
-        jScrollPane2.setBorder(null);
+        jLabel52.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel52.setForeground(new java.awt.Color(110, 110, 110));
+        jLabel52.setText("Cédula:");
 
-        jPanel1.setBackground(new java.awt.Color(236, 233, 233));
+        jLabel53.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel53.setForeground(new java.awt.Color(0, 153, 255));
+        jLabel53.setText("Datos");
+
+        jLabel54.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel54.setForeground(new java.awt.Color(110, 110, 110));
+        jLabel54.setText("Nombres:");
+
+        jLabel55.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel55.setForeground(new java.awt.Color(0, 153, 255));
+        jLabel55.setText("Datos");
+
+        jLabel56.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
+        jLabel56.setForeground(new java.awt.Color(110, 110, 110));
+        jLabel56.setText("Datos Personales");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(286, 286, 286)
+                        .addComponent(jLabel56))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(225, 225, 225)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel52)
+                            .addComponent(jLabel54))
+                        .addGap(65, 65, 65)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(461, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(82, 82, 82)
+                .addComponent(jLabel56)
+                .addGap(58, 58, 58)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel52)
+                    .addComponent(jLabel53))
+                .addGap(41, 41, 41)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel54)
+                    .addComponent(jLabel55))
+                .addContainerGap(1084, Short.MAX_VALUE))
+        );
+
+        spanel_membresia.setViewportView(jPanel3);
+
+        jTabbedPane1.addTab("Datos Membresia", spanel_membresia);
+
+        spanel_ficha.setBorder(null);
+        spanel_ficha.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        spanel_ficha.setPreferredSize(new java.awt.Dimension(960, 600));
 
         jLabel19.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(110, 110, 110));
@@ -476,23 +573,196 @@ public class Form_clientes extends JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_guardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_guardar2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap(880, Short.MAX_VALUE))
         );
 
-        jScrollPane2.setViewportView(jPanel1);
+        spanel_ficha.setViewportView(jPanel1);
 
-        jTabbedPane1.addTab("Ficha ", jScrollPane2);
-        jTabbedPane1.addTab("Datos generales", jScrollPane3);
+        jTabbedPane1.addTab("Ficha ", spanel_ficha);
+
+        spanel_finales.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        spanel_finales.setPreferredSize(new java.awt.Dimension(960, 600));
+
+        jPanel2.setPreferredSize(new java.awt.Dimension(960, 900));
+        jPanel2.setLayout(null);
+
+        jLabel25.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(110, 110, 110));
+        jLabel25.setText("Datos de Membresia");
+        jPanel2.add(jLabel25);
+        jLabel25.setBounds(370, 470, 260, 30);
+
+        jLabel26.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(0, 153, 255));
+        jLabel26.setText("Datos");
+        jPanel2.add(jLabel26);
+        jLabel26.setBounds(280, 430, 63, 21);
+
+        jLabel27.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(110, 110, 110));
+        jLabel27.setText("Nombres:");
+        jPanel2.add(jLabel27);
+        jLabel27.setBounds(167, 135, 79, 21);
+
+        jLabel28.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(110, 110, 110));
+        jLabel28.setText("Apellidos:");
+        jPanel2.add(jLabel28);
+        jLabel28.setBounds(167, 170, 82, 21);
+
+        jLabel29.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(110, 110, 110));
+        jLabel29.setText("Dirección:");
+        jPanel2.add(jLabel29);
+        jLabel29.setBounds(167, 209, 81, 21);
+
+        jLabel30.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(110, 110, 110));
+        jLabel30.setText("Edad");
+        jPanel2.add(jLabel30);
+        jLabel30.setBounds(170, 250, 40, 21);
+
+        jLabel32.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(110, 110, 110));
+        jLabel32.setText("Masa corporal magra");
+        jPanel2.add(jLabel32);
+        jLabel32.setBounds(520, 200, 170, 21);
+
+        jLabel33.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(110, 110, 110));
+        jLabel33.setText("Peso");
+        jPanel2.add(jLabel33);
+        jLabel33.setBounds(170, 290, 39, 21);
+
+        jLabel34.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(110, 110, 110));
+        jLabel34.setText("imc");
+        jPanel2.add(jLabel34);
+        jLabel34.setBounds(520, 100, 28, 21);
+
+        jLabel35.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel35.setForeground(new java.awt.Color(110, 110, 110));
+        jLabel35.setText("indice de Cintura/Altura");
+        jPanel2.add(jLabel35);
+        jLabel35.setBounds(520, 240, 195, 21);
+
+        jLabel36.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(110, 110, 110));
+        jLabel36.setText("sobrepeso");
+        jPanel2.add(jLabel36);
+        jLabel36.setBounds(520, 160, 84, 21);
+
+        jLabel37.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(110, 110, 110));
+        jLabel37.setText("Altura");
+        jPanel2.add(jLabel37);
+        jLabel37.setBounds(170, 370, 49, 21);
+
+        jLabel38.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(110, 110, 110));
+        jLabel38.setText("Sexo");
+        jPanel2.add(jLabel38);
+        jLabel38.setBounds(170, 330, 39, 21);
+
+        jLabel39.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(110, 110, 110));
+        jLabel39.setText("cuello");
+        jPanel2.add(jLabel39);
+        jLabel39.setBounds(170, 400, 48, 21);
+
+        jLabel40.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(110, 110, 110));
+        jLabel40.setText("Cadera");
+        jPanel2.add(jLabel40);
+        jLabel40.setBounds(520, 130, 57, 21);
+
+        jLabel41.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel41.setForeground(new java.awt.Color(110, 110, 110));
+        jLabel41.setText("cintura");
+        jPanel2.add(jLabel41);
+        jLabel41.setBounds(170, 430, 56, 21);
+
+        jLabel31.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(110, 110, 110));
+        jLabel31.setText("Datos Personales");
+        jPanel2.add(jLabel31);
+        jLabel31.setBounds(370, 23, 220, 30);
+
+        jLabel42.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel42.setForeground(new java.awt.Color(110, 110, 110));
+        jLabel42.setText("Cédula:");
+        jPanel2.add(jLabel42);
+        jLabel42.setBounds(166, 96, 63, 21);
+
+        jLabel43.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel43.setForeground(new java.awt.Color(0, 153, 255));
+        jLabel43.setText("Datos");
+        jPanel2.add(jLabel43);
+        jLabel43.setBounds(280, 100, 63, 21);
+
+        jLabel44.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel44.setForeground(new java.awt.Color(0, 153, 255));
+        jLabel44.setText("Datos");
+        jPanel2.add(jLabel44);
+        jLabel44.setBounds(280, 140, 63, 21);
+
+        jLabel45.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel45.setForeground(new java.awt.Color(0, 153, 255));
+        jLabel45.setText("Datos");
+        jPanel2.add(jLabel45);
+        jLabel45.setBounds(280, 170, 63, 21);
+
+        jLabel46.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel46.setForeground(new java.awt.Color(0, 153, 255));
+        jLabel46.setText("Datos");
+        jPanel2.add(jLabel46);
+        jLabel46.setBounds(280, 210, 63, 21);
+
+        jLabel47.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel47.setForeground(new java.awt.Color(0, 153, 255));
+        jLabel47.setText("Datos");
+        jPanel2.add(jLabel47);
+        jLabel47.setBounds(280, 250, 63, 21);
+
+        jLabel48.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel48.setForeground(new java.awt.Color(0, 153, 255));
+        jLabel48.setText("Datos");
+        jPanel2.add(jLabel48);
+        jLabel48.setBounds(280, 290, 63, 21);
+
+        jLabel49.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel49.setForeground(new java.awt.Color(0, 153, 255));
+        jLabel49.setText("Datos");
+        jPanel2.add(jLabel49);
+        jLabel49.setBounds(280, 330, 63, 21);
+
+        jLabel50.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel50.setForeground(new java.awt.Color(0, 153, 255));
+        jLabel50.setText("Datos");
+        jPanel2.add(jLabel50);
+        jLabel50.setBounds(280, 370, 63, 21);
+
+        jLabel51.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel51.setForeground(new java.awt.Color(0, 153, 255));
+        jLabel51.setText("Datos");
+        jPanel2.add(jLabel51);
+        jLabel51.setBounds(280, 400, 63, 21);
+
+        spanel_finales.setViewportView(jPanel2);
+
+        jTabbedPane1.addTab("Datos finales", spanel_finales);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1363, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -555,15 +825,50 @@ public class Form_clientes extends JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollBar jScrollBar2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JRadioButton radio_femenino;
     private javax.swing.JRadioButton radio_masculino;
+    private javax.swing.JScrollPane spanel_ficha;
+    private javax.swing.JScrollPane spanel_finales;
+    private javax.swing.JScrollPane spanel_membresia;
+    private javax.swing.JScrollPane spanel_personales;
     private javax.swing.JTextField txt_apellidos;
     private javax.swing.JTextField txt_cedula;
     private javax.swing.JTextField txt_cedula1;
