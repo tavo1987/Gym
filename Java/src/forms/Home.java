@@ -294,7 +294,9 @@ public class Home extends JFrame {
  $Menu cliente nuevo llamandio al formulario
  ----------------------------------------------------------*/
     private void mnu_cliente_asistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnu_cliente_asistenciaActionPerformed
-       
+       Form_Asistencia frm_asistencia = new Form_Asistencia ();
+       frm_asistencia.setVisible(true);
+       dispose();
     }//GEN-LAST:event_mnu_cliente_asistenciaActionPerformed
 
     private void mnu_cliente_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnu_cliente_nuevoActionPerformed
