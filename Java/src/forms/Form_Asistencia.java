@@ -171,7 +171,7 @@ public class Form_Asistencia extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(110, 110, 110));
         jLabel13.setText("Cédula:");
 
-        txt_buscar.setBackground(new java.awt.Color(204, 255, 204));
+        txt_buscar.setBackground(new java.awt.Color(153, 255, 153));
         txt_buscar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         txt_buscar.setForeground(new java.awt.Color(110, 110, 110));
         txt_buscar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));

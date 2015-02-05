@@ -144,8 +144,13 @@ public class Home extends JFrame {
 
         mnu_cliente_modificar.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         mnu_cliente_modificar.setForeground(new java.awt.Color(110, 110, 110));
-        mnu_cliente_modificar.setText("Modificar");
+        mnu_cliente_modificar.setText("Modificar clientes");
         mnu_cliente_modificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mnu_cliente_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnu_cliente_modificarActionPerformed(evt);
+            }
+        });
         mnu_clientes.add(mnu_cliente_modificar);
 
         jMenuBar1.add(mnu_clientes);
@@ -332,6 +337,18 @@ public class Home extends JFrame {
             
         System.exit(0);
     }//GEN-LAST:event_btn_salirActionPerformed
+
+    
+    
+    
+  /*---------------------------------------------------------
+ $metodo para llamar el formulario modificar clientes
+ ----------------------------------------------------------*/
+    private void mnu_cliente_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnu_cliente_modificarActionPerformed
+        Form_modificar_clientes frm_modificar_clientes = new Form_modificar_clientes();
+        frm_modificar_clientes.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_mnu_cliente_modificarActionPerformed
 
     
     
