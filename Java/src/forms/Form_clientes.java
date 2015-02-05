@@ -147,7 +147,7 @@ public class Form_clientes extends JFrame {
 
         jPanel4.setToolTipText("");
         jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel4.setPreferredSize(new java.awt.Dimension(800, 800));
+        jPanel4.setPreferredSize(new java.awt.Dimension(800, 900));
         jPanel4.setLayout(null);
 
         jLabel10.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -303,7 +303,7 @@ public class Form_clientes extends JFrame {
         btn_cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_cancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel4.add(btn_cancelar);
-        btn_cancelar.setBounds(490, 570, 149, 50);
+        btn_cancelar.setBounds(490, 560, 100, 40);
 
         btn_siguiente.setBackground(new java.awt.Color(0, 153, 204));
         btn_siguiente.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -314,7 +314,7 @@ public class Form_clientes extends JFrame {
         btn_siguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_siguiente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel4.add(btn_siguiente);
-        btn_siguiente.setBounds(110, 570, 149, 50);
+        btn_siguiente.setBounds(230, 560, 100, 40);
         jPanel4.add(jScrollBar2);
         jScrollBar2.setBounds(0, 0, 0, 0);
 
@@ -332,12 +332,15 @@ public class Form_clientes extends JFrame {
         btn_limpiar.setBorderPainted(false);
         btn_limpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel4.add(btn_limpiar);
-        btn_limpiar.setBounds(300, 570, 149, 50);
+        btn_limpiar.setBounds(360, 560, 100, 40);
 
         spanel_personales.setViewportView(jPanel4);
 
         jTabbedPane1.addTab("Datos personales", spanel_personales);
 
+        spanel_membresia.setBorder(null);
+
+        jPanel3.setPreferredSize(new java.awt.Dimension(800, 900));
         jPanel3.setLayout(null);
 
         jLabel56.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
@@ -440,7 +443,7 @@ public class Form_clientes extends JFrame {
         btn_siguiente2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_siguiente2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel3.add(btn_siguiente2);
-        btn_siguiente2.setBounds(250, 470, 149, 50);
+        btn_siguiente2.setBounds(290, 450, 100, 40);
 
         btn_limpiar2.setBackground(new java.awt.Color(0, 153, 204));
         btn_limpiar2.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -450,15 +453,17 @@ public class Form_clientes extends JFrame {
         btn_limpiar2.setBorderPainted(false);
         btn_limpiar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel3.add(btn_limpiar2);
-        btn_limpiar2.setBounds(450, 470, 149, 50);
+        btn_limpiar2.setBounds(430, 450, 100, 40);
 
         spanel_membresia.setViewportView(jPanel3);
 
         jTabbedPane1.addTab("Datos Membresia", spanel_membresia);
 
         spanel_ficha.setBorder(null);
-        spanel_ficha.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        spanel_ficha.setOpaque(false);
         spanel_ficha.setPreferredSize(new java.awt.Dimension(960, 600));
+
+        jPanel1.setPreferredSize(new java.awt.Dimension(800, 900));
 
         jLabel19.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(110, 110, 110));
@@ -544,10 +549,11 @@ public class Form_clientes extends JFrame {
                 .addGap(178, 178, 178)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(btn_siguiente3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(87, 87, 87)
-                            .addComponent(btn_limpiar3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(btn_siguiente3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(49, 49, 49)
+                            .addComponent(btn_limpiar3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(120, 120, 120))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel53, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
                             .addGap(18, 18, 18)
@@ -577,7 +583,7 @@ public class Form_clientes extends JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(cbo_nivel, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel19))))
-                .addContainerGap(312, Short.MAX_VALUE))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -589,17 +595,13 @@ public class Form_clientes extends JFrame {
                     .addComponent(cbo_nivel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21))
                 .addGap(22, 22, 22)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel22))
-                    .addComponent(txt_peso, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_peso, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel22))
                 .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel23))
-                    .addComponent(txt_altura, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_altura, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel23))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24)
@@ -608,24 +610,24 @@ public class Form_clientes extends JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel52)
                     .addComponent(txt_cuello, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_cadera, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel53))
-                .addGap(56, 56, 56)
+                    .addComponent(jLabel53)
+                    .addComponent(txt_cadera, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(65, 65, 65)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_siguiente3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_limpiar3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btn_siguiente3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_limpiar3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         spanel_ficha.setViewportView(jPanel1);
 
         jTabbedPane1.addTab("Ficha ", spanel_ficha);
 
-        spanel_finales.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        spanel_finales.setPreferredSize(new java.awt.Dimension(960, 600));
+        spanel_finales.setBorder(null);
+        spanel_finales.setPreferredSize(new java.awt.Dimension(800, 600));
 
-        jPanel2.setPreferredSize(new java.awt.Dimension(960, 900));
+        jPanel2.setPreferredSize(new java.awt.Dimension(800, 900));
         jPanel2.setLayout(null);
 
         jLabel25.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N

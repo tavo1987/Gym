@@ -1,10 +1,13 @@
 package forms;
+import javax.swing.*;
 
 public class Form_Asistencia extends javax.swing.JFrame {
 
     public Form_Asistencia() {
         initComponents();
          setLocationRelativeTo(null);
+         
+         
     }
 
     @SuppressWarnings("unchecked")
@@ -22,15 +25,30 @@ public class Form_Asistencia extends javax.swing.JFrame {
         btn_siguiente = new javax.swing.JButton();
         btn_limpiar = new javax.swing.JButton();
         btn_cancelar = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        txt_buscar = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        cbo_dias = new javax.swing.JComboBox();
+        cbo_meses = new javax.swing.JComboBox();
+        cbo_años = new javax.swing.JComboBox();
+        cbo_años1 = new javax.swing.JComboBox();
+        cbo_meses1 = new javax.swing.JComboBox();
+        cbo_dias1 = new javax.swing.JComboBox();
+        jLabel15 = new javax.swing.JLabel();
+        btn_siguiente4 = new javax.swing.JButton();
+        btn_eliminar = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        txt_cedula2 = new javax.swing.JTextField();
-        btn_siguiente2 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel13 = new javax.swing.JLabel();
-        btn_siguiente3 = new javax.swing.JButton();
-        btn_siguiente4 = new javax.swing.JButton();
+        btn_eliminar2 = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
+        txt_buscar1 = new javax.swing.JTextField();
+        btn_cancelar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(805, 600));
@@ -75,6 +93,7 @@ public class Form_Asistencia extends javax.swing.JFrame {
 
         txt_cedula1.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         txt_cedula1.setForeground(new java.awt.Color(110, 110, 110));
+        txt_cedula1.setText("fecha automatica ");
         txt_cedula1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
         jPanel1.add(txt_cedula1);
         txt_cedula1.setBounds(240, 180, 350, 39);
@@ -88,7 +107,7 @@ public class Form_Asistencia extends javax.swing.JFrame {
         btn_siguiente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_siguiente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(btn_siguiente);
-        btn_siguiente.setBounds(250, 270, 149, 50);
+        btn_siguiente.setBounds(270, 250, 100, 40);
 
         btn_limpiar.setBackground(new java.awt.Color(0, 153, 204));
         btn_limpiar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -98,7 +117,7 @@ public class Form_Asistencia extends javax.swing.JFrame {
         btn_limpiar.setBorderPainted(false);
         btn_limpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(btn_limpiar);
-        btn_limpiar.setBounds(440, 270, 149, 50);
+        btn_limpiar.setBounds(380, 250, 100, 40);
 
         btn_cancelar.setBackground(new java.awt.Color(250, 250, 250));
         btn_cancelar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -122,34 +141,128 @@ public class Form_Asistencia extends javax.swing.JFrame {
         jPanel1.add(btn_cancelar);
         btn_cancelar.setBounds(650, 70, 120, 90);
 
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(jTable2);
+
+        jPanel1.add(jScrollPane4);
+        jScrollPane4.setBounds(100, 380, 630, 210);
+
+        jScrollPane1.setViewportView(jPanel1);
+
+        jTabbedPane1.addTab("Registrar", jScrollPane1);
+
+        jPanel2.setBackground(new java.awt.Color(250, 250, 250));
+
+        jLabel20.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(110, 110, 110));
+        jLabel20.setText("Buscar asistencia de clientes");
+
+        jLabel13.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(110, 110, 110));
+        jLabel13.setText("Cédula:");
+
+        txt_buscar.setBackground(new java.awt.Color(204, 255, 204));
+        txt_buscar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        txt_buscar.setForeground(new java.awt.Color(110, 110, 110));
+        txt_buscar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
+
+        jLabel14.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(110, 110, 110));
+        jLabel14.setText("fecha desde:");
+
+        cbo_dias.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cbo_dias.setForeground(new java.awt.Color(110, 110, 110));
+        cbo_dias.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        cbo_dias.setToolTipText("");
+        cbo_dias.setBorder(null);
+        cbo_dias.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        cbo_meses.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cbo_meses.setForeground(new java.awt.Color(110, 110, 110));
+        cbo_meses.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+        cbo_meses.setToolTipText("");
+        cbo_meses.setBorder(null);
+        cbo_meses.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        cbo_meses.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbo_mesesActionPerformed(evt);
+            }
+        });
+
+        cbo_años.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cbo_años.setForeground(new java.awt.Color(110, 110, 110));
+        cbo_años.setToolTipText("");
+        cbo_años.setBorder(null);
+        cbo_años.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbo_añosActionPerformed(evt);
+            }
+        });
+
+        cbo_años1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cbo_años1.setForeground(new java.awt.Color(110, 110, 110));
+        cbo_años1.setToolTipText("");
+        cbo_años1.setBorder(null);
+        cbo_años1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbo_años1ActionPerformed(evt);
+            }
+        });
+
+        cbo_meses1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cbo_meses1.setForeground(new java.awt.Color(110, 110, 110));
+        cbo_meses1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+        cbo_meses1.setToolTipText("");
+        cbo_meses1.setBorder(null);
+        cbo_meses1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        cbo_meses1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbo_meses1ActionPerformed(evt);
+            }
+        });
+
+        cbo_dias1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cbo_dias1.setForeground(new java.awt.Color(110, 110, 110));
+        cbo_dias1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        cbo_dias1.setToolTipText("");
+        cbo_dias1.setBorder(null);
+        cbo_dias1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jLabel15.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(110, 110, 110));
+        jLabel15.setText("fecha hasta:");
+
+        btn_siguiente4.setBackground(new java.awt.Color(0, 153, 204));
+        btn_siguiente4.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        btn_siguiente4.setForeground(new java.awt.Color(255, 255, 255));
+        btn_siguiente4.setText("Buscar");
+        btn_siguiente4.setBorder(null);
+        btn_siguiente4.setBorderPainted(false);
+        btn_siguiente4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_siguiente4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        btn_eliminar.setBackground(new java.awt.Color(0, 153, 204));
+        btn_eliminar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        btn_eliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_eliminar.setText("Eliminar");
+        btn_eliminar.setBorder(null);
+        btn_eliminar.setBorderPainted(false);
+        btn_eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_eliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
         jLabel19.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(110, 110, 110));
-        jLabel19.setText("Buscar cliente");
-        jPanel1.add(jLabel19);
-        jLabel19.setBounds(290, 360, 166, 30);
-
-        jLabel12.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(110, 110, 110));
-        jLabel12.setText("Cédula:");
-        jPanel1.add(jLabel12);
-        jLabel12.setBounds(330, 950, 63, 21);
-
-        txt_cedula2.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        txt_cedula2.setForeground(new java.awt.Color(110, 110, 110));
-        txt_cedula2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
-        jPanel1.add(txt_cedula2);
-        txt_cedula2.setBounds(180, 410, 350, 39);
-
-        btn_siguiente2.setBackground(new java.awt.Color(0, 153, 204));
-        btn_siguiente2.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        btn_siguiente2.setForeground(new java.awt.Color(255, 255, 255));
-        btn_siguiente2.setText("Eliminar");
-        btn_siguiente2.setBorder(null);
-        btn_siguiente2.setBorderPainted(false);
-        btn_siguiente2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_siguiente2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(btn_siguiente2);
-        btn_siguiente2.setBounds(390, 490, 135, 41);
+        jLabel19.setText("Tabla asistencias");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -164,40 +277,154 @@ public class Form_Asistencia extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane3);
-        jScrollPane3.setBounds(20, 560, 750, 347);
+        btn_eliminar2.setBackground(new java.awt.Color(0, 153, 204));
+        btn_eliminar2.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        btn_eliminar2.setForeground(new java.awt.Color(255, 255, 255));
+        btn_eliminar2.setText("Actualizar");
+        btn_eliminar2.setBorder(null);
+        btn_eliminar2.setBorderPainted(false);
+        btn_eliminar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_eliminar2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jLabel13.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(110, 110, 110));
-        jLabel13.setText("Cédula:");
-        jPanel1.add(jLabel13);
-        jLabel13.setBounds(100, 420, 63, 21);
+        jLabel16.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(110, 110, 110));
+        jLabel16.setText("Resultado");
 
-        btn_siguiente3.setBackground(new java.awt.Color(0, 153, 204));
-        btn_siguiente3.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        btn_siguiente3.setForeground(new java.awt.Color(255, 255, 255));
-        btn_siguiente3.setText("Buscar");
-        btn_siguiente3.setBorder(null);
-        btn_siguiente3.setBorderPainted(false);
-        btn_siguiente3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_siguiente3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(btn_siguiente3);
-        btn_siguiente3.setBounds(540, 410, 135, 41);
+        txt_buscar1.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        txt_buscar1.setForeground(new java.awt.Color(110, 110, 110));
+        txt_buscar1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
 
-        btn_siguiente4.setBackground(new java.awt.Color(0, 153, 204));
-        btn_siguiente4.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        btn_siguiente4.setForeground(new java.awt.Color(255, 255, 255));
-        btn_siguiente4.setText("Actualizar");
-        btn_siguiente4.setBorder(null);
-        btn_siguiente4.setBorderPainted(false);
-        btn_siguiente4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_siguiente4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(btn_siguiente4);
-        btn_siguiente4.setBounds(220, 490, 135, 41);
+        btn_cancelar1.setBackground(new java.awt.Color(250, 250, 250));
+        btn_cancelar1.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        btn_cancelar1.setForeground(new java.awt.Color(110, 110, 110));
+        btn_cancelar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ic_home_64.png"))); // NOI18N
+        btn_cancelar1.setText("Volver");
+        btn_cancelar1.setAutoscrolls(true);
+        btn_cancelar1.setBorder(null);
+        btn_cancelar1.setBorderPainted(false);
+        btn_cancelar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_cancelar1.setFocusPainted(false);
+        btn_cancelar1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_cancelar1.setIconTextGap(-8);
+        btn_cancelar1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        btn_cancelar1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_cancelar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelar1ActionPerformed(evt);
+            }
+        });
 
-        jScrollPane1.setViewportView(jPanel1);
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(152, 152, 152)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGap(81, 81, 81)
+                                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel15)
+                                        .addGap(19, 19, 19)
+                                        .addComponent(cbo_dias1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(264, 264, 264)))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jLabel16)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(btn_eliminar2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(btn_siguiente4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(183, 183, 183))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(289, 289, 289)
+                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(152, 152, 152)
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(cbo_dias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(49, 49, 49)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(cbo_meses1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(cbo_años1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(cbo_meses, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(cbo_años, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txt_buscar1))))
+                .addGap(47, 47, 47)
+                .addComponent(btn_cancelar1)
+                .addGap(34, 34, 34))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(128, 128, 128)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 527, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(jLabel20)
+                        .addGap(39, 39, 39)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel13)
+                            .addComponent(txt_buscar1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(btn_cancelar1)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbo_meses, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbo_años, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cbo_años1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbo_dias, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel14))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbo_dias1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbo_meses1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel15))
+                        .addGap(40, 40, 40)))
+                .addComponent(btn_siguiente4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 76, 76)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16)
+                    .addComponent(btn_eliminar2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48)
+                .addComponent(jLabel19)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(275, Short.MAX_VALUE))
+        );
 
-        jTabbedPane1.addTab("Registrar", jScrollPane1);
+        jScrollPane2.setViewportView(jPanel2);
+
+        jTabbedPane1.addTab("Modiifcar asistencias", jScrollPane2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -207,7 +434,7 @@ public class Form_Asistencia extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1053, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 718, Short.MAX_VALUE)
         );
 
         pack();
@@ -219,11 +446,36 @@ public class Form_Asistencia extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btn_cancelarActionPerformed
 
+    private void cbo_añosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_añosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbo_añosActionPerformed
+
+    private void cbo_mesesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_mesesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbo_mesesActionPerformed
+
+    private void cbo_meses1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_meses1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbo_meses1ActionPerformed
+
+    private void cbo_años1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_años1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbo_años1ActionPerformed
+
+    private void btn_cancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelar1ActionPerformed
+       
+    }//GEN-LAST:event_btn_cancelar1ActionPerformed
+
+    
+    
+    
+    
+    
 /*_________________________________________________________________________
     
     Metodo para volver al menu principal desde la interfaz de asistencia
  __________________________________________________________________________*/    
-    
+
     
     
     /**
@@ -262,24 +514,39 @@ public class Form_Asistencia extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cancelar;
+    private javax.swing.JButton btn_cancelar1;
+    private javax.swing.JButton btn_eliminar;
+    private javax.swing.JButton btn_eliminar2;
     private javax.swing.JButton btn_limpiar;
     private javax.swing.JButton btn_siguiente;
-    private javax.swing.JButton btn_siguiente2;
-    private javax.swing.JButton btn_siguiente3;
     private javax.swing.JButton btn_siguiente4;
+    private javax.swing.JComboBox cbo_años;
+    private javax.swing.JComboBox cbo_años1;
+    private javax.swing.JComboBox cbo_dias;
+    private javax.swing.JComboBox cbo_dias1;
+    private javax.swing.JComboBox cbo_meses;
+    private javax.swing.JComboBox cbo_meses1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JTextField txt_buscar;
+    private javax.swing.JTextField txt_buscar1;
     private javax.swing.JTextField txt_cedula;
     private javax.swing.JTextField txt_cedula1;
-    private javax.swing.JTextField txt_cedula2;
     // End of variables declaration//GEN-END:variables
 }
