@@ -138,8 +138,8 @@ public class Form_clientes extends JFrame {
         jLabel70 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 600));
 
+        jTabbedPane1.setBackground(new java.awt.Color(250, 250, 250));
         jTabbedPane1.setForeground(new java.awt.Color(110, 110, 110));
         jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         jTabbedPane1.setAutoscrolls(true);
@@ -149,6 +149,7 @@ public class Form_clientes extends JFrame {
         spanel_personales.setBorder(null);
         spanel_personales.setPreferredSize(new java.awt.Dimension(800, 600));
 
+        jPanel4.setBackground(new java.awt.Color(250, 250, 250));
         jPanel4.setToolTipText("");
         jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel4.setPreferredSize(new java.awt.Dimension(800, 900));
@@ -533,6 +534,7 @@ public class Form_clientes extends JFrame {
 
         spanel_membresia.setBorder(null);
 
+        jPanel3.setBackground(new java.awt.Color(250, 250, 250));
         jPanel3.setPreferredSize(new java.awt.Dimension(800, 900));
         jPanel3.setLayout(new java.awt.GridBagLayout());
 
@@ -980,6 +982,7 @@ public class Form_clientes extends JFrame {
         spanel_finales.setBorder(null);
         spanel_finales.setPreferredSize(new java.awt.Dimension(800, 600));
 
+        jPanel2.setBackground(new java.awt.Color(250, 250, 250));
         jPanel2.setPreferredSize(new java.awt.Dimension(800, 900));
         jPanel2.setLayout(new java.awt.GridBagLayout());
 

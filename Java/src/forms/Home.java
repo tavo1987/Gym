@@ -10,7 +10,7 @@ public class Home extends JFrame {
     }
 
 /*---------------------------------------------------------
- $Home codigo de la interfaz generado por netbeans 
+    $Home codigo de la interfaz generado por netbeans 
  ----------------------------------------------------------*/
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -36,8 +36,6 @@ public class Home extends JFrame {
         mnu_cliente_asistencia = new javax.swing.JMenuItem();
         mnu_cliente_modificar = new javax.swing.JMenuItem();
         mnu_pagos = new javax.swing.JMenu();
-        mnu_pago_nuevo = new javax.swing.JMenuItem();
-        mnu_pagos_detalles = new javax.swing.JMenuItem();
         mnu_membresia = new javax.swing.JMenu();
         mnu_membresia_nuevo = new javax.swing.JMenuItem();
         mnu_membresia_detalles = new javax.swing.JMenuItem();
@@ -250,19 +248,11 @@ public class Home extends JFrame {
         mnu_pagos.setText("Pagos");
         mnu_pagos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         mnu_pagos.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-
-        mnu_pago_nuevo.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        mnu_pago_nuevo.setForeground(new java.awt.Color(110, 110, 110));
-        mnu_pago_nuevo.setText("Nuevo");
-        mnu_pago_nuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        mnu_pagos.add(mnu_pago_nuevo);
-
-        mnu_pagos_detalles.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        mnu_pagos_detalles.setForeground(new java.awt.Color(110, 110, 110));
-        mnu_pagos_detalles.setText("Detalles");
-        mnu_pagos_detalles.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        mnu_pagos.add(mnu_pagos_detalles);
-
+        mnu_pagos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnu_pagosMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(mnu_pagos);
 
         mnu_membresia.setForeground(new java.awt.Color(110, 110, 110));
@@ -333,7 +323,7 @@ public class Home extends JFrame {
     
     
 /*---------------------------------------------------------
- $Menu codigo para el boton salir del menu
+    $Menu codigo para el boton salir del menu
  ----------------------------------------------------------*/
     private void mnu_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnu_salirActionPerformed
 
@@ -345,7 +335,7 @@ public class Home extends JFrame {
     
     
 /*---------------------------------------------------------
- $Menu cliente nuevo llamandio al formulario
+    $Menu cliente nuevo llamandio al formulario  asistencia
  ----------------------------------------------------------*/
     private void mnu_cliente_asistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnu_cliente_asistenciaActionPerformed
        Form_Asistencia frm_asistencia = new Form_Asistencia ();
@@ -353,6 +343,12 @@ public class Home extends JFrame {
        dispose();
     }//GEN-LAST:event_mnu_cliente_asistenciaActionPerformed
 
+    
+    
+    
+ /*---------------------------------------------------------
+    $metodo para llamar el formulario clientes
+ ----------------------------------------------------------*/
     private void mnu_cliente_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnu_cliente_nuevoActionPerformed
         
         Form_clientes frm_clientes = new Form_clientes();
@@ -365,7 +361,7 @@ public class Home extends JFrame {
     
     
  /*---------------------------------------------------------
- $Home boton para salir de la aplicación 
+    $Home boton para salir de la aplicación 
  ----------------------------------------------------------*/
     private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
             
@@ -376,13 +372,25 @@ public class Home extends JFrame {
     
     
   /*---------------------------------------------------------
- $metodo para llamar el formulario modificar clientes
+    $metodo para llamar el formulario modificar clientes
  ----------------------------------------------------------*/
     private void mnu_cliente_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnu_cliente_modificarActionPerformed
         Form_modificar_clientes frm_modificar_clientes = new Form_modificar_clientes();
         frm_modificar_clientes.setVisible(true);
         dispose();
     }//GEN-LAST:event_mnu_cliente_modificarActionPerformed
+
+    
+/*---------------------------------------------------------
+    $metodo para llamar el formulario de pagos
+ ----------------------------------------------------------*/   
+    
+    private void mnu_pagosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnu_pagosMouseClicked
+     Form_pagos frm_pagos = new Form_pagos();
+     frm_pagos.setVisible(true);
+     dispose();
+     
+    }//GEN-LAST:event_mnu_pagosMouseClicked
 
     
     
@@ -425,9 +433,7 @@ public class Home extends JFrame {
     private javax.swing.JMenu mnu_membresia;
     private javax.swing.JMenuItem mnu_membresia_detalles;
     private javax.swing.JMenuItem mnu_membresia_nuevo;
-    private javax.swing.JMenuItem mnu_pago_nuevo;
     private javax.swing.JMenu mnu_pagos;
-    private javax.swing.JMenuItem mnu_pagos_detalles;
     private javax.swing.JMenuItem mnu_salir;
     private javax.swing.JMenu mnu_usuarios;
     private javax.swing.JMenuItem mnu_usuarios_detalles;

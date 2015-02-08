@@ -53,6 +53,11 @@ public class Form_modificar_clientes extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jTabbedPane1.setBackground(new java.awt.Color(110, 110, 110));
+        jTabbedPane1.setForeground(new java.awt.Color(110, 110, 110));
+        jTabbedPane1.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+
+        jPanel1.setForeground(new java.awt.Color(110, 110, 110));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jLabel20.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
