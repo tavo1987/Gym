@@ -17,39 +17,39 @@ public class Form_modificar_clientes extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        txt_buscar1 = new javax.swing.JTextField();
-        btn_siguiente4 = new javax.swing.JButton();
+        txt_cedula = new javax.swing.JTextField();
+        btn_buscar = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
-        txt_buscar = new javax.swing.JTextField();
-        btn_eliminar2 = new javax.swing.JButton();
+        txt_result_cedula = new javax.swing.JTextField();
+        btn_editar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
-        txt_buscar2 = new javax.swing.JTextField();
+        txt_nombres = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        txt_buscar3 = new javax.swing.JTextField();
+        txt_apellidos = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
-        txt_buscar4 = new javax.swing.JTextField();
+        txt_dir = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
-        txt_buscar5 = new javax.swing.JTextField();
+        txt_sexo = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        txt_buscar7 = new javax.swing.JTextField();
+        txt_telefono = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
-        txt_buscar8 = new javax.swing.JTextField();
+        txt_celular = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
-        btn_eliminar3 = new javax.swing.JButton();
+        btn_actualizar = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         cbo_dias = new javax.swing.JComboBox();
         cbo_meses = new javax.swing.JComboBox();
         cbo_años = new javax.swing.JComboBox();
+        btn_cancelar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,110 +57,55 @@ public class Form_modificar_clientes extends javax.swing.JFrame {
         jTabbedPane1.setForeground(new java.awt.Color(110, 110, 110));
         jTabbedPane1.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
 
+        jPanel1.setBackground(new java.awt.Color(250, 250, 250));
         jPanel1.setForeground(new java.awt.Color(110, 110, 110));
-        jPanel1.setLayout(new java.awt.GridBagLayout());
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel20.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(110, 110, 110));
         jLabel20.setText("Resultados de búsqueda");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 7;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 26;
-        gridBagConstraints.ipadx = 18;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(40, 58, 0, 0);
-        jPanel1.add(jLabel20, gridBagConstraints);
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 310, -1));
 
         jLabel13.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(110, 110, 110));
         jLabel13.setText("Cédula:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 7;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(40, 8, 0, 0);
-        jPanel1.add(jLabel13, gridBagConstraints);
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, -1, -1));
 
-        txt_buscar1.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        txt_buscar1.setForeground(new java.awt.Color(110, 110, 110));
-        txt_buscar1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 17;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 240;
-        gridBagConstraints.ipady = 16;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 0, 0, 0);
-        jPanel1.add(txt_buscar1, gridBagConstraints);
+        txt_cedula.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        txt_cedula.setForeground(new java.awt.Color(110, 110, 110));
+        txt_cedula.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
+        jPanel1.add(txt_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 242, 39));
 
-        btn_siguiente4.setBackground(new java.awt.Color(0, 153, 204));
-        btn_siguiente4.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        btn_siguiente4.setForeground(new java.awt.Color(255, 255, 255));
-        btn_siguiente4.setText("Buscar");
-        btn_siguiente4.setBorder(null);
-        btn_siguiente4.setBorderPainted(false);
-        btn_siguiente4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_siguiente4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 26;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 55;
-        gridBagConstraints.gridheight = 3;
-        gridBagConstraints.ipadx = 45;
-        gridBagConstraints.ipady = 19;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 8, 0, 0);
-        jPanel1.add(btn_siguiente4, gridBagConstraints);
+        btn_buscar.setBackground(new java.awt.Color(0, 153, 204));
+        btn_buscar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        btn_buscar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_buscar.setText("Buscar");
+        btn_buscar.setBorder(null);
+        btn_buscar.setBorderPainted(false);
+        btn_buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_buscar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, 100, 40));
 
         jLabel16.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(110, 110, 110));
         jLabel16.setText("Acciones:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 16;
-        gridBagConstraints.ipadx = 22;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(40, 14, 0, 0);
-        jPanel1.add(jLabel16, gridBagConstraints);
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 100, -1));
 
-        txt_buscar.setBackground(new java.awt.Color(197, 230, 197));
-        txt_buscar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        txt_buscar.setForeground(new java.awt.Color(110, 110, 110));
-        txt_buscar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(162, 214, 162), 1, true));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 17;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 108;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 429;
-        gridBagConstraints.ipady = 16;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 0, 0, 239);
-        jPanel1.add(txt_buscar, gridBagConstraints);
+        txt_result_cedula.setBackground(new java.awt.Color(197, 230, 197));
+        txt_result_cedula.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        txt_result_cedula.setForeground(new java.awt.Color(110, 110, 110));
+        txt_result_cedula.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(162, 214, 162), 1, true));
+        jPanel1.add(txt_result_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 361, 431, 39));
 
-        btn_eliminar2.setBackground(new java.awt.Color(0, 153, 204));
-        btn_eliminar2.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        btn_eliminar2.setForeground(new java.awt.Color(255, 255, 255));
-        btn_eliminar2.setText("Editar");
-        btn_eliminar2.setBorder(null);
-        btn_eliminar2.setBorderPainted(false);
-        btn_eliminar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_eliminar2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 17;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 51;
-        gridBagConstraints.ipady = 19;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 0, 0, 0);
-        jPanel1.add(btn_eliminar2, gridBagConstraints);
+        btn_editar.setBackground(new java.awt.Color(0, 153, 204));
+        btn_editar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        btn_editar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_editar.setText("Editar");
+        btn_editar.setBorder(null);
+        btn_editar.setBorderPainted(false);
+        btn_editar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_editar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(btn_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 100, 40));
 
         btn_eliminar.setBackground(new java.awt.Color(0, 153, 204));
         btn_eliminar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -175,234 +120,101 @@ public class Form_modificar_clientes extends javax.swing.JFrame {
                 btn_eliminarActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 22;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 30;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 33;
-        gridBagConstraints.ipady = 19;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 3, 0, 0);
-        jPanel1.add(btn_eliminar, gridBagConstraints);
+        jPanel1.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, 100, 40));
 
         jLabel17.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(110, 110, 110));
         jLabel17.setText("Nombres:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 10;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(31, 80, 0, 0);
-        jPanel1.add(jLabel17, gridBagConstraints);
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 431, -1, -1));
 
-        txt_buscar2.setBackground(new java.awt.Color(197, 230, 197));
-        txt_buscar2.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        txt_buscar2.setForeground(new java.awt.Color(110, 110, 110));
-        txt_buscar2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(162, 214, 162), 1, true));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 17;
-        gridBagConstraints.gridy = 10;
-        gridBagConstraints.gridwidth = 108;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 429;
-        gridBagConstraints.ipady = 16;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 0, 0, 239);
-        jPanel1.add(txt_buscar2, gridBagConstraints);
+        txt_nombres.setBackground(new java.awt.Color(197, 230, 197));
+        txt_nombres.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        txt_nombres.setForeground(new java.awt.Color(110, 110, 110));
+        txt_nombres.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(162, 214, 162), 1, true));
+        jPanel1.add(txt_nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 421, 431, 39));
 
         jLabel18.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(110, 110, 110));
         jLabel18.setText("Apellidos:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 12;
-        gridBagConstraints.gridwidth = 7;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(31, 80, 0, 0);
-        jPanel1.add(jLabel18, gridBagConstraints);
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 491, -1, -1));
 
-        txt_buscar3.setBackground(new java.awt.Color(197, 230, 197));
-        txt_buscar3.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        txt_buscar3.setForeground(new java.awt.Color(110, 110, 110));
-        txt_buscar3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(162, 214, 162), 1, true));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 17;
-        gridBagConstraints.gridy = 12;
-        gridBagConstraints.gridwidth = 108;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 429;
-        gridBagConstraints.ipady = 16;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 0, 0, 239);
-        jPanel1.add(txt_buscar3, gridBagConstraints);
+        txt_apellidos.setBackground(new java.awt.Color(197, 230, 197));
+        txt_apellidos.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        txt_apellidos.setForeground(new java.awt.Color(110, 110, 110));
+        txt_apellidos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(162, 214, 162), 1, true));
+        jPanel1.add(txt_apellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 481, 431, 39));
 
         jLabel21.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(110, 110, 110));
         jLabel21.setText("Dirección:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 14;
-        gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(41, 80, 0, 0);
-        jPanel1.add(jLabel21, gridBagConstraints);
+        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 561, -1, -1));
 
-        txt_buscar4.setBackground(new java.awt.Color(197, 230, 197));
-        txt_buscar4.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        txt_buscar4.setForeground(new java.awt.Color(110, 110, 110));
-        txt_buscar4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(162, 214, 162), 1, true));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 17;
-        gridBagConstraints.gridy = 14;
-        gridBagConstraints.gridwidth = 108;
-        gridBagConstraints.ipadx = 429;
-        gridBagConstraints.ipady = 16;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 0, 0, 239);
-        jPanel1.add(txt_buscar4, gridBagConstraints);
+        txt_dir.setBackground(new java.awt.Color(197, 230, 197));
+        txt_dir.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        txt_dir.setForeground(new java.awt.Color(110, 110, 110));
+        txt_dir.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(162, 214, 162), 1, true));
+        jPanel1.add(txt_dir, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 541, 431, 39));
 
         jLabel22.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(110, 110, 110));
         jLabel22.setText("Fecha Nacimiento:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 16;
-        gridBagConstraints.gridwidth = 8;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(39, 80, 0, 0);
-        jPanel1.add(jLabel22, gridBagConstraints);
+        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 621, -1, -1));
 
-        txt_buscar5.setBackground(new java.awt.Color(197, 230, 197));
-        txt_buscar5.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        txt_buscar5.setForeground(new java.awt.Color(110, 110, 110));
-        txt_buscar5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(162, 214, 162), 1, true));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 17;
-        gridBagConstraints.gridy = 18;
-        gridBagConstraints.gridwidth = 108;
-        gridBagConstraints.ipadx = 429;
-        gridBagConstraints.ipady = 16;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(17, 0, 0, 239);
-        jPanel1.add(txt_buscar5, gridBagConstraints);
+        txt_sexo.setBackground(new java.awt.Color(197, 230, 197));
+        txt_sexo.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        txt_sexo.setForeground(new java.awt.Color(110, 110, 110));
+        txt_sexo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(162, 214, 162), 1, true));
+        jPanel1.add(txt_sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 661, 431, 39));
 
         jLabel23.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(110, 110, 110));
         jLabel23.setText("Sexo:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 18;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(37, 80, 0, 0);
-        jPanel1.add(jLabel23, gridBagConstraints);
+        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 681, -1, -1));
 
         jLabel24.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(110, 110, 110));
         jLabel24.setText("Teléfono:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 20;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(39, 80, 0, 0);
-        jPanel1.add(jLabel24, gridBagConstraints);
+        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 741, -1, -1));
 
-        txt_buscar7.setBackground(new java.awt.Color(197, 230, 197));
-        txt_buscar7.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        txt_buscar7.setForeground(new java.awt.Color(110, 110, 110));
-        txt_buscar7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(162, 214, 162), 1, true));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 17;
-        gridBagConstraints.gridy = 20;
-        gridBagConstraints.gridwidth = 108;
-        gridBagConstraints.ipadx = 429;
-        gridBagConstraints.ipady = 16;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(19, 0, 0, 239);
-        jPanel1.add(txt_buscar7, gridBagConstraints);
+        txt_telefono.setBackground(new java.awt.Color(197, 230, 197));
+        txt_telefono.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        txt_telefono.setForeground(new java.awt.Color(110, 110, 110));
+        txt_telefono.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(162, 214, 162), 1, true));
+        jPanel1.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 721, 431, 39));
 
         jLabel25.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(110, 110, 110));
         jLabel25.setText("Celular:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 22;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(39, 80, 78, 0);
-        jPanel1.add(jLabel25, gridBagConstraints);
+        jPanel1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 801, -1, -1));
 
-        txt_buscar8.setBackground(new java.awt.Color(197, 230, 197));
-        txt_buscar8.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        txt_buscar8.setForeground(new java.awt.Color(110, 110, 110));
-        txt_buscar8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(162, 214, 162), 1, true));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 17;
-        gridBagConstraints.gridy = 22;
-        gridBagConstraints.gridwidth = 108;
-        gridBagConstraints.ipadx = 429;
-        gridBagConstraints.ipady = 16;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(19, 0, 0, 239);
-        jPanel1.add(txt_buscar8, gridBagConstraints);
+        txt_celular.setBackground(new java.awt.Color(197, 230, 197));
+        txt_celular.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        txt_celular.setForeground(new java.awt.Color(110, 110, 110));
+        txt_celular.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(162, 214, 162), 1, true));
+        jPanel1.add(txt_celular, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 781, 431, 39));
 
         jLabel26.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(110, 110, 110));
         jLabel26.setText("Buscar  clientes");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 17;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 10;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(60, 40, 0, 0);
-        jPanel1.add(jLabel26, gridBagConstraints);
+        jPanel1.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 197, -1));
 
-        btn_eliminar3.setBackground(new java.awt.Color(0, 153, 204));
-        btn_eliminar3.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        btn_eliminar3.setForeground(new java.awt.Color(255, 255, 255));
-        btn_eliminar3.setText("Actualizar");
-        btn_eliminar3.setBorder(null);
-        btn_eliminar3.setBorderPainted(false);
-        btn_eliminar3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_eliminar3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 19;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 19;
-        gridBagConstraints.ipady = 19;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 20, 0, 0);
-        jPanel1.add(btn_eliminar3, gridBagConstraints);
+        btn_actualizar.setBackground(new java.awt.Color(0, 153, 204));
+        btn_actualizar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        btn_actualizar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_actualizar.setText("Actualizar");
+        btn_actualizar.setBorder(null);
+        btn_actualizar.setBorderPainted(false);
+        btn_actualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_actualizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, 100, 40));
 
         jLabel19.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(110, 110, 110));
         jLabel19.setText("Cédula:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(40, 80, 0, 0);
-        jPanel1.add(jLabel19, gridBagConstraints);
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 371, -1, -1));
 
         jSeparator1.setBackground(new java.awt.Color(51, 204, 255));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 107;
-        gridBagConstraints.ipadx = 589;
-        gridBagConstraints.ipady = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 80, 0, 0);
-        jPanel1.add(jSeparator1, gridBagConstraints);
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 589, 11));
 
         cbo_dias.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         cbo_dias.setForeground(new java.awt.Color(110, 110, 110));
@@ -410,15 +222,7 @@ public class Form_modificar_clientes extends javax.swing.JFrame {
         cbo_dias.setToolTipText("");
         cbo_dias.setBorder(null);
         cbo_dias.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 17;
-        gridBagConstraints.gridy = 16;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 39;
-        gridBagConstraints.ipady = 13;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(29, 0, 0, 0);
-        jPanel1.add(cbo_dias, gridBagConstraints);
+        jPanel1.add(cbo_dias, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 611, 80, 33));
 
         cbo_meses.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         cbo_meses.setForeground(new java.awt.Color(110, 110, 110));
@@ -431,16 +235,7 @@ public class Form_modificar_clientes extends javax.swing.JFrame {
                 cbo_mesesActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 19;
-        gridBagConstraints.gridy = 16;
-        gridBagConstraints.gridwidth = 8;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 43;
-        gridBagConstraints.ipady = 13;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(29, 30, 0, 0);
-        jPanel1.add(cbo_meses, gridBagConstraints);
+        jPanel1.add(cbo_meses, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 611, 140, 33));
 
         cbo_años.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         cbo_años.setForeground(new java.awt.Color(110, 110, 110));
@@ -451,16 +246,28 @@ public class Form_modificar_clientes extends javax.swing.JFrame {
                 cbo_añosActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 51;
-        gridBagConstraints.gridy = 16;
-        gridBagConstraints.gridwidth = 56;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 81;
-        gridBagConstraints.ipady = 13;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(29, 30, 0, 0);
-        jPanel1.add(cbo_años, gridBagConstraints);
+        jPanel1.add(cbo_años, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 611, 110, 33));
+
+        btn_cancelar1.setBackground(new java.awt.Color(250, 250, 250));
+        btn_cancelar1.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        btn_cancelar1.setForeground(new java.awt.Color(110, 110, 110));
+        btn_cancelar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ic_home_64.png"))); // NOI18N
+        btn_cancelar1.setText("Volver");
+        btn_cancelar1.setAutoscrolls(true);
+        btn_cancelar1.setBorder(null);
+        btn_cancelar1.setBorderPainted(false);
+        btn_cancelar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_cancelar1.setFocusPainted(false);
+        btn_cancelar1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_cancelar1.setIconTextGap(-8);
+        btn_cancelar1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        btn_cancelar1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_cancelar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_cancelar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
         jScrollPane1.setViewportView(jPanel1);
         jPanel1.getAccessibleContext().setAccessibleName("");
@@ -485,6 +292,24 @@ public class Form_modificar_clientes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbo_añosActionPerformed
 
+
+
+
+/*_____________________________________________________________________________
+     
+    $Metodo para el boton volver que regresa al home
+ __________________________________________________________________________*/
+    private void btn_cancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelar1ActionPerformed
+        Home frm_home = new Home();
+        frm_home.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btn_cancelar1ActionPerformed
+
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -520,10 +345,11 @@ public class Form_modificar_clientes extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_actualizar;
+    private javax.swing.JButton btn_buscar;
+    private javax.swing.JButton btn_cancelar1;
+    private javax.swing.JButton btn_editar;
     private javax.swing.JButton btn_eliminar;
-    private javax.swing.JButton btn_eliminar2;
-    private javax.swing.JButton btn_eliminar3;
-    private javax.swing.JButton btn_siguiente4;
     private javax.swing.JComboBox cbo_años;
     private javax.swing.JComboBox cbo_dias;
     private javax.swing.JComboBox cbo_meses;
@@ -543,13 +369,13 @@ public class Form_modificar_clientes extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField txt_buscar;
-    private javax.swing.JTextField txt_buscar1;
-    private javax.swing.JTextField txt_buscar2;
-    private javax.swing.JTextField txt_buscar3;
-    private javax.swing.JTextField txt_buscar4;
-    private javax.swing.JTextField txt_buscar5;
-    private javax.swing.JTextField txt_buscar7;
-    private javax.swing.JTextField txt_buscar8;
+    private javax.swing.JTextField txt_apellidos;
+    private javax.swing.JTextField txt_cedula;
+    private javax.swing.JTextField txt_celular;
+    private javax.swing.JTextField txt_dir;
+    private javax.swing.JTextField txt_nombres;
+    private javax.swing.JTextField txt_result_cedula;
+    private javax.swing.JTextField txt_sexo;
+    private javax.swing.JTextField txt_telefono;
     // End of variables declaration//GEN-END:variables
 }

@@ -37,8 +37,6 @@ public class Home extends JFrame {
         mnu_cliente_modificar = new javax.swing.JMenuItem();
         mnu_pagos = new javax.swing.JMenu();
         mnu_membresia = new javax.swing.JMenu();
-        mnu_membresia_nuevo = new javax.swing.JMenuItem();
-        mnu_membresia_detalles = new javax.swing.JMenuItem();
         mnu_ficha = new javax.swing.JMenu();
         mnu_ficha_nueva = new javax.swing.JMenuItem();
         mnu_ficha_detalles = new javax.swing.JMenuItem();
@@ -259,19 +257,11 @@ public class Home extends JFrame {
         mnu_membresia.setText("Membresia");
         mnu_membresia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         mnu_membresia.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-
-        mnu_membresia_nuevo.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        mnu_membresia_nuevo.setForeground(new java.awt.Color(110, 110, 110));
-        mnu_membresia_nuevo.setText("Nuevo");
-        mnu_membresia_nuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        mnu_membresia.add(mnu_membresia_nuevo);
-
-        mnu_membresia_detalles.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        mnu_membresia_detalles.setForeground(new java.awt.Color(110, 110, 110));
-        mnu_membresia_detalles.setText("Detalles");
-        mnu_membresia_detalles.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        mnu_membresia.add(mnu_membresia_detalles);
-
+        mnu_membresia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnu_membresiaMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(mnu_membresia);
 
         mnu_ficha.setBackground(new java.awt.Color(252, 252, 252));
@@ -394,6 +384,23 @@ public class Home extends JFrame {
 
     
     
+
+  
+    
+    
+    
+        
+/*---------------------------------------------------------
+    $metodo para llamar el formulario de membresia
+ ----------------------------------------------------------*/   
+    private void mnu_membresiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnu_membresiaMouseClicked
+        Form_membresia frm_membresia = new Form_membresia();
+       frm_membresia.setVisible(true);
+       dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_mnu_membresiaMouseClicked
+
+    
+    
     
     /**
      * @param args the command line arguments
@@ -431,8 +438,6 @@ public class Home extends JFrame {
     private javax.swing.JMenuItem mnu_ficha_detalles;
     private javax.swing.JMenuItem mnu_ficha_nueva;
     private javax.swing.JMenu mnu_membresia;
-    private javax.swing.JMenuItem mnu_membresia_detalles;
-    private javax.swing.JMenuItem mnu_membresia_nuevo;
     private javax.swing.JMenu mnu_pagos;
     private javax.swing.JMenuItem mnu_salir;
     private javax.swing.JMenu mnu_usuarios;
