@@ -38,8 +38,6 @@ public class Home extends JFrame {
         mnu_pagos = new javax.swing.JMenu();
         mnu_membresia = new javax.swing.JMenu();
         mnu_ficha = new javax.swing.JMenu();
-        mnu_ficha_nueva = new javax.swing.JMenuItem();
-        mnu_ficha_detalles = new javax.swing.JMenuItem();
         mnu_usuarios = new javax.swing.JMenu();
         mnu_usuarios_nuevo = new javax.swing.JMenuItem();
         mnu_usuarios_detalles = new javax.swing.JMenuItem();
@@ -269,19 +267,11 @@ public class Home extends JFrame {
         mnu_ficha.setText("Ficha");
         mnu_ficha.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         mnu_ficha.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-
-        mnu_ficha_nueva.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        mnu_ficha_nueva.setForeground(new java.awt.Color(110, 110, 110));
-        mnu_ficha_nueva.setText("Nueva");
-        mnu_ficha_nueva.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        mnu_ficha.add(mnu_ficha_nueva);
-
-        mnu_ficha_detalles.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        mnu_ficha_detalles.setForeground(new java.awt.Color(110, 110, 110));
-        mnu_ficha_detalles.setText("Detalles");
-        mnu_ficha_detalles.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        mnu_ficha.add(mnu_ficha_detalles);
-
+        mnu_ficha.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnu_fichaMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(mnu_ficha);
 
         mnu_usuarios.setBackground(new java.awt.Color(252, 252, 252));
@@ -384,12 +374,8 @@ public class Home extends JFrame {
 
     
     
-
-  
     
     
-    
-        
 /*---------------------------------------------------------
     $metodo para llamar el formulario de membresia
  ----------------------------------------------------------*/   
@@ -398,6 +384,18 @@ public class Home extends JFrame {
        frm_membresia.setVisible(true);
        dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_mnu_membresiaMouseClicked
+
+    
+    
+    
+ /*-------------------------------------------------------------------------
+    $metodo para llamar el formulario de Ficha de cliente o e seguimiento
+ ---------------------------------------------------------------------------*/   
+    private void mnu_fichaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnu_fichaMouseClicked
+        Form_ficha frm_ficha = new Form_ficha();
+        frm_ficha.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_mnu_fichaMouseClicked
 
     
     
@@ -435,8 +433,6 @@ public class Home extends JFrame {
     private javax.swing.JMenuItem mnu_cliente_nuevo;
     private javax.swing.JMenu mnu_clientes;
     private javax.swing.JMenu mnu_ficha;
-    private javax.swing.JMenuItem mnu_ficha_detalles;
-    private javax.swing.JMenuItem mnu_ficha_nueva;
     private javax.swing.JMenu mnu_membresia;
     private javax.swing.JMenu mnu_pagos;
     private javax.swing.JMenuItem mnu_salir;

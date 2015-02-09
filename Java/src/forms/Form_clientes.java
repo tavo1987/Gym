@@ -228,6 +228,7 @@ public class Form_clientes extends JFrame {
         });
         jPanel4.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 480, 350, 39));
 
+        radio_masculino.setBackground(new java.awt.Color(250, 250, 250));
         buttonGroup_sexo.add(radio_masculino);
         radio_masculino.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         radio_masculino.setForeground(new java.awt.Color(110, 110, 110));
@@ -240,6 +241,7 @@ public class Form_clientes extends JFrame {
         });
         jPanel4.add(radio_masculino, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 440, -1, -1));
 
+        radio_femenino.setBackground(new java.awt.Color(250, 250, 250));
         buttonGroup_sexo.add(radio_femenino);
         radio_femenino.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         radio_femenino.setForeground(new java.awt.Color(110, 110, 110));
@@ -251,6 +253,7 @@ public class Form_clientes extends JFrame {
         jLabel18.setText("Datos Personales");
         jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 2, -1, -1));
 
+        cbo_dias.setBackground(new java.awt.Color(250, 250, 250));
         cbo_dias.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         cbo_dias.setForeground(new java.awt.Color(110, 110, 110));
         cbo_dias.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
@@ -617,28 +620,17 @@ public class Form_clientes extends JFrame {
 
         jPanel1.setBackground(new java.awt.Color(250, 250, 250));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 900));
-        jPanel1.setLayout(new java.awt.GridBagLayout());
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel19.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(110, 110, 110));
         jLabel19.setText("Datos Corporales");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 13;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 21;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(46, 1, 0, 0);
-        jPanel1.add(jLabel19, gridBagConstraints);
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 46, -1, -1));
 
         jLabel21.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(110, 110, 110));
         jLabel21.setText("Nivel:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 160, 0, 0);
-        jPanel1.add(jLabel21, gridBagConstraints);
+        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 130, -1, -1));
 
         cbo_nivel.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         cbo_nivel.setForeground(new java.awt.Color(110, 110, 110));
@@ -651,92 +643,37 @@ public class Form_clientes extends JFrame {
                 cbo_nivelActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 13;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 11;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 82;
-        gridBagConstraints.ipady = 20;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 5, 0, 0);
-        jPanel1.add(cbo_nivel, gridBagConstraints);
+        jPanel1.add(cbo_nivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 120, 180, 40));
 
         jLabel22.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(110, 110, 110));
         jLabel22.setText("Peso Kg:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 160, 0, 0);
-        jPanel1.add(jLabel22, gridBagConstraints);
+        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 190, -1, -1));
 
         txt_peso.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         txt_peso.setForeground(new java.awt.Color(110, 110, 110));
         txt_peso.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 13;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 33;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 348;
-        gridBagConstraints.ipady = 16;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 5, 0, 0);
-        jPanel1.add(txt_peso, gridBagConstraints);
+        jPanel1.add(txt_peso, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 180, 350, 39));
 
         jLabel23.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(110, 110, 110));
         jLabel23.setText("Altura cm:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(31, 160, 0, 0);
-        jPanel1.add(jLabel23, gridBagConstraints);
+        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 250, -1, -1));
 
         txt_altura.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         txt_altura.setForeground(new java.awt.Color(110, 110, 110));
         txt_altura.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 13;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 33;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 348;
-        gridBagConstraints.ipady = 16;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 5, 0, 0);
-        jPanel1.add(txt_altura, gridBagConstraints);
+        jPanel1.add(txt_altura, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 240, 350, 39));
 
         jLabel24.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(110, 110, 110));
         jLabel24.setText("Cintura cm:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 9;
-        gridBagConstraints.ipadx = 10;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 160, 0, 0);
-        jPanel1.add(jLabel24, gridBagConstraints);
+        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 300, 105, -1));
 
         txt_cintura.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         txt_cintura.setForeground(new java.awt.Color(110, 110, 110));
         txt_cintura.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 13;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 33;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 348;
-        gridBagConstraints.ipady = 16;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 5, 0, 0);
-        jPanel1.add(txt_cintura, gridBagConstraints);
+        jPanel1.add(txt_cintura, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 290, 350, 39));
 
         btn_siguiente3.setBackground(new java.awt.Color(0, 153, 204));
         btn_siguiente3.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -745,15 +682,7 @@ public class Form_clientes extends JFrame {
         btn_siguiente3.setBorder(null);
         btn_siguiente3.setBorderPainted(false);
         btn_siguiente3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 14;
-        gridBagConstraints.gridwidth = 10;
-        gridBagConstraints.ipadx = 23;
-        gridBagConstraints.ipady = 19;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(61, 3, 360, 0);
-        jPanel1.add(btn_siguiente3, gridBagConstraints);
+        jPanel1.add(btn_siguiente3, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 500, 100, 40));
 
         btn_limpiar3.setBackground(new java.awt.Color(0, 153, 204));
         btn_limpiar3.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -762,77 +691,30 @@ public class Form_clientes extends JFrame {
         btn_limpiar3.setBorder(null);
         btn_limpiar3.setBorderPainted(false);
         btn_limpiar3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 23;
-        gridBagConstraints.gridy = 14;
-        gridBagConstraints.gridwidth = 22;
-        gridBagConstraints.ipadx = 39;
-        gridBagConstraints.ipady = 19;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(61, 60, 360, 0);
-        jPanel1.add(btn_limpiar3, gridBagConstraints);
+        jPanel1.add(btn_limpiar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 500, 100, 40));
 
         jLabel52.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel52.setForeground(new java.awt.Color(110, 110, 110));
         jLabel52.setText("Cuello cm:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 10;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(31, 160, 0, 0);
-        jPanel1.add(jLabel52, gridBagConstraints);
+        jPanel1.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 360, -1, -1));
 
         txt_cuello.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         txt_cuello.setForeground(new java.awt.Color(110, 110, 110));
         txt_cuello.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 13;
-        gridBagConstraints.gridy = 10;
-        gridBagConstraints.gridwidth = 33;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 348;
-        gridBagConstraints.ipady = 16;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 5, 0, 0);
-        jPanel1.add(txt_cuello, gridBagConstraints);
+        jPanel1.add(txt_cuello, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 350, 350, 39));
 
         jLabel53.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel53.setForeground(new java.awt.Color(110, 110, 110));
         jLabel53.setText("Cadera cm:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 12;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.ipadx = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 160, 0, 0);
-        jPanel1.add(jLabel53, gridBagConstraints);
+        jPanel1.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 410, 97, -1));
 
         txt_cadera.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         txt_cadera.setForeground(new java.awt.Color(110, 110, 110));
         txt_cadera.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 13;
-        gridBagConstraints.gridy = 12;
-        gridBagConstraints.gridwidth = 33;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 348;
-        gridBagConstraints.ipady = 16;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 5, 0, 0);
-        jPanel1.add(txt_cadera, gridBagConstraints);
+        jPanel1.add(txt_cadera, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 400, 350, 39));
 
         jSeparator1.setBackground(new java.awt.Color(51, 204, 255));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 47;
-        gridBagConstraints.ipadx = 489;
-        gridBagConstraints.ipady = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(14, 160, 0, 525);
-        jPanel1.add(jSeparator1, gridBagConstraints);
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 90, 490, 10));
 
         spanel_ficha.setViewportView(jPanel1);
 
@@ -843,458 +725,202 @@ public class Form_clientes extends JFrame {
 
         jPanel2.setBackground(new java.awt.Color(250, 250, 250));
         jPanel2.setPreferredSize(new java.awt.Dimension(800, 900));
-        jPanel2.setLayout(new java.awt.GridBagLayout());
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel25.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(110, 110, 110));
         jLabel25.setText("Datos de Membresia");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 13;
-        gridBagConstraints.gridy = 25;
-        gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.ipadx = 16;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(29, 27, 0, 0);
-        jPanel2.add(jLabel25, gridBagConstraints);
+        jPanel2.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(277, 480, 260, -1));
 
         jLabel26.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(0, 153, 255));
         jLabel26.setText("Datos");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 11;
-        gridBagConstraints.gridy = 24;
-        gridBagConstraints.ipadx = 15;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(9, 24, 0, 0);
-        jPanel2.add(jLabel26, gridBagConstraints);
+        jPanel2.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 430, 63, -1));
 
         jLabel27.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(110, 110, 110));
         jLabel27.setText("Nombres:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 8;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(14, 167, 0, 0);
-        jPanel2.add(jLabel27, gridBagConstraints);
+        jPanel2.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 135, -1, -1));
 
         jLabel28.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(110, 110, 110));
         jLabel28.setText("Apellidos:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 10;
-        gridBagConstraints.gridheight = 8;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(9, 167, 0, 0);
-        jPanel2.add(jLabel28, gridBagConstraints);
+        jPanel2.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 170, -1, -1));
 
         jLabel29.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(110, 110, 110));
         jLabel29.setText("Dirección:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 15;
-        gridBagConstraints.gridwidth = 9;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 167, 0, 0);
-        jPanel2.add(jLabel29, gridBagConstraints);
+        jPanel2.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 209, -1, -1));
 
         jLabel30.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(110, 110, 110));
         jLabel30.setText("Edad");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 18;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(19, 170, 0, 0);
-        jPanel2.add(jLabel30, gridBagConstraints);
+        jPanel2.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 250, -1, -1));
 
         jLabel32.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(110, 110, 110));
         jLabel32.setText("Masa corporal magra");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 13;
-        gridBagConstraints.gridy = 15;
-        gridBagConstraints.gridwidth = 7;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(9, 147, 0, 0);
-        jPanel2.add(jLabel32, gridBagConstraints);
+        jPanel2.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 200, -1, -1));
 
         jLabel33.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(110, 110, 110));
         jLabel33.setText("Peso");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 20;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(19, 170, 0, 0);
-        jPanel2.add(jLabel33, gridBagConstraints);
+        jPanel2.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 290, -1, -1));
 
         jLabel34.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(110, 110, 110));
         jLabel34.setText("imc");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 13;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(47, 147, 0, 0);
-        jPanel2.add(jLabel34, gridBagConstraints);
+        jPanel2.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 100, -1, -1));
 
         jLabel35.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel35.setForeground(new java.awt.Color(110, 110, 110));
         jLabel35.setText("indice de Cintura/Altura");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 13;
-        gridBagConstraints.gridy = 18;
-        gridBagConstraints.gridwidth = 8;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(9, 147, 0, 0);
-        jPanel2.add(jLabel35, gridBagConstraints);
+        jPanel2.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 240, -1, -1));
 
         jLabel36.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(110, 110, 110));
         jLabel36.setText("sobrepeso");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 13;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.gridheight = 7;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 147, 0, 0);
-        jPanel2.add(jLabel36, gridBagConstraints);
+        jPanel2.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 160, -1, -1));
 
         jLabel37.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(110, 110, 110));
         jLabel37.setText("Altura");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 22;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(19, 170, 0, 0);
-        jPanel2.add(jLabel37, gridBagConstraints);
+        jPanel2.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 370, -1, -1));
 
         jLabel38.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(110, 110, 110));
         jLabel38.setText("Sexo");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 21;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(19, 170, 0, 0);
-        jPanel2.add(jLabel38, gridBagConstraints);
+        jPanel2.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 330, -1, -1));
 
         jLabel39.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel39.setForeground(new java.awt.Color(110, 110, 110));
         jLabel39.setText("cuello");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 23;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(9, 170, 0, 0);
-        jPanel2.add(jLabel39, gridBagConstraints);
+        jPanel2.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 400, -1, -1));
 
         jLabel40.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel40.setForeground(new java.awt.Color(110, 110, 110));
         jLabel40.setText("Cadera");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 13;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(9, 147, 0, 0);
-        jPanel2.add(jLabel40, gridBagConstraints);
+        jPanel2.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 130, -1, -1));
 
         jLabel41.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel41.setForeground(new java.awt.Color(110, 110, 110));
         jLabel41.setText("cintura");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 24;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(9, 170, 0, 0);
-        jPanel2.add(jLabel41, gridBagConstraints);
+        jPanel2.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 430, -1, -1));
 
         jLabel31.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(110, 110, 110));
         jLabel31.setText("Datos Personales");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 12;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 14;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(23, 27, 0, 0);
-        jPanel2.add(jLabel31, gridBagConstraints);
+        jPanel2.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 23, 220, -1));
 
         jLabel42.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel42.setForeground(new java.awt.Color(110, 110, 110));
         jLabel42.setText("Cédula:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(43, 166, 0, 0);
-        jPanel2.add(jLabel42, gridBagConstraints);
+        jPanel2.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 96, -1, -1));
 
         jLabel43.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel43.setForeground(new java.awt.Color(0, 153, 255));
         jLabel43.setText("Datos");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 21;
-        gridBagConstraints.gridy = 18;
-        gridBagConstraints.ipadx = 15;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(9, 25, 0, 372);
-        jPanel2.add(jLabel43, gridBagConstraints);
+        jPanel2.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(617, 240, 63, -1));
 
         jLabel44.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel44.setForeground(new java.awt.Color(0, 153, 255));
         jLabel44.setText("Datos");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 11;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridheight = 3;
-        gridBagConstraints.ipadx = 15;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(19, 24, 0, 0);
-        jPanel2.add(jLabel44, gridBagConstraints);
+        jPanel2.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 140, 63, -1));
 
         jLabel45.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel45.setForeground(new java.awt.Color(0, 153, 255));
         jLabel45.setText("Datos");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 11;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridheight = 8;
-        gridBagConstraints.ipadx = 15;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(9, 24, 0, 0);
-        jPanel2.add(jLabel45, gridBagConstraints);
+        jPanel2.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 170, 63, -1));
 
         jLabel46.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel46.setForeground(new java.awt.Color(0, 153, 255));
         jLabel46.setText("Datos");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 11;
-        gridBagConstraints.gridy = 15;
-        gridBagConstraints.gridheight = 3;
-        gridBagConstraints.ipadx = 15;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(19, 24, 0, 0);
-        jPanel2.add(jLabel46, gridBagConstraints);
+        jPanel2.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 210, 63, -1));
 
         jLabel47.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel47.setForeground(new java.awt.Color(0, 153, 255));
         jLabel47.setText("Datos");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 11;
-        gridBagConstraints.gridy = 18;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 15;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(19, 24, 0, 0);
-        jPanel2.add(jLabel47, gridBagConstraints);
+        jPanel2.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 250, 63, -1));
 
         jLabel48.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel48.setForeground(new java.awt.Color(0, 153, 255));
         jLabel48.setText("Datos");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 11;
-        gridBagConstraints.gridy = 20;
-        gridBagConstraints.ipadx = 15;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(19, 24, 0, 0);
-        jPanel2.add(jLabel48, gridBagConstraints);
+        jPanel2.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 290, 63, -1));
 
         jLabel49.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel49.setForeground(new java.awt.Color(0, 153, 255));
         jLabel49.setText("Datos");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 11;
-        gridBagConstraints.gridy = 21;
-        gridBagConstraints.ipadx = 15;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(19, 24, 0, 0);
-        jPanel2.add(jLabel49, gridBagConstraints);
+        jPanel2.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 330, 63, -1));
 
         jLabel50.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel50.setForeground(new java.awt.Color(0, 153, 255));
         jLabel50.setText("Datos");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 11;
-        gridBagConstraints.gridy = 22;
-        gridBagConstraints.ipadx = 15;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(19, 24, 0, 0);
-        jPanel2.add(jLabel50, gridBagConstraints);
+        jPanel2.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 370, 63, -1));
 
         jLabel51.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel51.setForeground(new java.awt.Color(0, 153, 255));
         jLabel51.setText("Datos");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 11;
-        gridBagConstraints.gridy = 23;
-        gridBagConstraints.ipadx = 15;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(9, 24, 0, 0);
-        jPanel2.add(jLabel51, gridBagConstraints);
+        jPanel2.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 400, 63, -1));
 
         jLabel54.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel54.setForeground(new java.awt.Color(0, 153, 255));
         jLabel54.setText("Datos");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 11;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 15;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(47, 24, 0, 0);
-        jPanel2.add(jLabel54, gridBagConstraints);
+        jPanel2.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 100, 63, -1));
 
         jLabel55.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel55.setForeground(new java.awt.Color(0, 153, 255));
         jLabel55.setText("Datos");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 21;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 15;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(47, 25, 0, 372);
-        jPanel2.add(jLabel55, gridBagConstraints);
+        jPanel2.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(617, 100, 63, -1));
 
         jLabel61.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel61.setForeground(new java.awt.Color(0, 153, 255));
         jLabel61.setText("Datos");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 21;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridheight = 5;
-        gridBagConstraints.ipadx = 15;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(29, 25, 0, 372);
-        jPanel2.add(jLabel61, gridBagConstraints);
+        jPanel2.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(617, 150, 63, -1));
 
         jLabel62.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel62.setForeground(new java.awt.Color(0, 153, 255));
         jLabel62.setText("Datos");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 21;
-        gridBagConstraints.gridy = 15;
-        gridBagConstraints.ipadx = 15;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(9, 25, 0, 372);
-        jPanel2.add(jLabel62, gridBagConstraints);
+        jPanel2.add(jLabel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(617, 200, 63, -1));
 
         jLabel63.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel63.setForeground(new java.awt.Color(0, 153, 255));
         jLabel63.setText("Datos");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 11;
-        gridBagConstraints.gridy = 26;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 15;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(40, 54, 0, 0);
-        jPanel2.add(jLabel63, gridBagConstraints);
+        jPanel2.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 550, 63, -1));
 
         jLabel64.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel64.setForeground(new java.awt.Color(110, 110, 110));
         jLabel64.setText("Tipo");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 26;
-        gridBagConstraints.gridwidth = 7;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(40, 200, 0, 0);
-        jPanel2.add(jLabel64, gridBagConstraints);
+        jPanel2.add(jLabel64, new org.netbeans.lib.awtextra.AbsoluteConstraints(77, 550, -1, -1));
 
         jLabel65.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel65.setForeground(new java.awt.Color(0, 153, 255));
         jLabel65.setText("Datos");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 11;
-        gridBagConstraints.gridy = 27;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 15;
-        gridBagConstraints.ipady = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(9, 54, 0, 0);
-        jPanel2.add(jLabel65, gridBagConstraints);
+        jPanel2.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 580, 63, 30));
 
         jLabel66.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel66.setForeground(new java.awt.Color(110, 110, 110));
         jLabel66.setText("cintura");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 27;
-        gridBagConstraints.gridwidth = 11;
-        gridBagConstraints.ipady = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(9, 200, 0, 0);
-        jPanel2.add(jLabel66, gridBagConstraints);
+        jPanel2.add(jLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(77, 580, -1, 30));
 
         jLabel67.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel67.setForeground(new java.awt.Color(110, 110, 110));
         jLabel67.setText("cintura");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 28;
-        gridBagConstraints.gridwidth = 11;
-        gridBagConstraints.ipady = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 200, 0, 0);
-        jPanel2.add(jLabel67, gridBagConstraints);
+        jPanel2.add(jLabel67, new org.netbeans.lib.awtextra.AbsoluteConstraints(77, 620, -1, 30));
 
         jLabel68.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel68.setForeground(new java.awt.Color(0, 153, 255));
         jLabel68.setText("Datos");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 11;
-        gridBagConstraints.gridy = 28;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 15;
-        gridBagConstraints.ipady = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 54, 0, 0);
-        jPanel2.add(jLabel68, gridBagConstraints);
+        jPanel2.add(jLabel68, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 620, 63, 30));
 
         jLabel69.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel69.setForeground(new java.awt.Color(110, 110, 110));
         jLabel69.setText("cintura");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 29;
-        gridBagConstraints.gridwidth = 11;
-        gridBagConstraints.ipady = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 200, 200, 0);
-        jPanel2.add(jLabel69, gridBagConstraints);
+        jPanel2.add(jLabel69, new org.netbeans.lib.awtextra.AbsoluteConstraints(77, 670, -1, 30));
 
         jLabel70.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel70.setForeground(new java.awt.Color(0, 153, 255));
         jLabel70.setText("Datos");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 11;
-        gridBagConstraints.gridy = 29;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 15;
-        gridBagConstraints.ipady = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 54, 200, 0);
-        jPanel2.add(jLabel70, gridBagConstraints);
+        jPanel2.add(jLabel70, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 670, 63, 30));
 
         spanel_finales.setViewportView(jPanel2);
 
