@@ -39,8 +39,6 @@ public class Home extends JFrame {
         mnu_membresia = new javax.swing.JMenu();
         mnu_ficha = new javax.swing.JMenu();
         mnu_usuarios = new javax.swing.JMenu();
-        mnu_usuarios_nuevo = new javax.swing.JMenuItem();
-        mnu_usuarios_detalles = new javax.swing.JMenuItem();
 
         jMenuItem3.setText("jMenuItem3");
 
@@ -279,19 +277,11 @@ public class Home extends JFrame {
         mnu_usuarios.setText("Usuarios");
         mnu_usuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         mnu_usuarios.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-
-        mnu_usuarios_nuevo.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        mnu_usuarios_nuevo.setForeground(new java.awt.Color(110, 110, 110));
-        mnu_usuarios_nuevo.setText("Nuevo");
-        mnu_usuarios_nuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        mnu_usuarios.add(mnu_usuarios_nuevo);
-
-        mnu_usuarios_detalles.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        mnu_usuarios_detalles.setForeground(new java.awt.Color(110, 110, 110));
-        mnu_usuarios_detalles.setText("Detalles");
-        mnu_usuarios_detalles.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        mnu_usuarios.add(mnu_usuarios_detalles);
-
+        mnu_usuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnu_usuariosMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(mnu_usuarios);
 
         setJMenuBar(jMenuBar1);
@@ -397,6 +387,13 @@ public class Home extends JFrame {
         dispose();
     }//GEN-LAST:event_mnu_fichaMouseClicked
 
+    private void mnu_usuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnu_usuariosMouseClicked
+        Form_users frm_users = new Form_users();
+        frm_users.setVisible(true);
+        dispose();
+       
+    }//GEN-LAST:event_mnu_usuariosMouseClicked
+
     
     
     
@@ -437,8 +434,6 @@ public class Home extends JFrame {
     private javax.swing.JMenu mnu_pagos;
     private javax.swing.JMenuItem mnu_salir;
     private javax.swing.JMenu mnu_usuarios;
-    private javax.swing.JMenuItem mnu_usuarios_detalles;
-    private javax.swing.JMenuItem mnu_usuarios_nuevo;
     private javax.swing.JPasswordField txt_password;
     private javax.swing.JTextField txt_usuario;
     // End of variables declaration//GEN-END:variables
