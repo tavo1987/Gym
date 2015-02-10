@@ -5,6 +5,7 @@ import validaciones.*;
 
 public class Form_users extends javax.swing.JFrame {
     
+    private String sql;
     
     public Form_users() {
         initComponents();
@@ -15,12 +16,14 @@ public class Form_users extends javax.swing.JFrame {
        txt_user.setDocument(new Validar(txt_user,20));
        txt_password.setDocument(new Validar(txt_password,30));
        txt_password2.setDocument(new Validar(txt_password2,30));
-       
-      
+      //para refrescar la tabla cxada vez que se ingrese un dato
+        Funciones tabla = new Funciones();
+           tabla.refrescarTabla(table_users, "select * from users");
+   
     }
-  
-    
 
+    
+    
  
 /*--------------------------------------------------------------------------------
         metodo para bloquear y desbloquear cajas de texto de nuevo usuario
@@ -103,6 +106,7 @@ public class Form_users extends javax.swing.JFrame {
         jTabbedPane1.setForeground(new java.awt.Color(110, 110, 110));
         jTabbedPane1.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
 
+        jPanel1.setBackground(new java.awt.Color(250, 250, 250));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jSeparator2.setBackground(new java.awt.Color(51, 204, 255));
@@ -115,7 +119,7 @@ public class Form_users extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(110, 110, 110));
-        jLabel10.setText("Usuario:");
+        jLabel10.setText("Tipo de usario:");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 375, -1, -1));
 
         txt_user.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -207,17 +211,19 @@ public class Form_users extends javax.swing.JFrame {
         });
         jPanel1.add(btn_volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 24, 70, 80));
 
+        table_users.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        table_users.setForeground(new java.awt.Color(0, 153, 255));
         table_users.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID ", "USUARIO", "CONTRASEÑA", "TIPO"
             }
         ));
+        table_users.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        table_users.setGridColor(new java.awt.Color(204, 204, 204));
+        table_users.setSelectionBackground(new java.awt.Color(137, 215, 245));
         jScrollPane4.setViewportView(table_users);
 
         jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 614, 654, 205));
@@ -252,6 +258,7 @@ public class Form_users extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Nuevo usuario", jScrollPane1);
 
+        jPanel2.setBackground(new java.awt.Color(250, 250, 250));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jSeparator4.setBackground(new java.awt.Color(51, 204, 255));
@@ -476,7 +483,14 @@ public class Form_users extends javax.swing.JFrame {
         
         if(usuario == false && pass == false && pass2 == false){
             
-            JOptionPane.showMessageDialog(null,"Todo ok");
+            this.sql = "select * from users";
+            
+            Funciones funcion = new Funciones();
+            try {
+               funcion.llenarTabla(table_users, sql);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, e.getMessage());
+            }
         
         }else{
             JOptionPane.showMessageDialog(null,"Llene todos los campos");
