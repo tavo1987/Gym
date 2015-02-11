@@ -38,7 +38,7 @@ public  class Validar extends PlainDocument{
     método para quitar espacion en blanco
 ---------------------------------------------------------------------------------*/    
     
-    public String quitarEspacionEnBlanco(JTextField cajaTexto){
+    public static String quitarEspaciosEnBlanco(JTextField cajaTexto){
         
         String texto = cajaTexto.getText();
         texto = texto.replaceAll(" +", "");

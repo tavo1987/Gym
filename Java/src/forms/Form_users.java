@@ -4,14 +4,23 @@ import Mysql.*;
 import validaciones.*;
 import java.util.*;
 import java.sql.*;
+import java.util.logging.*;
+import javax.swing.table.DefaultTableModel;
 
 public class Form_users extends javax.swing.JFrame {
     
     private String sql;
-     private PreparedStatement ps;
+    private String sql2;
+    private PreparedStatement ps;
+    
     //Hacemos las conexion 
-    Conexion cn = new Conexion();//instanciamos nuestra clase conexion
-    Connection conexion = cn.getConexion();
+    public Conexion cn = new Conexion();//instanciamos nuestra clase conexion
+    public Connection conexion = cn.getConexion();
+    private Funciones funcion;
+    ResultSet rs;
+    
+    
+    
     
     public Form_users() {
         initComponents();
@@ -116,12 +125,12 @@ public class Form_users extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jSeparator2.setBackground(new java.awt.Color(51, 204, 255));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 141, 560, 10));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 600, 10));
 
         jLabel18.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(110, 110, 110));
         jLabel18.setText("Últimos usuario agregados");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(283, 542, -1, -1));
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 540, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(110, 110, 110));
@@ -146,7 +155,7 @@ public class Form_users extends javax.swing.JFrame {
                 btn_guardarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(261, 442, 100, 40));
+        jPanel1.add(btn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 450, 100, 40));
 
         btn_cancelar.setBackground(new java.awt.Color(0, 153, 204));
         btn_cancelar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -160,7 +169,7 @@ public class Form_users extends javax.swing.JFrame {
                 btn_cancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(554, 442, 100, 40));
+        jPanel1.add(btn_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 450, 100, 40));
 
         jLabel11.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(110, 110, 110));
@@ -194,7 +203,7 @@ public class Form_users extends javax.swing.JFrame {
                 btn_nuevoActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 442, 100, 40));
+        jPanel1.add(btn_nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 450, 100, 40));
 
         btn_volver.setBackground(new java.awt.Color(250, 250, 250));
         btn_volver.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -232,7 +241,7 @@ public class Form_users extends javax.swing.JFrame {
         table_users.setSelectionBackground(new java.awt.Color(137, 215, 245));
         jScrollPane4.setViewportView(table_users);
 
-        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 614, 654, 205));
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 610, 620, 205));
 
         jLabel13.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(110, 110, 110));
@@ -255,10 +264,10 @@ public class Form_users extends javax.swing.JFrame {
         jLabel19.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(110, 110, 110));
         jLabel19.setText("Nuevo usuario");
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(341, 74, -1, -1));
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, -1, -1));
 
         jSeparator3.setBackground(new java.awt.Color(51, 204, 255));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 583, 560, 10));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 590, 620, 10));
 
         jScrollPane1.setViewportView(jPanel1);
 
@@ -466,94 +475,121 @@ public class Form_users extends javax.swing.JFrame {
         this.txt_password2.setText("");
     }//GEN-LAST:event_btn_cancelarActionPerformed
 
+ 
     
+ /*-----------------------------------------------------------------------------------
+        metodo cargar tabla
+ ------------------------------------------------------------------------------------*/   
+public void cargarTabla(){
+		
+	//vector para agreagar a las columnas titulos
+	String titulos[] = {"Id","Usuarios","passsword","tipo",};
+	//vector para guaradar los registros que se recupen de la base de datos
+	String[] registros = new String[4];//cantidad de las columnas de la tabla
+	//asignamos al model el vector de titulos poder insertar en la tabla los registros
+	DefaultTableModel modelo = new DefaultTableModel(null,titulos);
+	//la conexion a la base
+	
+	//mandamos la sentencia sql
+	sql = "select * from users";
+			
+	//creamos stament
+       
+	try{
+             ps = conexion.prepareStatement(sql);
+            rs = ps.executeQuery(sql);
+            //bucle para ir cargando lo datos en el resulset
+		while(rs.next()){
+			registros[0] = rs.getString("id");//mismos campos de la base
+			registros[1] = rs.getString("usuario");//mismos campos de la base
+			registros[2] = rs.getString("password");//mismos campos de la base
+                        registros[3] = rs.getString("tipo");//mismos campos de la base
+
+			modelo.addRow(registros);//cargamos los datos al model
+		}
+		
+		table_users.setModel(modelo);//cargamos los datos dfel modelo a la tabla
+		
+	}catch(SQLException ex){
+		JOptionPane.showMessageDialog(null,ex.getMessage());		
+		
+	}
+
+}
     
-    
+ 
+                    
+                    
 /*-----------------------------------------------------------------------------------
         metodo  el boton guardar nuevo usuario
  ------------------------------------------------------------------------------------*/
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
         
-        //variables para las cajas de texto
-        String user = this.txt_user.getText();
-        String password = this.txt_password.getText();
-        String password2 = this.txt_password2.getText();
-        
+        String user,pass,pass2,tipo;    
         //llamando a la clase validaciones para validar cajas de texto en blanco
-        boolean usuario = Validar.validarEspacionEnBlanco(user);
-        boolean pass = Validar.validarEspacionEnBlanco(password);
-        boolean pass2 = Validar.validarEspacionEnBlanco(password2);
+        user = Validar.quitarEspaciosEnBlanco(txt_user);
+        pass = Validar.quitarEspaciosEnBlanco(txt_password);
+        pass2 = Validar.quitarEspaciosEnBlanco(txt_password2);
+        tipo = String.valueOf(this.cbo_tipos_users.getSelectedItem());
         
-       //Declaramos la clase validar
-              
-        
-        if(usuario == false && pass == false && pass2 == false){
-            
-            sql = "Insert into clientes(nombres,apellidos,telefono) values(?,?,?)";
+        //para validar que las cajas de contraseña sean iguales
+        if(pass.equals(pass2) ){
+            //para validar que las cajas no esten vacias
+           if(user.length()>0 && pass.length() > 0 && pass2.length() > 0){
+   
+                   try {
+                       sql2 = "select * from users where usuario = '"+user+"'";
+                       ps = conexion.prepareStatement(sql2);
+                       rs = ps.executeQuery(sql2);
+                                              
+                       if(rs.next()){//para verficar que no se creen usarios con el mismo nomrbe
+                            
+                             JOptionPane.showMessageDialog(this, "El usuario "+user+" ya existe");
+                
+                        }else{
+                                sql = "Insert into users(usuario,password,tipo) values(?,?,?)";
+                               //vector para gurdar registros de la tabla
 
-            try {
-                ps = conexion.prepareStatement(sql);
-                ps.setString(1, usuario);
-                ps.setString(2, apellido);
-                ps.setString(3, telefono);
+                               try {
+                                   ps = conexion.prepareStatement(sql);
+                                   ps.setString(1, user);
+                                   ps.setString(2, pass);
+                                   ps.setString(3, tipo);
 
-                int n = ps.executeUpdate();
-                if(n > 0){
+                                   int n = ps.executeUpdate();
+                                   if(n > 0){
 
-                    JOptionPane.showMessageDialog(null,"Cliente guradado cone éxito");
-                }
+                                       JOptionPane.showMessageDialog(this,"Cliente guradado cone éxito");
+                                       cargarTabla();
+                                   }
 
-
-            } catch (SQLException ex) {
-                Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                               }catch (SQLException ex) {
+                                   JOptionPane.showMessageDialog(this, ex.getMessage());
+                               }//fin de try
+                        }
+                        
+                        
+                       
+                   }catch (SQLException ex) {
+                     JOptionPane.showMessageDialog(this, ex.getMessage());
+                   }//fin de try
         
         }else{
             JOptionPane.showMessageDialog(null,"Llene todos los campos");
-        }
-        
-      
-        
+        }//fin de else para verificar campos vacios
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "La contraseñas no coinciden");
+            txt_password.setText("");
+            txt_password2.setText("");
+            txt_password.requestFocus();
+            
+        }//fin de else para verificar las contraseñas
+    
     }//GEN-LAST:event_btn_guardarActionPerformed
+//fin del metodo guardar del botn guardar
+    
+    
 
-    
-    
-    
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Form_users.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Form_users.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Form_users.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Form_users.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Form_users().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_buscar;
