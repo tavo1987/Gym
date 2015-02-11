@@ -2,10 +2,16 @@ package forms;
 import javax.swing.*;
 import Mysql.*;
 import validaciones.*;
+import java.util.*;
+import java.sql.*;
 
 public class Form_users extends javax.swing.JFrame {
     
     private String sql;
+     private PreparedStatement ps;
+    //Hacemos las conexion 
+    Conexion cn = new Conexion();//instanciamos nuestra clase conexion
+    Connection conexion = cn.getConexion();
     
     public Form_users() {
         initComponents();
@@ -483,13 +489,23 @@ public class Form_users extends javax.swing.JFrame {
         
         if(usuario == false && pass == false && pass2 == false){
             
-            this.sql = "select * from users";
-            
-            Funciones funcion = new Funciones();
+            sql = "Insert into clientes(nombres,apellidos,telefono) values(?,?,?)";
+
             try {
-               funcion.llenarTabla(table_users, sql);
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(rootPane, e.getMessage());
+                ps = conexion.prepareStatement(sql);
+                ps.setString(1, usuario);
+                ps.setString(2, apellido);
+                ps.setString(3, telefono);
+
+                int n = ps.executeUpdate();
+                if(n > 0){
+
+                    JOptionPane.showMessageDialog(null,"Cliente guradado cone éxito");
+                }
+
+
+            } catch (SQLException ex) {
+                Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
             }
         
         }else{

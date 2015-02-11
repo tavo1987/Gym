@@ -35,20 +35,16 @@ public  class Validar extends PlainDocument{
     
     
 /*--------------------------------------------------------------------------------
-    método para validar espacion en blanco
+    método para quitar espacion en blanco
 ---------------------------------------------------------------------------------*/    
     
-    public static boolean validarEspacionEnBlanco(String cajaTexto){
+    public String quitarEspacionEnBlanco(JTextField cajaTexto){
         
-        String texto = cajaTexto;
+        String texto = cajaTexto.getText();
         texto = texto.replaceAll(" +", "");
         texto.trim();
-        
-        if(texto.length() == 0){
-            return true;
-        }else{
-            return false;
-        }
+       
+        return texto;
    }
 
 
