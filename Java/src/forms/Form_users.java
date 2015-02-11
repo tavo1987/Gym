@@ -27,10 +27,14 @@ public class Form_users extends javax.swing.JFrame {
         setLocationRelativeTo(null);
       //para poner todas las cajas de testo en descativadas al inicial al formulario
         bloquear(false);
+        bloquearResult(false);
+        this.btn_editar1.setEnabled(false);
       //para limitar ingreso de caracteres en la cajas      
        txt_user.setDocument(new Validar(txt_user,20));
        txt_password.setDocument(new Validar(txt_password,30));
        txt_password2.setDocument(new Validar(txt_password2,30));
+       txt_buscar.setDocument(new Validar(txt_buscar,20));
+       
       //para refrescar la tabla cxada vez que se ingrese un dato
         Funciones tabla = new Funciones();
            tabla.refrescarTabla(table_users, "select * from users");
@@ -54,6 +58,21 @@ public class Form_users extends javax.swing.JFrame {
         
     }
 
+    
+    
+    
+/*--------------------------------------------------------------------------------
+        metodo para bloquear y desbloquear cajas de texto de nuevo usuario
+----------------------------------------------------------------------------------*/
+ 
+     public void bloquearResult(boolean a){
+          
+        this.txt_result_user.setEnabled(a);
+        this.txt_tipo.setEnabled(a);
+        this.txt_result_password.setEnabled(a);
+        
+    }
+    
     
     
     @SuppressWarnings("unchecked")
@@ -88,10 +107,10 @@ public class Form_users extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
         jLabel16 = new javax.swing.JLabel();
-        btn_editar = new javax.swing.JButton();
+        btn_cancelar2 = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
         btn_buscar = new javax.swing.JButton();
-        txt_nombre_user = new javax.swing.JTextField();
+        txt_buscar = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         txt_result_user = new javax.swing.JTextField();
@@ -102,6 +121,7 @@ public class Form_users extends javax.swing.JFrame {
         txt_tipo = new javax.swing.JTextField();
         btn_guardar2 = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
+        btn_editar1 = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -287,15 +307,15 @@ public class Form_users extends javax.swing.JFrame {
         jLabel16.setText("Acciones:");
         jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 299, 100, -1));
 
-        btn_editar.setBackground(new java.awt.Color(0, 153, 204));
-        btn_editar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        btn_editar.setForeground(new java.awt.Color(255, 255, 255));
-        btn_editar.setText("Editar");
-        btn_editar.setBorder(null);
-        btn_editar.setBorderPainted(false);
-        btn_editar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_editar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(btn_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 100, 40));
+        btn_cancelar2.setBackground(new java.awt.Color(0, 153, 204));
+        btn_cancelar2.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        btn_cancelar2.setForeground(new java.awt.Color(255, 255, 255));
+        btn_cancelar2.setText("Cancelar");
+        btn_cancelar2.setBorder(null);
+        btn_cancelar2.setBorderPainted(false);
+        btn_cancelar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_cancelar2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel2.add(btn_cancelar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 290, 100, 40));
 
         jLabel20.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(110, 110, 110));
@@ -317,10 +337,10 @@ public class Form_users extends javax.swing.JFrame {
         });
         jPanel2.add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(594, 129, 100, 40));
 
-        txt_nombre_user.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        txt_nombre_user.setForeground(new java.awt.Color(110, 110, 110));
-        txt_nombre_user.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
-        jPanel2.add(txt_nombre_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 129, 242, 39));
+        txt_buscar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        txt_buscar.setForeground(new java.awt.Color(110, 110, 110));
+        txt_buscar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
+        jPanel2.add(txt_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 129, 242, 39));
 
         jLabel14.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(110, 110, 110));
@@ -395,6 +415,21 @@ public class Form_users extends javax.swing.JFrame {
         });
         jPanel2.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 290, 100, 40));
 
+        btn_editar1.setBackground(new java.awt.Color(0, 153, 204));
+        btn_editar1.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        btn_editar1.setForeground(new java.awt.Color(255, 255, 255));
+        btn_editar1.setText("Editar");
+        btn_editar1.setBorder(null);
+        btn_editar1.setBorderPainted(false);
+        btn_editar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_editar1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_editar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_editar1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_editar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 100, 40));
+
         jScrollPane2.setViewportView(jPanel2);
 
         jTabbedPane1.addTab("Modificar usarios", jScrollPane2);
@@ -403,7 +438,9 @@ public class Form_users extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -433,10 +470,50 @@ public class Form_users extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbo_tipos_usersActionPerformed
 
+    
+    
+    
+/*-----------------------------------------------------------------------------------
+        metodo  para el  boton buscar clientes
+-------------------------------------------------------------------------------------*/
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
-        // TODO add your handling code here:
+        String buscar;
+        buscar = Validar.quitarEspaciosEnBlanco(txt_buscar);
+        //para combrobar que no se ingrese espacios en blanco
+        if(buscar.length()>0 ){
+            try {
+                sql = "select * from users where usuario = '"+buscar+"'";
+                ps = conexion.prepareStatement(sql);
+                rs = ps.executeQuery(sql);
+                 //para cargar datos si existen en la base                       
+                if(rs.next()){//para verficar que no se creen usarios con el mismo nomrbe
+                      this.btn_editar1.setEnabled(true);
+                              
+                      JOptionPane.showMessageDialog(this, "Usuario encontrado");
+                      this.txt_result_user.setText(rs.getString("usuario"));
+                      this.txt_result_password.setText(rs.getString("password"));
+                      this.txt_tipo.setText(rs.getString("tipo"));
+                      this.txt_buscar.setEnabled(true);
+                 }else{
+                    JOptionPane.showMessageDialog(this, "Usuario no existe");
+                    txt_buscar.setText("");
+                    txt_buscar.requestFocus();
+                }//fin de compirbar que el usuario exista
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage());
+            }
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "Llene el campo de busqueda");
+            txt_buscar.requestFocus();
+        }//fin para combrobar que no se ingrese espacios en blanco
+        
     }//GEN-LAST:event_btn_buscarActionPerformed
 
+    
+    
+    
+    
     private void btn_guardar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardar2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_guardar2ActionPerformed
@@ -586,6 +663,16 @@ public void cargarTabla(){
         }//fin de else para verificar las contraseñas
     
     }//GEN-LAST:event_btn_guardarActionPerformed
+
+    
+    
+/*-----------------------------------------------------------------------------------
+        metodo  desbloaquera cajas y pode editar el usuario que se buscaba
+ ------------------------------------------------------------------------------------*/    
+    
+    private void btn_editar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editar1ActionPerformed
+        bloquearResult(true);
+    }//GEN-LAST:event_btn_editar1ActionPerformed
 //fin del metodo guardar del botn guardar
     
     
@@ -594,7 +681,8 @@ public void cargarTabla(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_cancelar;
-    private javax.swing.JButton btn_editar;
+    private javax.swing.JButton btn_cancelar2;
+    private javax.swing.JButton btn_editar1;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_guardar;
     private javax.swing.JButton btn_guardar2;
@@ -627,7 +715,7 @@ public void cargarTabla(){
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable table_users;
-    private javax.swing.JTextField txt_nombre_user;
+    private javax.swing.JTextField txt_buscar;
     private javax.swing.JTextField txt_password;
     private javax.swing.JTextField txt_password2;
     private javax.swing.JTextField txt_result_password;

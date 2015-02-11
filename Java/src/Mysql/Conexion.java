@@ -11,7 +11,7 @@ public class Conexion{
         try{
         //Cargamos el Driver MySQL
            Class.forName("org.gjt.mm.mysql.Driver");//PARA LLAMAR AL DRIVER
-           conectar = DriverManager.getConnection("jdbc:mysql://localhost/Gym","root","ecuador1987");//AGREAGAMOS DATOS DE NUETRA BASE DE DATOS Y USUARIO
+           conectar = DriverManager.getConnection("jdbc:mysql://localhost/gym2","root","ecuador1987");//AGREAGAMOS DATOS DE NUETRA BASE DE DATOS Y USUARIO
            
            //JOptionPane.showMessageDialog(null, "Conexion con exito");
         }
