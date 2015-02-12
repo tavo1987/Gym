@@ -35,6 +35,11 @@ public class Form_users extends javax.swing.JFrame {
        txt_password2.setDocument(new Validar(txt_password2,30));
        txt_buscar.setDocument(new Validar(txt_buscar,20));
        
+       //para limitar ingreso de caracteres en la caja de resultados    
+       txt_result_password.setDocument(new Validar(txt_result_password,30));
+       txt_tipo.setDocument(new Validar(txt_tipo,30));
+      
+       
       //para refrescar la tabla cxada vez que se ingrese un dato
         Funciones tabla = new Funciones();
            tabla.refrescarTabla(table_users, "select * from users");
@@ -67,7 +72,7 @@ public class Form_users extends javax.swing.JFrame {
  
      public void bloquearResult(boolean a){
           
-        this.txt_result_user.setEnabled(a);
+       
         this.txt_tipo.setEnabled(a);
         this.txt_result_password.setEnabled(a);
         
@@ -353,9 +358,11 @@ public class Form_users extends javax.swing.JFrame {
         jPanel2.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 39, 197, -1));
 
         txt_result_user.setBackground(new java.awt.Color(197, 230, 197));
-        txt_result_user.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        txt_result_user.setForeground(new java.awt.Color(110, 110, 110));
+        txt_result_user.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        txt_result_user.setForeground(new java.awt.Color(0, 102, 204));
         txt_result_user.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(162, 214, 162), 1, true));
+        txt_result_user.setDisabledTextColor(new java.awt.Color(0, 102, 204));
+        txt_result_user.setEnabled(false);
         jPanel2.add(txt_result_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, 431, 39));
 
         jLabel21.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -369,9 +376,10 @@ public class Form_users extends javax.swing.JFrame {
         jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 510, -1, -1));
 
         txt_result_password.setBackground(new java.awt.Color(197, 230, 197));
-        txt_result_password.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        txt_result_password.setForeground(new java.awt.Color(110, 110, 110));
+        txt_result_password.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        txt_result_password.setForeground(new java.awt.Color(0, 102, 255));
         txt_result_password.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(162, 214, 162), 1, true));
+        txt_result_password.setDisabledTextColor(new java.awt.Color(0, 102, 204));
         jPanel2.add(txt_result_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 510, 431, 39));
 
         jLabel22.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -380,9 +388,10 @@ public class Form_users extends javax.swing.JFrame {
         jPanel2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 460, -1, -1));
 
         txt_tipo.setBackground(new java.awt.Color(197, 230, 197));
-        txt_tipo.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        txt_tipo.setForeground(new java.awt.Color(110, 110, 110));
+        txt_tipo.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        txt_tipo.setForeground(new java.awt.Color(0, 102, 255));
         txt_tipo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(162, 214, 162), 1, true));
+        txt_tipo.setDisabledTextColor(new java.awt.Color(0, 102, 204));
         jPanel2.add(txt_tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 450, 431, 39));
 
         btn_guardar2.setBackground(new java.awt.Color(0, 153, 204));
@@ -438,9 +447,7 @@ public class Form_users extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
