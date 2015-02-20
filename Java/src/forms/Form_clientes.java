@@ -1,19 +1,54 @@
 package forms;
 import javax.swing.*;
+import Mysql.*;//clase que me hace la conexion
+import validaciones.*;//clase paera validar
+import general.*;
+import java.util.*;
+import java.sql.*;
+import java.util.logging.*;
 
 public class Form_clientes extends JFrame {
+    
+        Conexion cn = new Conexion();
+        Connection conexion = cn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
+        String sql;
+        
+        //variables
+            public String cedula;
+            public  String nombres;
+            public String apellidos;
+            public String dir;
+            public String fecha_nac;
+            public String sexo;
+            public String telefono;
+            public String celular;
+            
+        //declaramos un objeto tipo cliente
+            Cliente cliente = new  Cliente();
 
       public Form_clientes() {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Clientes");
+        this.txt_cedula.requestFocus();
+        //para limitar ingreso de caracteres en la cajas      
+       this.txt_cedula.setDocument(new Validar(txt_cedula,10));
+       this.txt_nombres.setDocument(new Validar(txt_nombres,35));
+       this.txt_apellidos.setDocument(new Validar(txt_apellidos,40));
+       this.txt_dir.setDocument(new Validar(txt_dir,10));
+       this.txt_telefono.setDocument(new Validar(txt_telefono,10));
+       this.txt_celular.setDocument(new Validar(txt_celular,10));
+       
+      
   
         
         
         //generamos los 100 años par el combo box de fecha de nacimiento
         for(int i=100;i>=1;i--){
             
-            cbo_años.addItem(1924 + i );
+            cbo_year.addItem(1924 + i );
             cbo_años1.addItem(1924 + i );
         
         }
@@ -24,16 +59,16 @@ public class Form_clientes extends JFrame {
        
        
        
- /*---------------------------------------------------------
+ /*---------------------------------------------------------------------------------
  $Clientes Codigo genrado por netbeans para la interfas
- ----------------------------------------------------------*/
+ -------------------------------------------------------------------------------------*/
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
         buttonGroup_sexo = new javax.swing.ButtonGroup();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        panelPrincipal = new javax.swing.JTabbedPane();
         spanel_personales = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -52,9 +87,9 @@ public class Form_clientes extends JFrame {
         radio_masculino = new javax.swing.JRadioButton();
         radio_femenino = new javax.swing.JRadioButton();
         jLabel18 = new javax.swing.JLabel();
-        cbo_dias = new javax.swing.JComboBox();
-        cbo_años = new javax.swing.JComboBox();
-        cbo_meses = new javax.swing.JComboBox();
+        cbo_day = new javax.swing.JComboBox();
+        cbo_year = new javax.swing.JComboBox();
+        cbo_month = new javax.swing.JComboBox();
         btn_cancelar = new javax.swing.JButton();
         btn_siguiente = new javax.swing.JButton();
         txt_celular = new javax.swing.JTextField();
@@ -142,12 +177,12 @@ public class Form_clientes extends JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTabbedPane1.setBackground(new java.awt.Color(250, 250, 250));
-        jTabbedPane1.setForeground(new java.awt.Color(110, 110, 110));
-        jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
-        jTabbedPane1.setAutoscrolls(true);
-        jTabbedPane1.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        jTabbedPane1.setPreferredSize(new java.awt.Dimension(800, 600));
+        panelPrincipal.setBackground(new java.awt.Color(250, 250, 250));
+        panelPrincipal.setForeground(new java.awt.Color(110, 110, 110));
+        panelPrincipal.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+        panelPrincipal.setAutoscrolls(true);
+        panelPrincipal.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        panelPrincipal.setPreferredSize(new java.awt.Dimension(800, 600));
 
         spanel_personales.setBorder(null);
         spanel_personales.setPreferredSize(new java.awt.Dimension(800, 600));
@@ -198,27 +233,27 @@ public class Form_clientes extends JFrame {
         jLabel17.setText("Celular:");
         jPanel4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 550, -1, -1));
 
-        txt_nombres.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        txt_nombres.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         txt_nombres.setForeground(new java.awt.Color(110, 110, 110));
         txt_nombres.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
         jPanel4.add(txt_nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 200, 350, 39));
 
-        txt_cedula.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        txt_cedula.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         txt_cedula.setForeground(new java.awt.Color(110, 110, 110));
         txt_cedula.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
         jPanel4.add(txt_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 140, 350, 39));
 
-        txt_apellidos.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        txt_apellidos.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         txt_apellidos.setForeground(new java.awt.Color(110, 110, 110));
         txt_apellidos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
         jPanel4.add(txt_apellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 260, 350, 39));
 
-        txt_dir.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        txt_dir.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         txt_dir.setForeground(new java.awt.Color(110, 110, 110));
         txt_dir.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
         jPanel4.add(txt_dir, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 320, 350, 39));
 
-        txt_telefono.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        txt_telefono.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         txt_telefono.setForeground(new java.awt.Color(110, 110, 110));
         txt_telefono.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
         txt_telefono.addActionListener(new java.awt.event.ActionListener() {
@@ -253,38 +288,38 @@ public class Form_clientes extends JFrame {
         jLabel18.setText("Datos Personales");
         jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 2, -1, -1));
 
-        cbo_dias.setBackground(new java.awt.Color(250, 250, 250));
-        cbo_dias.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        cbo_dias.setForeground(new java.awt.Color(110, 110, 110));
-        cbo_dias.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-        cbo_dias.setToolTipText("");
-        cbo_dias.setBorder(null);
-        cbo_dias.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel4.add(cbo_dias, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 380, -1, 33));
+        cbo_day.setBackground(new java.awt.Color(250, 250, 250));
+        cbo_day.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cbo_day.setForeground(new java.awt.Color(110, 110, 110));
+        cbo_day.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        cbo_day.setToolTipText("");
+        cbo_day.setBorder(null);
+        cbo_day.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel4.add(cbo_day, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 380, -1, 33));
 
-        cbo_años.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        cbo_años.setForeground(new java.awt.Color(110, 110, 110));
-        cbo_años.setToolTipText("");
-        cbo_años.setBorder(null);
-        cbo_años.addActionListener(new java.awt.event.ActionListener() {
+        cbo_year.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cbo_year.setForeground(new java.awt.Color(110, 110, 110));
+        cbo_year.setToolTipText("");
+        cbo_year.setBorder(null);
+        cbo_year.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbo_añosActionPerformed(evt);
+                cbo_yearActionPerformed(evt);
             }
         });
-        jPanel4.add(cbo_años, new org.netbeans.lib.awtextra.AbsoluteConstraints(587, 380, 70, 33));
+        jPanel4.add(cbo_year, new org.netbeans.lib.awtextra.AbsoluteConstraints(587, 380, 70, 33));
 
-        cbo_meses.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        cbo_meses.setForeground(new java.awt.Color(110, 110, 110));
-        cbo_meses.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
-        cbo_meses.setToolTipText("");
-        cbo_meses.setBorder(null);
-        cbo_meses.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        cbo_meses.addActionListener(new java.awt.event.ActionListener() {
+        cbo_month.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cbo_month.setForeground(new java.awt.Color(110, 110, 110));
+        cbo_month.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+        cbo_month.setToolTipText("");
+        cbo_month.setBorder(null);
+        cbo_month.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        cbo_month.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbo_mesesActionPerformed(evt);
+                cbo_monthActionPerformed(evt);
             }
         });
-        jPanel4.add(cbo_meses, new org.netbeans.lib.awtextra.AbsoluteConstraints(451, 380, -1, 33));
+        jPanel4.add(cbo_month, new org.netbeans.lib.awtextra.AbsoluteConstraints(451, 380, -1, 33));
 
         btn_cancelar.setBackground(new java.awt.Color(0, 153, 204));
         btn_cancelar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -311,7 +346,7 @@ public class Form_clientes extends JFrame {
         });
         jPanel4.add(btn_siguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(251, 630, 100, 40));
 
-        txt_celular.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        txt_celular.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         txt_celular.setForeground(new java.awt.Color(110, 110, 110));
         txt_celular.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
         jPanel4.add(txt_celular, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 540, 350, 39));
@@ -351,7 +386,7 @@ public class Form_clientes extends JFrame {
 
         spanel_personales.setViewportView(jPanel4);
 
-        jTabbedPane1.addTab("Datos personales", spanel_personales);
+        panelPrincipal.addTab("Datos personales", spanel_personales);
 
         spanel_membresia.setBorder(null);
 
@@ -612,7 +647,7 @@ public class Form_clientes extends JFrame {
 
         spanel_membresia.setViewportView(jPanel3);
 
-        jTabbedPane1.addTab("Datos Membresia", spanel_membresia);
+        panelPrincipal.addTab("Datos Membresia", spanel_membresia);
 
         spanel_ficha.setBorder(null);
         spanel_ficha.setOpaque(false);
@@ -718,7 +753,7 @@ public class Form_clientes extends JFrame {
 
         spanel_ficha.setViewportView(jPanel1);
 
-        jTabbedPane1.addTab("Ficha ", spanel_ficha);
+        panelPrincipal.addTab("Ficha ", spanel_ficha);
 
         spanel_finales.setBorder(null);
         spanel_finales.setPreferredSize(new java.awt.Dimension(800, 600));
@@ -924,20 +959,20 @@ public class Form_clientes extends JFrame {
 
         spanel_finales.setViewportView(jPanel2);
 
-        jTabbedPane1.addTab("Datos finales", spanel_finales);
+        panelPrincipal.addTab("Datos finales", spanel_finales);
 
-        getContentPane().add(jTabbedPane1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(panelPrincipal, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cbo_mesesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_mesesActionPerformed
+    private void cbo_monthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_monthActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbo_mesesActionPerformed
+    }//GEN-LAST:event_cbo_monthActionPerformed
 
-    private void cbo_añosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_añosActionPerformed
+    private void cbo_yearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_yearActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbo_añosActionPerformed
+    }//GEN-LAST:event_cbo_yearActionPerformed
 
     private void radio_masculinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio_masculinoActionPerformed
         // TODO add your handling code here:
@@ -969,11 +1004,61 @@ public class Form_clientes extends JFrame {
         dispose();
     }//GEN-LAST:event_btn_volverActionPerformed
 
+    
+    
+    
+  /*---------------------------------------------------------------------------------
+    metodo para el boto agregar usuario
+ -------------------------------------------------------------------------------------*/
+    
     private void btn_siguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_siguienteActionPerformed
-        // TODO add your handling code here:
+        try{
+            
+            cedula = Validar.quitarEspaciosEnBlanco(txt_cedula);
+            nombres= Validar.quitarEspaciosEnBlanco(txt_nombres);
+            apellidos= Validar.quitarEspaciosEnBlanco(txt_apellidos);
+            dir=Validar.quitarEspaciosEnBlanco(txt_dir);
+            telefono=Validar.quitarEspaciosEnBlanco(txt_telefono);
+            celular=Validar.quitarEspaciosEnBlanco(txt_celular);
+         }catch(Exception ex){
+                        JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+            }  
+            //para guargar los que tenga en el combo
+            if(this.radio_masculino.isSelected()){
+                cliente.setSexo( radio_masculino.getText());
+                
+            }else{
+                cliente.setSexo( radio_femenino.getText());
+            }
+            
+            //fecha
+            String day,month,year;
+            day = this.cbo_day.getSelectedItem().toString();
+            month = this.cbo_month.getSelectedItem().toString();
+            year = this.cbo_year.getSelectedItem().toString();
+            //insertamos la fecha
+            cliente.setFechaNacimiento(year + "-" + month + "-" + day);
+            
+            
+                if(  cedula.length() > 0 && nombres.length() > 0 && nombres.length() > 0 && apellidos.length() > 0 
+               && dir.length() > 0 && telefono.length() > 0  && celular.length() > 0)
+                {
+                    JOptionPane.showMessageDialog(rootPane, "Todo ok " + cliente.getFechaNacimiento() +"  "+ cliente.getSexo() );
+                }else{
+                        JOptionPane.showMessageDialog(rootPane, "Llene todos los campos");
+                }
+                
+           
+        
+            //panelPrincipal.setSelectedIndex(1);
     }//GEN-LAST:event_btn_siguienteActionPerformed
 
  
+    
+    
+    
+    
+    
     public static void main(String args[]) {
         
         /* Create and display the form */
@@ -994,14 +1079,14 @@ public class Form_clientes extends JFrame {
     private javax.swing.JButton btn_siguiente3;
     private javax.swing.JButton btn_volver;
     private javax.swing.ButtonGroup buttonGroup_sexo;
-    private javax.swing.JComboBox cbo_años;
     private javax.swing.JComboBox cbo_años1;
-    private javax.swing.JComboBox cbo_dias;
+    private javax.swing.JComboBox cbo_day;
     private javax.swing.JComboBox cbo_dias1;
     private javax.swing.JComboBox cbo_membresia;
-    private javax.swing.JComboBox cbo_meses;
     private javax.swing.JComboBox cbo_meses1;
+    private javax.swing.JComboBox cbo_month;
     private javax.swing.JComboBox cbo_nivel;
+    private javax.swing.JComboBox cbo_year;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1070,7 +1155,7 @@ public class Form_clientes extends JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane panelPrincipal;
     private javax.swing.JRadioButton radio_femenino;
     private javax.swing.JRadioButton radio_masculino;
     private javax.swing.JScrollPane spanel_ficha;

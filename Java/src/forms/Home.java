@@ -1,5 +1,11 @@
 package forms;
 import javax.swing.*;
+import Mysql.*;//clase que me hace la conexion
+import validaciones.*;//clase paera validar
+import java.util.*;
+import java.sql.*;
+import java.util.logging.*;
+
 
 public class Home extends JFrame {
 
@@ -7,7 +13,12 @@ public class Home extends JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Bienvenido");
-    }
+        bloquearMenu(false,false);
+        
+        //para limitar ingreso de caracteres en la cajas      
+       this.txt_usuario.setDocument(new Validar(txt_usuario,20));
+       this.txt_password.setDocument(new Validar(txt_password,30));
+         }
 
 /*---------------------------------------------------------
     $Home codigo de la interfaz generado por netbeans 
@@ -15,21 +26,20 @@ public class Home extends JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jMenuItem3 = new javax.swing.JMenuItem();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        lbl_bienvenido = new javax.swing.JLabel();
+        lbl_user = new javax.swing.JLabel();
         txt_usuario = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
+        lbl_pass = new javax.swing.JLabel();
         btn_ingresar = new javax.swing.JButton();
         btn_salir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lbl_iconkey = new javax.swing.JLabel();
         txt_password = new javax.swing.JPasswordField();
         jSeparator2 = new javax.swing.JSeparator();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        mnu_archivo = new javax.swing.JMenu();
         mnu_salir = new javax.swing.JMenuItem();
         mnu_clientes = new javax.swing.JMenu();
         mnu_cliente_nuevo = new javax.swing.JMenuItem();
@@ -48,54 +58,24 @@ public class Home extends JFrame {
         setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         setMinimumSize(new java.awt.Dimension(826, 603));
         setPreferredSize(new java.awt.Dimension(826, 603));
-        getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        jLabel18.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(110, 110, 110));
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel18.setText("BIENVENIDO");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(39, 79, 0, 0);
-        getContentPane().add(jLabel18, gridBagConstraints);
+        lbl_bienvenido.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
+        lbl_bienvenido.setForeground(new java.awt.Color(110, 110, 110));
+        lbl_bienvenido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_bienvenido.setText("ENTRAR");
 
-        jLabel10.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(110, 110, 110));
-        jLabel10.setText("Usuario:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(8, 139, 0, 0);
-        getContentPane().add(jLabel10, gridBagConstraints);
+        lbl_user.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        lbl_user.setForeground(new java.awt.Color(110, 110, 110));
+        lbl_user.setText("Usuario:");
 
         txt_usuario.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         txt_usuario.setForeground(new java.awt.Color(110, 110, 110));
         txt_usuario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 13;
-        gridBagConstraints.gridheight = 3;
-        gridBagConstraints.ipadx = 455;
-        gridBagConstraints.ipady = 16;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(8, 10, 0, 0);
-        getContentPane().add(txt_usuario, gridBagConstraints);
+        txt_usuario.setDisabledTextColor(new java.awt.Color(0, 153, 255));
 
-        jLabel11.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(110, 110, 110));
-        jLabel11.setText("contraseña:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(17, 139, 0, 0);
-        getContentPane().add(jLabel11, gridBagConstraints);
+        lbl_pass.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        lbl_pass.setForeground(new java.awt.Color(110, 110, 110));
+        lbl_pass.setText("contraseña:");
 
         btn_ingresar.setBackground(new java.awt.Color(0, 153, 204));
         btn_ingresar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -104,15 +84,11 @@ public class Home extends JFrame {
         btn_ingresar.setBorder(null);
         btn_ingresar.setBorderPainted(false);
         btn_ingresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 64;
-        gridBagConstraints.ipady = 29;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(77, 4, 266, 0);
-        getContentPane().add(btn_ingresar, gridBagConstraints);
+        btn_ingresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ingresarActionPerformed(evt);
+            }
+        });
 
         btn_salir.setBackground(new java.awt.Color(0, 153, 204));
         btn_salir.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -126,64 +102,20 @@ public class Home extends JFrame {
                 btn_salirActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 6;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.ipadx = 100;
-        gridBagConstraints.ipady = 29;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(77, 43, 266, 0);
-        getContentPane().add(btn_salir, gridBagConstraints);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ic_person_24.png"))); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 16;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipady = 10;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(8, 4, 0, 95);
-        getContentPane().add(jLabel1, gridBagConstraints);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ic_lock_24.png"))); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 16;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipady = 15;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 4, 0, 95);
-        getContentPane().add(jLabel2, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 13;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 451;
-        gridBagConstraints.ipady = 19;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 10, 0, 0);
-        getContentPane().add(txt_password, gridBagConstraints);
+        lbl_iconkey.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ic_lock_24.png"))); // NOI18N
 
         jSeparator2.setBackground(new java.awt.Color(51, 204, 255));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 12;
-        gridBagConstraints.ipadx = 589;
-        gridBagConstraints.ipady = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(31, 110, 0, 0);
-        getContentPane().add(jSeparator2, gridBagConstraints);
 
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenuBar1.setMinimumSize(new java.awt.Dimension(800, 600));
 
-        jMenu1.setForeground(new java.awt.Color(110, 110, 110));
-        jMenu1.setText("Archivo");
-        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jMenu1.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        mnu_archivo.setForeground(new java.awt.Color(110, 110, 110));
+        mnu_archivo.setText("Archivo");
+        mnu_archivo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mnu_archivo.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
 
         mnu_salir.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         mnu_salir.setForeground(new java.awt.Color(110, 110, 110));
@@ -194,9 +126,9 @@ public class Home extends JFrame {
                 mnu_salirActionPerformed(evt);
             }
         });
-        jMenu1.add(mnu_salir);
+        mnu_archivo.add(mnu_salir);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(mnu_archivo);
 
         mnu_clientes.setForeground(new java.awt.Color(110, 110, 110));
         mnu_clientes.setText("Clientes");
@@ -286,12 +218,108 @@ public class Home extends JFrame {
 
         setJMenuBar(jMenuBar1);
 
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(139, 139, 139)
+                        .addComponent(lbl_user)
+                        .addGap(38, 38, 38)
+                        .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(139, 139, 139)
+                        .addComponent(lbl_pass)
+                        .addGap(10, 10, 10)
+                        .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(lbl_iconkey))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(212, 212, 212)
+                        .addComponent(btn_ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)
+                        .addComponent(btn_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbl_bienvenido)
+                        .addGap(263, 263, 263)))
+                .addGap(95, 95, 95))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(lbl_bienvenido)
+                .addGap(29, 29, 29)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_user)
+                    .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(lbl_pass))
+                    .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_iconkey, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(77, 77, 77)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     
     
     
+    
+/*---------------------------------------------------------
+    Metodo para bloquar opciones del menu
+ ----------------------------------------------------------*/
+ public void bloquearMenu(boolean opcion, boolean admin){
+     
+     this.mnu_archivo.setVisible(opcion);
+     this.mnu_clientes.setVisible(opcion);
+     this.mnu_pagos.setVisible(opcion);
+     this.mnu_membresia.setVisible(opcion);
+     this.mnu_ficha.setVisible(opcion);
+     this.mnu_usuarios.setVisible(admin);
+     
+     
+ }
+ 
+ 
+ 
+ 
+ /*---------------------------------------------------------
+    Metodo para bloquar el login
+ ----------------------------------------------------------*/
+ public void bloquearLogin(boolean opcion){
+     
+     this.txt_usuario.setEnabled(opcion);
+     this.txt_password.setVisible(opcion);
+     this.btn_ingresar.setVisible(opcion);
+     this.lbl_pass.setVisible(opcion);
+     this.lbl_iconkey.setVisible(opcion);
+     
+         
+     
+ } 
+ 
+    
+ 
+ 
 /*---------------------------------------------------------
     $Menu codigo para el boton salir del menu
  ----------------------------------------------------------*/
@@ -397,6 +425,68 @@ public class Home extends JFrame {
     
     
     
+ /*-------------------------------------------------------------------------
+    $metodo para el boton login o ingresar al sistema
+ ---------------------------------------------------------------------------*/   
+    private void btn_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarActionPerformed
+         
+        Conexion cn = new Conexion();
+        Connection conexion = cn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
+        String sql,user,pass,result_user,result_tipo;
+        
+        user = Validar.quitarEspaciosEnBlanco(txt_usuario);
+        pass = Validar.quitarEspaciosEnBlanco(txt_password);
+        sql = "select * from users where usuario = '"+user+"' and  password = '"+pass+"'";
+        
+        if(user.length() > 0 && pass.length() > 0){
+            try{
+                
+                ps = conexion.prepareStatement(sql);
+                rs = ps.executeQuery(sql);
+                
+                if(rs.next()){
+                    result_tipo = rs.getString("tipo");
+                    
+                    if(result_tipo.equalsIgnoreCase("administrador")){
+                        JOptionPane.showMessageDialog(this, "Login correcto");
+                        lbl_bienvenido.setText("BIENVENIDO " + user.toUpperCase());
+                        bloquearMenu(true,true);
+                        bloquearLogin(false);
+                        txt_usuario.setText("               " + user.toUpperCase());
+                        
+                        
+                    }else{
+                        JOptionPane.showMessageDialog(this, "Login correcto");
+                         lbl_bienvenido.setText("BIENVENIDO " + user.toUpperCase());
+                         bloquearMenu(true,false);
+                         bloquearLogin(false);
+                        txt_usuario.setText("              "+ user.toUpperCase());
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(this, "Usuario o contraseña no existen");
+                    txt_usuario.setText("");
+                    txt_password.setText("");
+                    txt_usuario.requestFocus();
+                }
+                
+            }catch(Exception ex){
+                JOptionPane.showMessageDialog(this, ex.getMessage());
+            }
+            
+        
+        }else{
+            JOptionPane.showMessageDialog(null,"Ingresa tus datos");
+            txt_usuario.requestFocus();
+        }
+        
+        
+    }//GEN-LAST:event_btn_ingresarActionPerformed
+
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -417,14 +507,14 @@ public class Home extends JFrame {
     private javax.swing.JButton btn_ingresar;
     private javax.swing.JButton btn_salir;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lbl_bienvenido;
+    private javax.swing.JLabel lbl_iconkey;
+    private javax.swing.JLabel lbl_pass;
+    private javax.swing.JLabel lbl_user;
+    private javax.swing.JMenu mnu_archivo;
     private javax.swing.JMenuItem mnu_cliente_asistencia;
     private javax.swing.JMenuItem mnu_cliente_modificar;
     private javax.swing.JMenuItem mnu_cliente_nuevo;
