@@ -37,7 +37,7 @@ public class Form_clientes extends JFrame {
        this.txt_cedula.setDocument(new Validar(txt_cedula,10));
        this.txt_nombres.setDocument(new Validar(txt_nombres,35));
        this.txt_apellidos.setDocument(new Validar(txt_apellidos,40));
-       this.txt_dir.setDocument(new Validar(txt_dir,10));
+       this.txt_dir.setDocument(new Validar(txt_dir,50));
        this.txt_telefono.setDocument(new Validar(txt_telefono,10));
        this.txt_celular.setDocument(new Validar(txt_celular,10));
        
@@ -56,10 +56,21 @@ public class Form_clientes extends JFrame {
         
     }
 
+  /*-----------------------------------------------------------------------------------
+      metodo para limpiar cajas de texto
+ -------------------------------------------------------------------------------------*/ 
+      
+ public void limpiar(){
+      this.txt_cedula.setText("");
+       this.txt_nombres.setText("");
+       this.txt_apellidos.setText("");
+       this.txt_dir.setText("");
+       this.txt_telefono.setText("");
+       this.txt_celular.setText("");
+  }
        
        
-       
- /*---------------------------------------------------------------------------------
+ /*-----------------------------------------------------------------------------------
  $Clientes Codigo genrado por netbeans para la interfas
  -------------------------------------------------------------------------------------*/
     @SuppressWarnings("unchecked")
@@ -200,12 +211,12 @@ public class Form_clientes extends JFrame {
 
         jLabel11.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(110, 110, 110));
-        jLabel11.setText("Nombres:");
+        jLabel11.setText("Nombre:");
         jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(110, 110, 110));
-        jLabel12.setText("Apellidos:");
+        jLabel12.setText("Apellido:");
         jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -236,16 +247,31 @@ public class Form_clientes extends JFrame {
         txt_nombres.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         txt_nombres.setForeground(new java.awt.Color(110, 110, 110));
         txt_nombres.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
+        txt_nombres.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_nombresKeyTyped(evt);
+            }
+        });
         jPanel4.add(txt_nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 200, 350, 39));
 
         txt_cedula.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         txt_cedula.setForeground(new java.awt.Color(110, 110, 110));
         txt_cedula.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
+        txt_cedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_cedulaKeyTyped(evt);
+            }
+        });
         jPanel4.add(txt_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 140, 350, 39));
 
         txt_apellidos.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         txt_apellidos.setForeground(new java.awt.Color(110, 110, 110));
         txt_apellidos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
+        txt_apellidos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_apellidosKeyTyped(evt);
+            }
+        });
         jPanel4.add(txt_apellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 260, 350, 39));
 
         txt_dir.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
@@ -259,6 +285,11 @@ public class Form_clientes extends JFrame {
         txt_telefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_telefonoActionPerformed(evt);
+            }
+        });
+        txt_telefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_telefonoKeyTyped(evt);
             }
         });
         jPanel4.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 480, 350, 39));
@@ -329,6 +360,11 @@ public class Form_clientes extends JFrame {
         btn_cancelar.setBorderPainted(false);
         btn_cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_cancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelarActionPerformed(evt);
+            }
+        });
         jPanel4.add(btn_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(521, 630, 100, 40));
 
         btn_siguiente.setBackground(new java.awt.Color(0, 153, 204));
@@ -349,6 +385,11 @@ public class Form_clientes extends JFrame {
         txt_celular.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         txt_celular.setForeground(new java.awt.Color(110, 110, 110));
         txt_celular.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
+        txt_celular.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_celularKeyTyped(evt);
+            }
+        });
         jPanel4.add(txt_celular, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 540, 350, 39));
 
         btn_limpiar.setBackground(new java.awt.Color(0, 153, 204));
@@ -358,6 +399,11 @@ public class Form_clientes extends JFrame {
         btn_limpiar.setBorder(null);
         btn_limpiar.setBorderPainted(false);
         btn_limpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_limpiarActionPerformed(evt);
+            }
+        });
         jPanel4.add(btn_limpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(391, 630, 100, 40));
 
         jSeparator3.setBackground(new java.awt.Color(51, 204, 255));
@@ -1002,6 +1048,8 @@ public class Form_clientes extends JFrame {
         Home frm_home = new Home();
         frm_home.setVisible(true);
         dispose();
+        
+        
     }//GEN-LAST:event_btn_volverActionPerformed
 
     
@@ -1012,17 +1060,18 @@ public class Form_clientes extends JFrame {
  -------------------------------------------------------------------------------------*/
     
     private void btn_siguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_siguienteActionPerformed
-        try{
-            
+               
             cedula = Validar.quitarEspaciosEnBlanco(txt_cedula);
             nombres= Validar.quitarEspaciosEnBlanco(txt_nombres);
             apellidos= Validar.quitarEspaciosEnBlanco(txt_apellidos);
-            dir=Validar.quitarEspaciosEnBlanco(txt_dir);
+            
+            //quitamos espacios al inicioy al final de la cadena
+            dir = txt_dir.getText();
+              
+            
             telefono=Validar.quitarEspaciosEnBlanco(txt_telefono);
             celular=Validar.quitarEspaciosEnBlanco(txt_celular);
-         }catch(Exception ex){
-                        JOptionPane.showMessageDialog(rootPane, ex.getMessage());
-            }  
+         
             //para guargar los que tenga en el combo
             if(this.radio_masculino.isSelected()){
                 cliente.setSexo( radio_masculino.getText());
@@ -1034,16 +1083,35 @@ public class Form_clientes extends JFrame {
             //fecha
             String day,month,year;
             day = this.cbo_day.getSelectedItem().toString();
-            month = this.cbo_month.getSelectedItem().toString();
+            month = String.valueOf(this.cbo_month.getSelectedIndex() + 1);
             year = this.cbo_year.getSelectedItem().toString();
-            //insertamos la fecha
-            cliente.setFechaNacimiento(year + "-" + month + "-" + day);
+          
+           
             
             
-                if(  cedula.length() > 0 && nombres.length() > 0 && nombres.length() > 0 && apellidos.length() > 0 
-               && dir.length() > 0 && telefono.length() > 0  && celular.length() > 0)
+            
+           
+            /*dato importantisimoooooo jajaja por lo simple que es y lo mucho que demore en descubirlo el cadenaTexto.trim().length() > 0   en las cadenas verifica
+             que asi se ponga espacios en blanco en una cadena  nos dara 0  por el contrario devolvera el largo de la cadena ya que si solo ponemos  cadenaTextp.lenght( )> 0 con
+            espacios en blanco falla y nos devuelve el numero de caracteres en blanco que ingresemos */
+            
+                if(  cedula.length() > 0 && nombres.length() >  0 && apellidos.length() > 0 
+                && dir.trim().length() > 0  && telefono.length() > 0  && celular.length() > 0)
                 {
-                    JOptionPane.showMessageDialog(rootPane, "Todo ok " + cliente.getFechaNacimiento() +"  "+ cliente.getSexo() );
+                    
+                  if(Validar.Numero(cedula)){
+                    cliente.setCi(Long.parseLong(cedula));
+                    cliente.setNombres(nombres);
+                    cliente.setApellidos(apellidos);
+                    cliente.setDir(dir.trim());
+                    cliente.setFechaNacimiento(year + "-" + month + "-" + day);
+                    JOptionPane.showMessageDialog(rootPane, "Todo ok " + cliente.getFechaNacimiento() +"  "+ cliente.getSexo() + " " + cliente.getDir());
+                  }else{
+                       JOptionPane.showMessageDialog(rootPane, "cedula incorrecta");
+                  }
+                                                      
+                  
+                    
                 }else{
                         JOptionPane.showMessageDialog(rootPane, "Llene todos los campos");
                 }
@@ -1053,12 +1121,58 @@ public class Form_clientes extends JFrame {
             //panelPrincipal.setSelectedIndex(1);
     }//GEN-LAST:event_btn_siguienteActionPerformed
 
- 
+    
+
     
     
     
     
+/*---------------------------------------------------------------------------------
+    metodo para el boto limpiar
+ -------------------------------------------------------------------------------------*/
+    private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
+       limpiar();
+       this.txt_cedula.requestFocus();
+    }//GEN-LAST:event_btn_limpiarActionPerformed
+
     
+   /*---------------------------------------------------------------------------------
+    metodo para cancelar
+ -------------------------------------------------------------------------------------*/
+    private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
+        limpiar();
+           Home frm_home = new Home();
+        frm_home.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btn_cancelarActionPerformed
+
+    
+    
+/*---------------------------------------------------------------------------------
+    para no permitir letras en la caja de texto de cedula
+ -------------------------------------------------------------------------------------*/
+    private void txt_cedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cedulaKeyTyped
+        
+              Validar.soloNumeros(evt);
+    }//GEN-LAST:event_txt_cedulaKeyTyped
+
+    private void txt_nombresKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nombresKeyTyped
+        Validar.soloLetrasAcentos(evt);
+    }//GEN-LAST:event_txt_nombresKeyTyped
+
+    private void txt_apellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_apellidosKeyTyped
+         Validar.soloLetrasAcentos(evt);
+    }//GEN-LAST:event_txt_apellidosKeyTyped
+
+    private void txt_telefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_telefonoKeyTyped
+         Validar.soloNumeros(evt);
+    }//GEN-LAST:event_txt_telefonoKeyTyped
+
+    private void txt_celularKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_celularKeyTyped
+          Validar.soloNumeros(evt);
+    }//GEN-LAST:event_txt_celularKeyTyped
+
+  
     public static void main(String args[]) {
         
         /* Create and display the form */

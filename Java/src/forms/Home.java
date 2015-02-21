@@ -477,7 +477,9 @@ public class Home extends JFrame {
             
         
         }else{
-            JOptionPane.showMessageDialog(null,"Ingresa tus datos");
+            JOptionPane.showMessageDialog(null,"No puedes dejar las cajas vacias. Ingresa tus datos");
+            txt_usuario.setText("");
+            txt_password.setText("");
             txt_usuario.requestFocus();
         }
         

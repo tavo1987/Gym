@@ -3,7 +3,7 @@ package general;
 
 public class Cliente {
     
-    private int cedula;
+    private long cedula;
     private String nombres;
     private String apellidos;
     private String dir;
@@ -43,7 +43,7 @@ public class Cliente {
      /*---------------------------------------------------------------------------------------------------------------------------------------
         Metodos setter de cliente
     ------------------------------------------------------------------------------------------------------------------------------------------*/
-    public void setCi(int ci){
+    public void setCi(long ci){
        this.cedula = ci;
     }
      
@@ -85,7 +85,7 @@ public class Cliente {
     /*---------------------------------------------------------------------------------------------------------------------------------------
         Metodos getter de cliente
     ------------------------------------------------------------------------------------------------------------------------------------------*/
-     public int getCi(int ci){
+     public long getCi(){
        return cedula;
     }
      
@@ -97,7 +97,7 @@ public class Cliente {
       return this.apellidos;
     }
     
-    public String getDir(String dir){
+    public String getDir(){
        return this.dir;
     }
     
