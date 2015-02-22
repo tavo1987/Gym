@@ -274,7 +274,8 @@ public class Home extends JFrame {
                 .addGap(77, 77, 77)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btn_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -362,8 +363,15 @@ public class Home extends JFrame {
     $Home boton para salir de la aplicación 
  ----------------------------------------------------------*/
     private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
-            
-        System.exit(0);
+        int confirm;
+        
+        confirm = JOptionPane.showConfirmDialog(rootPane, "Esta seguro que desea salir del programa");
+        
+        if(confirm == JOptionPane.YES_OPTION){
+            System.exit(0);
+        }
+        
+       
     }//GEN-LAST:event_btn_salirActionPerformed
 
     

@@ -126,9 +126,51 @@ public  class Validar extends PlainDocument{
              
         }
         
-        
+ /*---------------------------------------------------------------------------------
+    para validar cedula
+ -------------------------------------------------------------------------------------*/      
 
+public static boolean VerificarCedula(String cedula){
+        int total =0;
+        int tamañoLongitudCedula = 10;
+        int[] coeficientes = {2,1,2,1,2,1,2,1,2};
+        int numeroProvincias = 24;
+        int tercerDigito = 6;
 
-    
-    
+        if(cedula.matches("[0-9]*") && cedula.length() == tamañoLongitudCedula){
+           int provincia = Integer.parseInt(cedula.charAt(0)+""+ cedula.charAt(1));//para coger el numero 1 y  2 de la cedula utilizacmos charAt
+           int digitoTres = Integer.parseInt(cedula.charAt(2)+"");
+
+           if(provincia > 0 && provincia <= numeroProvincias && digitoTres < tercerDigito )
+            {
+                int digitoVerificadorRecibido = Integer.parseInt(cedula.charAt(9)+"");//cogemos el novemo digito de la cadena recibida cedula
+                 
+                //multiplicamo por el vector coeficiente toda la cdena exeptio el decimo numero
+                for(int i=0;i < coeficientes.length;i++){
+                    int valor = coeficientes[i] * Integer.parseInt(cedula.charAt(i)+"");
+                    
+                    total = (valor>= 10)? total + (valor-9) : total + valor;
+                    
+                    }
+                
+                int digitoVerificadorObtenido = (total % 10) != 0 ? 10 - (total % 10) : 0;
+                
+                //(total>= 10) ? (total % 10) != 0 ?   10 - (total % 10) : (total % 10):total; fallo con 0202016051&
+                
+                if(digitoVerificadorObtenido == digitoVerificadorRecibido ){
+                    return true;
+                
+                }
+           
+            }else{
+               return false;
+           }
+
+        }else{
+            return false;
+        }
+        return false;
+}
+  
+///fin de la clase Validar    
 }

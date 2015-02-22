@@ -3,7 +3,7 @@ package general;
 
 public class Cliente {
     
-    private long cedula;
+    private int cedula;
     private String nombres;
     private String apellidos;
     private String dir;
@@ -28,7 +28,7 @@ public class Cliente {
     
     /*---------------------------------------------------------------------------------------------------------------------------------------
      Contructor sobrecargado
-    ------------------------------------------------------------------------------------------------------------------------------------------*/
+    ------------------------------------------------------------------------------------------------------------------------------------------
      public Cliente(int cedula,String nombres,String apellidos,String dir, String fecha_nac, String sexo, String telefono,String celular){
      this.cedula = cedula;
      this.nombres= nombres;
@@ -43,7 +43,7 @@ public class Cliente {
      /*---------------------------------------------------------------------------------------------------------------------------------------
         Metodos setter de cliente
     ------------------------------------------------------------------------------------------------------------------------------------------*/
-    public void setCi(long ci){
+    public void setCi(int ci){
        this.cedula = ci;
     }
      
@@ -85,7 +85,7 @@ public class Cliente {
     /*---------------------------------------------------------------------------------------------------------------------------------------
         Metodos getter de cliente
     ------------------------------------------------------------------------------------------------------------------------------------------*/
-     public long getCi(){
+     public int getCi(){
        return cedula;
     }
      
