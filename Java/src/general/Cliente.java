@@ -1,7 +1,7 @@
 package general;
 
 
-public class Cliente {
+public class Cliente extends Membresia{
     
     private int cedula;
     private String nombres;
