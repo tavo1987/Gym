@@ -3,7 +3,7 @@ import javax.swing.*;
 
 
 
-public class Membresia{
+public class Membresia extends Cliente{
     
     //varaables o propiedades de mi
     
@@ -15,7 +15,6 @@ public class Membresia{
     
     //contructor de la clase 
     public Membresia(){
-    super();
     id_tipo_membresia=0;
     fecha_inicio ="";
     fecha_fin="";
@@ -27,7 +26,7 @@ public class Membresia{
     
     
  /*---------------------------------------------------------------------------------------------------------------------------------------
-        Metodos setter de cliente
+        Metodos setter de membresia
  ------------------------------------------------------------------------------------------------------------------------------------------*/
     public void setIdTipoMembresia(int id_tipo){
        this.id_tipo_membresia = id_tipo;
@@ -54,7 +53,7 @@ public class Membresia{
   
     
 /*---------------------------------------------------------------------------------------------------------------------------------------
-        Metodos getter de cliente
+        Metodos getter de memebresia
  ------------------------------------------------------------------------------------------------------------------------------------------*/
   public int getIdTipoMembresia(){
        return id_tipo_membresia;

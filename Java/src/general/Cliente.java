@@ -1,7 +1,7 @@
 package general;
 
 
-public class Cliente extends Membresia{
+public class Cliente{
     
     private int cedula;
     private String nombres;
@@ -13,6 +13,7 @@ public class Cliente extends Membresia{
     private String celular;
     
     public Cliente(){
+     super();
      cedula = 0;
      nombres= "";
      apellidos="";
