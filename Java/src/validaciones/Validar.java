@@ -75,11 +75,26 @@ public  class Validar extends PlainDocument{
                 return true;
 
                 }
-
+         //metodo utilizado al presionar tecla
         public static void soloNumeros(java.awt.event.KeyEvent evt){
                char a = evt.getKeyChar();
 
                 if(a < '0' || a > '9')evt.consume();
+        }
+        
+         //metodo utilizado al presionar tecla
+        public static void soloNumerosDos(java.awt.event.KeyEvent evt, JTextField caja){
+               
+
+                if(!Character.isDigit(evt.getKeyChar()) && evt.getKeyChar() != '.') {
+                    evt.consume();
+                }
+                
+                //par que no ingrese mas de un punto en las cademas decimales
+                if(evt.getKeyChar() == '.' && caja.getText().contains(".")){
+                    evt.consume();
+                
+                }
         }
         
 /*--------------------------------------------------------------------------------
