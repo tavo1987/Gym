@@ -5,7 +5,7 @@ import javax.swing.*;
 
 public class Membresia extends Cliente{
     
-    //varaables o propiedades de mi
+    //variables o propiedades de mi obejeto
     
     private int id_tipo_membresia;
     private String fecha_inicio;

@@ -18,15 +18,16 @@ public class Form_clientes extends JFrame {
         String sql;
         
         //variables
-            public String cedula;
-            public  String nombres;
-            public String apellidos;
-            public String dir;
-            public String fecha_nac;
-            public String sexo;
-            public String telefono;
-            public String celular;
-            public String day,month,year;
+            private String cedula;
+            private String nombres;
+            private String apellidos;
+            private String dir;
+            private String fecha_nac;
+            private String sexo;
+            private String telefono;
+            private String celular;
+            private String day,month,year;
+                        
             
         //declaramos un objeto tipo cliente
             Cliente cliente = new  Cliente();
@@ -1393,14 +1394,58 @@ public class Form_clientes extends JFrame {
     
 
 
-/*---------------------------------------------------------------------------------
+/*-------------------------------------------------------------------------------------
     metodo para el boton siguiente2 que sirve para guardar datos de la membresia y pago
  -------------------------------------------------------------------------------------*/
 
     private void btn_siguiente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_siguiente2ActionPerformed
-               
+       
+       //instanceamos una objeto de tipo membresia
+        Membresia membresia = new Membresia();
+        
+        
+       String mem = cbo_membresia.getSelectedItem().toString(); 
+       float costo = Float.parseFloat(txt_costo.getText());
+       float total = Float.parseFloat(txt_total_pagar.getText());
+       String fecha_inicio = cbo_years1.getSelectedItem().toString() + cbo_month1.getSelectedItem().toString() + cbo_days1.getSelectedItem().toString();
+       String fecha_fin =this.txt_prox_pago.getText();
+        
+       if(!mem.equals("Especial") && costo > 0 && total > 0 && !fecha_inicio.equals("") && cbo_membresia.getSelectedIndex() > 0){
+           
+           
+           try{
+                 sql = "select id_tipo from tipo where tipo = '"+mem+"'";
+                 ps = conexion.prepareStatement(sql);
+                 rs = ps.executeQuery(sql);
+                 
+                if(rs.next())
+                    membresia.setIdTipoMembresia(rs.getInt("id_tipo"));
+                }catch(Exception ex){
+                     JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+                 }
+        
+           membresia.setFechaInicio(fecha_inicio);
+           membresia.setFechaFin(fecha_fin);
+           membresia.setAsistencias(0);
+           membresia.setDiasTotal(0);
+           
+       }else if(mem.equals("Especial") && costo > 0 && total > 0 && !fecha_inicio.equals("")){
+           membresia.setIdTipoMembresia(1);
+           membresia.setFechaInicio(fecha_inicio);
+           membresia.setFechaFin(fecha_fin);
+           membresia.setAsistencias(0);
+           membresia.setDiasTotal(Integer.parseInt(txt_dias.getText()));
+       
+       }
+        
+        
     }//GEN-LAST:event_btn_siguiente2ActionPerformed
 
+    
+    
+    
+    
+    
     
 /*---------------------------------------------------------------------------------
    para obtener fechas e los cbo
