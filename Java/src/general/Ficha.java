@@ -83,11 +83,11 @@ public class Ficha extends Cliente{
     public void setSobrePeso(double sobrePeso){
         this.sobrePeso = sobrePeso;
     }
-    
+    */
     public void setNivel(String nivel){
         this.nivel = nivel;
     }
-    */
+    
     
     
     
@@ -196,10 +196,10 @@ public class Ficha extends Cliente{
 /*---------------------------------------------------------------------------------------------------------------------------------------
         Metodo para calcular grasa corporal
 ------------------------------------------------------------------------------------------------------------------------------------------*/
-    public double grasaCorporal(){
+    public double grasaCorporal(String sexo){
 		
 					
-            if(super.getSexo().equalsIgnoreCase("Masculino")){
+            if(sexo.equalsIgnoreCase("Masculino")){
 
                     //fomula para calcular el indice de grasa corporal para hombre
                      grasaCorporal = 495/(1.0324-0.19077*(Math.log10(cintura-cuello)) + 0.15456*(Math.log10(altura)))-  450;
@@ -212,7 +212,7 @@ public class Ficha extends Cliente{
                      return Double.parseDouble(grasa.toString());
                      //System.out.println("Tu indice de grasa corporal es: " + grasa+ "%");
             }
-            else if(super.getSexo().equalsIgnoreCase("Femenino")){
+            else if(sexo.equalsIgnoreCase("Femenino")){
 
                     //fomula para calcular el indice de grasa corporal para mujeres
                      grasaCorporal=495/(1.29579-0.35004*(Math.log10(cintura+cadera-cuello))+0.22100*(Math.log10(altura)))-450;
