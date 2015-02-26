@@ -777,7 +777,7 @@ public void cargarTabla(String valor){
                        ps = conexion.prepareStatement(sql2);
                        rs = ps.executeQuery(sql2);
                                               
-                       if(rs.next()){//para verficar que no se creen usarios con el mismo nomrbe
+                       if(rs.next()){//para verficar que no se creen usarios con el mismo nombre
                             
                              JOptionPane.showMessageDialog(this, "El usuario "+user+" ya existe");
                 

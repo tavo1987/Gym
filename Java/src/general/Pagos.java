@@ -1,5 +1,7 @@
 package general;
 
+import javax.swing.JOptionPane;
+
 
 public class Pagos extends Membresia{
     
@@ -48,7 +50,7 @@ public class Pagos extends Membresia{
     
     public int getIdMembresia(){
         
-        return id_membresia;
+        return this.id_membresia;
         
     }
     
@@ -60,6 +62,43 @@ public class Pagos extends Membresia{
     public float getTotal(){
         
         return total;
-    }      
+    }
+    
+    
+    
+    
+    /*---------------------------------------------------------------------------------------------------------------------------------------
+        Metodos insertar pagos
+    ------------------------------------------------------------------------------------------------------------------------------------------*/
+     public boolean setPago(int cedula){
+            
+        try{
+               
+            sql = "insert into pagos(cedula, id_membresia, costo,total) values(?,?,?,?)";
+
+                    //vector para gurdar registros de la tabla
+ 
+                       ps = conexion.prepareStatement(sql);
+                        //mandamos los valores a ejecutar
+                        ps.setInt(1,cedula);
+                        ps.setInt(2, this.getIdMembresia());
+                        ps.setFloat(3, this.getCosto());
+                        ps.setFloat(4, this.getTotal());
+                        
+                        int n = ps.executeUpdate();
+                        
+                        if(n > 0){
+                             return true;   
+                        }else{
+                             return false;
+                        }
+
+          }catch(Exception ex){
+              
+             JOptionPane.showMessageDialog(null, ex.getMessage());
+             return false;
+          }  
+    
+    }
     
 }

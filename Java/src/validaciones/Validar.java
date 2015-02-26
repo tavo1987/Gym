@@ -117,11 +117,13 @@ public  class Validar extends PlainDocument{
                char car = evt.getKeyChar();
                
                        if((car<'a' || car>'z') && (car<'A' || car>'Z')             
+                        && car !='ñ'
                         && car !='á' //Minúsculas             
                         && car !='é'            
                         && car !='í'            
                         && car !='ó'           
-                        && car !='ú'   
+                        && car !='ú' 
+                        && car !='Ñ'
                         && car !='Á' //Mayúsculas             
                         && car !='É'            
                         && car !='Í'            

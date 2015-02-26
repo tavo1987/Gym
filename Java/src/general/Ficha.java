@@ -14,6 +14,7 @@ public class Ficha extends Cliente{
 	private double  cintura;
 	private double  cuello;
 	private double  cadera;
+     
         
         
         //private double  imc;
@@ -63,7 +64,8 @@ public class Ficha extends Cliente{
     public void setCadera(double cadera){
         this.cadera = cadera;
     }
-    /*
+    
+        /*
     public void setImc(double imc){
         this.imc = imc;
     }
@@ -88,8 +90,7 @@ public class Ficha extends Cliente{
         this.nivel = nivel;
     }
     
-    
-    
+      
     
 /*---------------------------------------------------------------------------------------------------------------------------------------
         Metodos getter de pagos
@@ -300,6 +301,57 @@ public class Ficha extends Cliente{
                 
                 JOptionPane.showMessageDialog(null, "tu imc:" + imc + " indice: " +indice+ " grasaCorporal: " +grasa + " Masa Magra: "+ masa + " sobrepeso: " + sobrepeso);
         }*/
+        
+        
+        
+        
+/*-----------------------------------------------------------------------------------------------------------------------------------------
+        Insertar ficha de seguimiento del cliente
+------------------------------------------------------------------------------------------------------------------------------------------*/
+    public boolean setFicha(int cedula,int id_rutina,String sexo){
+            
+        try{
+               
+            sql = "insert into fichaseguimiento(cedula, id_rutina,peso,altura,cintura,cuello,cadera,imc,imc_cintura_altura,grasa_corporal,masa_magra,sobrepeso,nivel_cliente)"
+                    + "values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+                    //vector para gurdar registros de la tabla
+
+                      ps = conexion.prepareStatement(sql);
+                        //mandamos los valores a ejecutar
+                        ps.setInt(1,cedula);
+                        ps.setInt(2,id_rutina);
+                        ps.setFloat(3,(float)this.getPeso());
+                        ps.setFloat(4,(float)this.getAltura());
+                        ps.setFloat(5,(float)this.getCintura());
+                        ps.setFloat(6,(float)this.getCuello());
+                        ps.setFloat(7,(float)this.getCadera());
+                        ps.setFloat(8,(float)this.imc());
+                        ps.setFloat(9,(float)this.indice_cintura_Altura());
+                        ps.setFloat(10,(float)this.grasaCorporal(sexo));
+                        ps.setFloat(11,(float)this.masaMagra());
+                        ps.setFloat(12,(float)this.sobrePeso());
+                        ps.setString(13,this.getNivel());
+                                
+                        int n = ps.executeUpdate();
+                        
+                        if(n > 0){
+                             return true;   
+                        }else{
+                             return false;
+                        }
+
+          }catch(Exception ex){
+              
+             JOptionPane.showMessageDialog(null, ex.getMessage());
+             return false;
+          }  
+    
+    }
+        
+        
+        
+            
   
     
 }

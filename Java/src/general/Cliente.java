@@ -1,4 +1,10 @@
 package general;
+import Mysql.*;
+import java.awt.Component;
+import java.sql.*;
+import javax.swing.JOptionPane;
+
+
 
 
 public class Cliente{
@@ -11,6 +17,15 @@ public class Cliente{
     private String sexo;
     private String telefono;
     private String celular;
+    
+    //variables para los metodos
+    Conexion cn = new Conexion();
+        Connection conexion = cn.getConexion();
+        PreparedStatement ps;
+        ResultSet rs;
+        String sql;
+    
+    
     
     public Cliente(){
      super();
@@ -120,6 +135,50 @@ public class Cliente{
     public String getCelular(){
       return this.celular;
        
+    }
+    
+    
+    
+   /*---------------------------------------------------------------------------------------------------------------------------------------
+        Metodos insertar cliente
+    ------------------------------------------------------------------------------------------------------------------------------------------*/
+    
+    public  boolean SetCliente(){
+        
+          try{
+                     
+            sql = "insert into clientes(cedula,nombres,apellidos, direccion,fecha_nacimiento,sexo,telefono,celular)"
+                    + "values(?,?,?,?,?,?,?,?)";
+
+        //vector para gurdar registros de la tabla
+
+                      ps = conexion.prepareStatement(sql);
+                        //mandamos los valores a ejecutar
+                        ps.setInt(1,this.getCi());
+                        ps.setString(2, this.getNombres());
+                        ps.setString(3, this.getApellidos());
+                        ps.setString(4, this.getDir());
+                        ps.setString(5, this.getFechaNacimiento());
+                        ps.setString(6, this.getSexo());
+                        ps.setString(7, this.getTelefono());
+                        ps.setString(8, this.getCelular());
+                        
+
+                        int n = ps.executeUpdate();
+                        
+                        if(n > 0){
+                             return true;   
+                        }else{
+                             return false;
+                        }
+
+          }catch(Exception ex){
+              
+             JOptionPane.showMessageDialog(null, ex.getMessage());
+             return false;
+          }  
+               
+        
     }
      
      
