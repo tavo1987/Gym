@@ -26,6 +26,8 @@ public class Form_Asistencia extends javax.swing.JFrame {
     int day,day2;
     int month,month2;
     int year,year2;
+    String fecha_desde;
+    String fecha_hasta;
     
     
      
@@ -100,10 +102,10 @@ public class Form_Asistencia extends javax.swing.JFrame {
         cbo_meses = new javax.swing.JComboBox();
         cbo_years = new javax.swing.JComboBox();
         cbo_years2 = new javax.swing.JComboBox();
-        cbo_meses1 = new javax.swing.JComboBox();
-        cbo_dias1 = new javax.swing.JComboBox();
+        cbo_meses2 = new javax.swing.JComboBox();
+        cbo_dias2 = new javax.swing.JComboBox();
         jLabel15 = new javax.swing.JLabel();
-        btn_siguiente4 = new javax.swing.JButton();
+        btn_buscar = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tabla_asistencia2 = new javax.swing.JTable();
@@ -298,44 +300,44 @@ public class Form_Asistencia extends javax.swing.JFrame {
         });
         jPanel2.add(cbo_years2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 240, 70, 33));
 
-        cbo_meses1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        cbo_meses1.setForeground(new java.awt.Color(110, 110, 110));
-        cbo_meses1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
-        cbo_meses1.setToolTipText("");
-        cbo_meses1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        cbo_meses1.addActionListener(new java.awt.event.ActionListener() {
+        cbo_meses2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cbo_meses2.setForeground(new java.awt.Color(110, 110, 110));
+        cbo_meses2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+        cbo_meses2.setToolTipText("");
+        cbo_meses2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        cbo_meses2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbo_meses1ActionPerformed(evt);
+                cbo_meses2ActionPerformed(evt);
             }
         });
-        jPanel2.add(cbo_meses1, new org.netbeans.lib.awtextra.AbsoluteConstraints(358, 240, -1, 33));
+        jPanel2.add(cbo_meses2, new org.netbeans.lib.awtextra.AbsoluteConstraints(358, 240, -1, 33));
 
-        cbo_dias1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        cbo_dias1.setForeground(new java.awt.Color(110, 110, 110));
-        cbo_dias1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-        cbo_dias1.setToolTipText("");
-        cbo_dias1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(cbo_dias1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, -1, 33));
+        cbo_dias2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cbo_dias2.setForeground(new java.awt.Color(110, 110, 110));
+        cbo_dias2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        cbo_dias2.setToolTipText("");
+        cbo_dias2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel2.add(cbo_dias2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, -1, 33));
 
         jLabel15.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(110, 110, 110));
         jLabel15.setText("fecha hasta:");
         jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 248, -1, -1));
 
-        btn_siguiente4.setBackground(new java.awt.Color(0, 153, 204));
-        btn_siguiente4.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        btn_siguiente4.setForeground(new java.awt.Color(255, 255, 255));
-        btn_siguiente4.setText("Buscar");
-        btn_siguiente4.setBorder(null);
-        btn_siguiente4.setBorderPainted(false);
-        btn_siguiente4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_siguiente4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btn_siguiente4.addActionListener(new java.awt.event.ActionListener() {
+        btn_buscar.setBackground(new java.awt.Color(0, 153, 204));
+        btn_buscar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        btn_buscar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_buscar.setText("Buscar");
+        btn_buscar.setBorder(null);
+        btn_buscar.setBorderPainted(false);
+        btn_buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_buscar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_siguiente4ActionPerformed(evt);
+                btn_buscarActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_siguiente4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 130, 100, 40));
+        jPanel2.add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 130, 100, 40));
 
         jLabel19.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(110, 110, 110));
@@ -441,11 +443,11 @@ public class Form_Asistencia extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1019, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 984, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1064, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 721, Short.MAX_VALUE)
         );
 
         pack();
@@ -461,9 +463,9 @@ public class Form_Asistencia extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btn_cancelar1ActionPerformed
 
-    private void cbo_meses1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_meses1ActionPerformed
+    private void cbo_meses2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_meses2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbo_meses1ActionPerformed
+    }//GEN-LAST:event_cbo_meses2ActionPerformed
 
     private void cbo_years2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_years2ActionPerformed
         // TODO add your handling code here:
@@ -492,11 +494,31 @@ public class Form_Asistencia extends javax.swing.JFrame {
     
 public boolean verificarFecha(){
     
-    
-    
-    
-    
-    return false;
+    //para comprobar la fechas
+       
+            day = Integer.parseInt(cbo_dias.getSelectedItem().toString());
+            month = cbo_meses.getSelectedIndex() + 1;
+            year = Integer.parseInt(cbo_years.getSelectedItem().toString());
+        
+            day2 = Integer.parseInt(cbo_dias2.getSelectedItem().toString());
+            month2 = cbo_meses2.getSelectedIndex() + 1;
+            
+            year2 = Integer.parseInt(cbo_years2.getSelectedItem().toString());
+        
+                if(day > day2 || month > month2){
+
+                   return false;
+                    //JOptionPane.showMessageDialog(rootPane, day +":"+ day2 +"/"+ month +":"+ month2);
+                }else{
+
+                    
+                    fecha_desde = String.valueOf(year+"-"+month+"-"+day);          
+                    fecha_hasta = String.valueOf(year2+"-"+month2+"-"+day2);          
+
+                    return true;
+                    
+                    // JOptionPane.showMessageDialog(rootPane, day +":"+ day2 +"/"+ month +":"+ month2);
+                 }    
     
 }
 
@@ -545,7 +567,7 @@ public boolean verificarFecha(){
                    JOptionPane.showMessageDialog(this, "cliente asistencias agregada con éxito");
                    cargarTabla();
            }else{
-                       JOptionPane.showMessageDialog(this, "El cliente con la cédula " + cedula);
+                       JOptionPane.showMessageDialog(this, "El cliente con la cédula " + cedula+ " No existe");
            }
        
        }else{
@@ -596,24 +618,29 @@ public boolean verificarFecha(){
     
     Metodo para el boton buscar
  __________________________________________________________________________*/  
-    private void btn_siguiente4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_siguiente4ActionPerformed
+    private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
         //vector para agreagar a las columnas titulos
 	String titulos[] = {"Cedula","Nombres","Apellidos","Fecha yy-mm-dd"};
 	//vector para guaradar los registros que se recupen de la base de datos
 	String[] registros = new String[4];//cantidad de las columnas de la tabla
 	//asignamos al model el vector de titulos poder insertar en la tabla los registros
 	DefaultTableModel modelo = new DefaultTableModel(null,titulos);
-	//la conexion a la base            
+	
+        int contador = 0;
+ 
         
-        
-        if(txt_buscar_cedula.getText().length() > 0){
+        if(txt_buscar_cedula.getText().length() > 0 &&  verificarFecha()){
+            
+            
             
               int cedula = Integer.parseInt(this.txt_buscar_cedula.getText());
          
                 try {
 
-                        CallableStatement cst = conexion.prepareCall("{call sp_asistencia(?)}");
+                        CallableStatement cst = conexion.prepareCall("{call sp_asistencia(?,?,?)}");
                         cst.setInt(1,cedula );
+                        cst.setString(2,fecha_desde );
+                        cst.setString(3,fecha_hasta);
                         rs = cst.executeQuery();
 
                         while(rs.next()){
@@ -621,11 +648,13 @@ public boolean verificarFecha(){
                               registros[1] = rs.getString(2);
                               registros[2] = rs.getString(3);
                               registros[3] = rs.getString(4);
-                              
+      
                               txt_result_cedula.setText(rs.getString(1));
                               modelo.addRow(registros);//cargamos los datos al model
+                              contador++;
+                              
                         }
-
+                    JOptionPane.showMessageDialog(rootPane, "Se encontraron " + contador + " resultados");
                        tabla_asistencia2.setModel(modelo);
 
                 } catch (SQLException ex) {
@@ -633,10 +662,11 @@ public boolean verificarFecha(){
 
                 }//find el catch
         }else{
-                    JOptionPane.showMessageDialog(rootPane, "Llena el campo de busqueda");
+                    JOptionPane.showMessageDialog(rootPane, "Llena el campo de busqueda y seleccione las fechas correctamente");
+                   
         }//fin del if para verificar cajas vacias
         
-    }//GEN-LAST:event_btn_siguiente4ActionPerformed
+    }//GEN-LAST:event_btn_buscarActionPerformed
 
     
     
@@ -656,15 +686,15 @@ public boolean verificarFecha(){
  public void  cargarTabla(){
      
      //vector para agreagar a las columnas titulos
-	String titulos[] = {"Id asistencia","Cédula","Fecha"};
+	String titulos[] = {"Cédula","Nombres","Tipo","Nº Asistencias","Dias Disponibles"};
 	//vector para guaradar los registros que se recupen de la base de datos
-	String[] registros = new String[3];//cantidad de las columnas de la tabla
+	String[] registros = new String[5];//cantidad de las columnas de la tabla
 	//asignamos al model el vector de titulos poder insertar en la tabla los registros
 	DefaultTableModel modelo = new DefaultTableModel(null,titulos);
 	//la conexion a la base
 	
 	//mandamos la sentencia sql
-	sql = "select * from asistencia";
+	sql = "select * from vista_asistencias";
 			
 	//creamos stament
        
@@ -673,9 +703,12 @@ public boolean verificarFecha(){
             rs = ps.executeQuery(sql);
             //bucle para ir cargando lo datos en el resulset
 		while(rs.next()){
-			registros[0] = rs.getString("id_asistencia");//mismos campos de la base
-			registros[1] = rs.getString("cedula");//mismos campos de la base
-			registros[2] = rs.getString("date");//mismos campos de la base
+			registros[0] = rs.getString(1);//mismos campos de la base
+			registros[1] = rs.getString(2);//mismos campos de la base
+			registros[2] = rs.getString(3);//mismos campos de la base
+                        registros[3] = rs.getString(4);//mismos campos de la base
+                        registros[4] = rs.getString(5);//mismos campos de la base
+                       
                        
 
 			modelo.addRow(registros);//cargamos los datos al model
@@ -739,16 +772,16 @@ public boolean verificarFecha(){
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_cancelar1;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_guardar;
     private javax.swing.JButton btn_nuevo;
-    private javax.swing.JButton btn_siguiente4;
     private javax.swing.JComboBox cbo_dias;
-    private javax.swing.JComboBox cbo_dias1;
+    private javax.swing.JComboBox cbo_dias2;
     private javax.swing.JComboBox cbo_meses;
-    private javax.swing.JComboBox cbo_meses1;
+    private javax.swing.JComboBox cbo_meses2;
     private javax.swing.JComboBox cbo_years;
     private javax.swing.JComboBox cbo_years2;
     private javax.swing.JLabel jLabel10;
