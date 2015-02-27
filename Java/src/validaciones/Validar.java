@@ -6,6 +6,10 @@ import java.awt.event.*;
 
 
 public  class Validar extends PlainDocument{
+
+    public static void soloNumeros(ActionEvent evt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     private String cajaTexto;
     private JTextField caja;

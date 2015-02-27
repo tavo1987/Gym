@@ -180,11 +180,47 @@ public class Cliente{
                
         
     }
+    
+    
+    
+    
+ /*----------------------------------------------------------------------------------------------------------------------------------------
+        Metodos buscar cliente
+ ------------------------------------------------------------------------------------------------------------------------------------------*/
      
-     
-
-
+public String[] buscarClientes(int cedula){    
+    
+     String[] registros = new String[9];
+    
+    try{  
+        sql = "select * from clientes where cedula = "+cedula+"";
+        ps =  conexion.prepareStatement(sql);
         
+        rs = ps.executeQuery();
+        
+        if(rs.next()){
+            
+           registros[0]  = String.valueOf(rs.getInt("cedula"));
+           registros[1]  = rs.getString("nombres");
+           registros[2]  = rs.getString("apellidos");
+           registros[3]  = rs.getString("direccion");
+           registros[4]  = rs.getString("fecha_nacimiento");
+           registros[5]  = rs.getString("sexo");
+           registros[6]  = rs.getString("telefono");
+           registros[7]  = rs.getString("celular");
+           
+           JOptionPane.showMessageDialog(null, "Cliente encontrado");
+           return registros;
+        }
+        
+    
+    }catch(Exception ex){
+        JOptionPane.showMessageDialog(null, ex.getMessage());
+    } 
+    JOptionPane.showMessageDialog(null, "cliente no existe");
+    return registros; 
+    
+}
     
     
     
