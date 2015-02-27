@@ -221,6 +221,81 @@ public String[] buscarClientes(int cedula){
     return registros; 
     
 }
+
+
+
+
+ /*----------------------------------------------------------------------------------------------------------------------------------------
+        Metodos actulizar cliente
+ ------------------------------------------------------------------------------------------------------------------------------------------*/
+   public boolean updateCliente(int cedula){
+       
+          
+      
+       try{
+            sql="update clientes set nombres = ?,apellidos = ?,direccion = ?,"
+                    + "fecha_nacimiento = ?,sexo= ?,telefono=?,celular=?  where cedula = "+cedula+"";
+                       
+            ps = conexion.prepareStatement(sql);
+            
+            ps.setString(1, this.getNombres());
+            ps.setString(2, this.getApellidos());
+            ps.setString(3, this.getDir());
+            ps.setString(4, this.getFechaNacimiento());
+            ps.setString(5, this.getSexo());
+            ps.setString(6, this.getTelefono());
+            ps.setString(7, this.getCelular());
+
+           int n = ps.executeUpdate();
+           
+           if(n > 0){
+               JOptionPane.showMessageDialog(null, "Datos acutlizado con éxito");
+               return true;
+               
+           }
+            
+            
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        
+        }
+       
+        JOptionPane.showMessageDialog(null, "Los datos no se acutlizarón");
+        return false;
+       
+   }
+   
+   
+   
+   
+/*----------------------------------------------------------------------------------------------------------------------------------------
+        Metodo para eliminar clientes
+ ------------------------------------------------------------------------------------------------------------------------------------------*/
+         public boolean eliminarCliente(int cedula){
+       
+      
+       try{
+               sql="delete from clientes where cedula = "+cedula+"";
+               ps = conexion.prepareStatement(sql);
+
+               int n = ps.executeUpdate();
+
+               if(n > 0){
+                   JOptionPane.showMessageDialog(null, "Cliente eliminado");
+                   return true;
+
+               }
+     
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        
+        }
+       
+        JOptionPane.showMessageDialog(null, "No se elimino el cliente");
+        return false;
+       
+   } 
+         
     
     
     
