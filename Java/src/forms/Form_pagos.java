@@ -1,13 +1,242 @@
 package forms;
+import javax.swing.*;
+import Mysql.*;
+import validaciones.Validar;
+import java.sql.*;
+import general.Asistencias;
+import general.Cliente;
+import general.Fechas;
+import general.Membresia;
+import general.Pagos;
+import javax.swing.table.DefaultTableModel;
+
+
+
+
 
 
 public class Form_pagos extends javax.swing.JFrame {
+    
+    //Hacemos las conexion 
+    public Conexion cn = new Conexion();//instanciamos nuestra clase conexion
+    public Connection conexion = cn.getConexion();
+    private  ResultSet rs;
+    private PreparedStatement ps;
+    private String sql;
+    
+    Cliente cliente = new Cliente();
+    Fechas fecha = new Fechas();
+    Membresia membresia = new Membresia();
+    Pagos pagos = new Pagos();
+    
+     private String day,month,year;
+      private String fecha_fin;
+      String fecha_inicio2;
 
-  
+    
+    
+ /*_____________________________________________________________________________
+     
+    $Metodo contructor del la clase
+ _______________________________________________________________________________*/
+    
     public Form_pagos() {
         initComponents();
-    }
+        setLocationRelativeTo(null);
+        
+        //para limitar ingreso de caracteres en la cajas      
+         txt_buscar_cedula.setDocument(new Validar(txt_buscar_cedula,10));
+         txt_cedula.setDocument(new Validar(txt_cedula,10));
+         
+         //para poner los campos de tesxto editables
+          txt_costo.setEditable(false);
+          txt_costo.setEditable(false);
+          txt_prox_pago.setEditable(false);
 
+         
+          cargarTabla();
+          cargarMembresias();  
+          cargarCombo();
+          
+          //para ocultar caja yl el label de los dias para para la membresia especial
+        lbl_dias.setVisible(false);
+        txt_dias.setVisible(false);
+    
+    
+    
+     
+        
+ }//fin del metodo
+  
+   
+    
+    
+    
+ /*_________________________________________________________________________
+    
+    Metodo para cargar combo de años
+ __________________________________________________________________________*/  
+    
+    public void cargarCombo(){
+        
+        fecha.setYear();
+        int year = fecha.getYear()+ 1;
+        
+        for(int i= 0;i<80;i++){        
+          cbo_year.addItem(year = year - 1);
+          
+         }     
+    }   
+ 
+    
+  /*-----------------------------------------------------------------------------------
+      metodo cargar fecha de proximo pago 
+ -------------------------------------------------------------------------------------*/ 
+ public  void cargarProxPago(){
+     
+      day = this.cbo_day.getSelectedItem().toString();
+      month = String.valueOf(this.cbo_month1.getSelectedIndex() + 1);
+      int year = Integer.parseInt(this.cbo_year.getSelectedItem().toString());
+      int month2 = Integer.parseInt(month);
+      String membresia = cbo_membresia.getSelectedItem().toString();
+      
+      if(cbo_membresia.getSelectedIndex() > 0){
+            //para pago anual
+          if(membresia.equals("Anual")){
+              
+             year = Integer.parseInt(this.cbo_year.getSelectedItem().toString()) + 1;
+             this.txt_prox_pago.setText(day +"/"+ month+ "/"+ year);
+             fecha_fin=year +"-"+ month2+ "-"+ day;
+            
+             
+            //para pago semestral
+         }else if(membresia.equals("Semestral")){
+              
+              for(int i=0;i<6;i++){
+                   month2 = month2 + 1;
+                  
+                  if(month2 > 12){
+                      month2 = 1 + 1;
+                      year = Integer.parseInt(this.cbo_year.getSelectedItem().toString()) + 1;
+                  }
+              }
+               fecha_fin=year +"-"+ month2+ "-"+ day;
+               this.txt_prox_pago.setText(day +"/"+ month2+ "/"+ year);
+               
+               
+             //para pago   mensual
+          }else if(membresia.equals("Mensual")){
+                                       
+                  if(month2 == 12){
+                      month2 = 1;
+                       year = Integer.parseInt(this.cbo_year.getSelectedItem().toString()) + 1;
+                       
+                      fecha_fin=year +"-"+ month2+ "-"+ day;
+                      this.txt_prox_pago.setText(day +"/"+ month2+ "/"+ year);
+                                           
+                  }else{
+                         this.txt_prox_pago.setText(day +"/"+ (month2 +1 )+ "/"+ year);
+                         fecha_fin=year +"-"+ (month2 + 1) + "-"+ day;
+                 }
+              //para pago diario
+          }else if(membresia.equals("Diario")){
+                fecha_fin=year +"-"+ month+ "-"+ day;
+               this.txt_prox_pago.setText(day+"/"+month+"/"+year);
+          }
+          else if(membresia.equals("Especial") && !txt_dias.getText().equals("")){
+                    
+                     this.txt_dias.requestFocus();
+               }       
+       
+      }
+      
+      
+    
+ }
+     
+    
+    
+    
+    
+ /*-----------------------------------------------------------------------------------
+      metodo para cargar mmebresias
+ -------------------------------------------------------------------------------------*/ 
+ public void cargarMembresias(){
+        try{
+            sql = "select tipo , costo from tipo";
+            
+            ps = conexion.prepareStatement(sql);
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+                cbo_membresia.addItem( rs.getString("tipo")) ;
+              
+                            
+            }
+            
+        }catch(Exception ex){
+             JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+        }  
+ }
+ 
+    
+    
+            
+            
+  
+     
+  /*_____________________________________________________________________________
+     
+    $cargar tablas de pago
+ _______________________________________________________________________________*/   
+     
+     
+     public void cargarTabla(){
+		
+	//vector para agreagar a las columnas titulos
+	String titulos[] = {"Id Pago","Cedula","Nombre","Apellido","Tipo","Costo Unitario","total","Fecha pago","Vence"};
+	//vector para guaradar los registros que se recupen de la base de datos
+	String[] registros = new String[9];//cantidad de las columnas de la tabla
+	//asignamos al model el vector de titulos poder insertar en la tabla los registros
+	DefaultTableModel modelo = new DefaultTableModel(null,titulos);
+	//la conexion a la base
+	
+	//mandamos la sentencia sql
+	sql = "select * from vista_pagos";
+			
+	//creamos stament
+       
+	try{
+             ps = conexion.prepareStatement(sql);
+            rs = ps.executeQuery(sql);
+            //bucle para ir cargando lo datos en el resulset
+		while(rs.next()){
+			registros[0] = rs.getString(1);//mismos campos de la base
+			registros[1] = rs.getString(2);//mismos campos de la base
+			registros[2] = rs.getString(3);//mismos campos de la base
+                        registros[3] = rs.getString(4);//mismos campos de la base
+                        registros[4] = rs.getString(5);//mismos campos de la base
+                        registros[5] = rs.getString(6);//mismos campos de la base
+                        registros[6] = rs.getString(7);//mismos campos de la base
+                        registros[7] = rs.getString(8);//mismos campos de la base
+                        registros[8] = rs.getString(9);//mismos campos de la base
+                        
+
+			modelo.addRow(registros);//cargamos los datos al model
+		}
+		
+		tabla_pagos.setModel(modelo);//cargamos los datos dfel modelo a la tabla
+                
+		
+	}catch(SQLException ex){
+		JOptionPane.showMessageDialog(null,ex.getMessage());		
+		
+	}
+
+}
+    
+    
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -22,29 +251,31 @@ public class Form_pagos extends javax.swing.JFrame {
         jLabel58 = new javax.swing.JLabel();
         jLabel57 = new javax.swing.JLabel();
         txt_costo = new javax.swing.JTextField();
-        cbo_dias_nuevo = new javax.swing.JComboBox();
+        cbo_day = new javax.swing.JComboBox();
         jLabel59 = new javax.swing.JLabel();
-        cbo_meses_nuevo = new javax.swing.JComboBox();
-        cbo_anios_nuevo = new javax.swing.JComboBox();
+        cbo_month = new javax.swing.JComboBox();
+        cbo_year = new javax.swing.JComboBox();
         jLabel60 = new javax.swing.JLabel();
-        btn_guardar_pago = new javax.swing.JButton();
-        btn_cancelar_pago = new javax.swing.JButton();
+        btn_guardar = new javax.swing.JButton();
+        btn_cancelar = new javax.swing.JButton();
         jLabel61 = new javax.swing.JLabel();
-        txt_cedula_nuevo = new javax.swing.JTextField();
-        btn_nuevo_pago = new javax.swing.JButton();
+        txt_prox_pago = new javax.swing.JTextField();
+        btn_nuevo = new javax.swing.JButton();
         jLabel62 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        cbo_dias_nuevo1 = new javax.swing.JComboBox();
-        cbo_meses_nuevo1 = new javax.swing.JComboBox();
-        cbo_anios_nuevo1 = new javax.swing.JComboBox();
+        tabla_pagos = new javax.swing.JTable();
         btn_cancelar1 = new javax.swing.JButton();
+        txt_cedula = new javax.swing.JTextField();
+        txt_dias = new javax.swing.JTextField();
+        lbl_dias = new javax.swing.JLabel();
+        txt_total_pagar = new javax.swing.JTextField();
+        jLabel72 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        txt_cedula = new javax.swing.JTextField();
+        txt_buscar_cedula = new javax.swing.JTextField();
         btn_buscar = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
         btn_editar = new javax.swing.JButton();
@@ -56,18 +287,18 @@ public class Form_pagos extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        cbo_dias = new javax.swing.JComboBox();
-        cbo_meses = new javax.swing.JComboBox();
-        cbo_años = new javax.swing.JComboBox();
+        cbo_day1 = new javax.swing.JComboBox();
+        cbo_month1 = new javax.swing.JComboBox();
+        cbo_year1 = new javax.swing.JComboBox();
         txt_dir = new javax.swing.JTextField();
         txt_apellildos = new javax.swing.JTextField();
         txt_nombres = new javax.swing.JTextField();
         txt_result_cedula = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel23 = new javax.swing.JLabel();
-        cbo_dias2 = new javax.swing.JComboBox();
-        cbo_meses2 = new javax.swing.JComboBox();
-        cbo_años2 = new javax.swing.JComboBox();
+        cbo_day2 = new javax.swing.JComboBox();
+        cbo_month2 = new javax.swing.JComboBox();
+        cbo_year2 = new javax.swing.JComboBox();
         jSeparator5 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -79,154 +310,152 @@ public class Form_pagos extends javax.swing.JFrame {
         jScrollPane1.setBorder(null);
 
         jPanel1.setBackground(new java.awt.Color(250, 250, 250));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel56.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         jLabel56.setForeground(new java.awt.Color(110, 110, 110));
         jLabel56.setText("Últimos pagos");
+        jPanel1.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 640, -1, -1));
 
         jSeparator2.setBackground(new java.awt.Color(51, 204, 255));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 690, 650, 10));
 
         cbo_membresia.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         cbo_membresia.setForeground(new java.awt.Color(110, 110, 110));
         cbo_membresia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Elije membresia" }));
         cbo_membresia.setToolTipText("");
-        cbo_membresia.setBorder(null);
         cbo_membresia.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         cbo_membresia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbo_membresiaActionPerformed(evt);
             }
         });
+        jPanel1.add(cbo_membresia, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, 160, 43));
 
         jLabel58.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel58.setForeground(new java.awt.Color(110, 110, 110));
         jLabel58.setText("Membresia:");
+        jPanel1.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 100, -1));
 
         jLabel57.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel57.setForeground(new java.awt.Color(110, 110, 110));
         jLabel57.setText("Costo:");
+        jPanel1.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, -1, -1));
 
         txt_costo.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         txt_costo.setForeground(new java.awt.Color(110, 110, 110));
         txt_costo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
+        jPanel1.add(txt_costo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 350, 39));
 
-        cbo_dias_nuevo.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        cbo_dias_nuevo.setForeground(new java.awt.Color(110, 110, 110));
-        cbo_dias_nuevo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-        cbo_dias_nuevo.setToolTipText("");
-        cbo_dias_nuevo.setBorder(null);
-        cbo_dias_nuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cbo_day.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cbo_day.setForeground(new java.awt.Color(110, 110, 110));
+        cbo_day.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        cbo_day.setToolTipText("");
+        cbo_day.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(cbo_day, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 320, 70, 33));
 
         jLabel59.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel59.setForeground(new java.awt.Color(110, 110, 110));
         jLabel59.setText("Fecha pago:");
+        jPanel1.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 324, -1, -1));
 
-        cbo_meses_nuevo.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        cbo_meses_nuevo.setForeground(new java.awt.Color(110, 110, 110));
-        cbo_meses_nuevo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
-        cbo_meses_nuevo.setToolTipText("");
-        cbo_meses_nuevo.setBorder(null);
-        cbo_meses_nuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        cbo_meses_nuevo.addActionListener(new java.awt.event.ActionListener() {
+        cbo_month.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cbo_month.setForeground(new java.awt.Color(110, 110, 110));
+        cbo_month.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+        cbo_month.setToolTipText("");
+        cbo_month.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        cbo_month.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbo_meses_nuevoActionPerformed(evt);
+                cbo_monthActionPerformed(evt);
             }
         });
+        jPanel1.add(cbo_month, new org.netbeans.lib.awtextra.AbsoluteConstraints(458, 320, -1, 33));
 
-        cbo_anios_nuevo.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        cbo_anios_nuevo.setForeground(new java.awt.Color(110, 110, 110));
-        cbo_anios_nuevo.setToolTipText("");
-        cbo_anios_nuevo.setBorder(null);
-        cbo_anios_nuevo.addActionListener(new java.awt.event.ActionListener() {
+        cbo_year.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cbo_year.setForeground(new java.awt.Color(110, 110, 110));
+        cbo_year.setToolTipText("");
+        cbo_year.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbo_anios_nuevoActionPerformed(evt);
+                cbo_yearActionPerformed(evt);
             }
         });
+        jPanel1.add(cbo_year, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 320, 80, 33));
 
         jLabel60.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel60.setForeground(new java.awt.Color(110, 110, 110));
         jLabel60.setText("Proximo pago:");
+        jPanel1.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 377, 160, 30));
 
-        btn_guardar_pago.setBackground(new java.awt.Color(0, 153, 204));
-        btn_guardar_pago.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        btn_guardar_pago.setForeground(new java.awt.Color(255, 255, 255));
-        btn_guardar_pago.setText("Guardar");
-        btn_guardar_pago.setBorder(null);
-        btn_guardar_pago.setBorderPainted(false);
-        btn_guardar_pago.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_guardar_pago.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_guardar.setBackground(new java.awt.Color(0, 153, 204));
+        btn_guardar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        btn_guardar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_guardar.setText("Guardar");
+        btn_guardar.setBorder(null);
+        btn_guardar.setBorderPainted(false);
+        btn_guardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_guardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guardarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 530, 100, 40));
 
-        btn_cancelar_pago.setBackground(new java.awt.Color(0, 153, 204));
-        btn_cancelar_pago.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        btn_cancelar_pago.setForeground(new java.awt.Color(255, 255, 255));
-        btn_cancelar_pago.setText("Cancelar");
-        btn_cancelar_pago.setBorder(null);
-        btn_cancelar_pago.setBorderPainted(false);
-        btn_cancelar_pago.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_cancelar.setBackground(new java.awt.Color(0, 153, 204));
+        btn_cancelar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        btn_cancelar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_cancelar.setText("Cancelar");
+        btn_cancelar.setBorder(null);
+        btn_cancelar.setBorderPainted(false);
+        btn_cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(btn_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 530, 100, 40));
 
         jLabel61.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel61.setForeground(new java.awt.Color(110, 110, 110));
         jLabel61.setText("Cédula:");
+        jPanel1.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, -1, -1));
 
-        txt_cedula_nuevo.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        txt_cedula_nuevo.setForeground(new java.awt.Color(110, 110, 110));
-        txt_cedula_nuevo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
+        txt_prox_pago.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        txt_prox_pago.setForeground(new java.awt.Color(110, 110, 110));
+        txt_prox_pago.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
+        jPanel1.add(txt_prox_pago, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 370, 350, 39));
 
-        btn_nuevo_pago.setBackground(new java.awt.Color(0, 153, 204));
-        btn_nuevo_pago.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        btn_nuevo_pago.setForeground(new java.awt.Color(255, 255, 255));
-        btn_nuevo_pago.setText("Nuevo");
-        btn_nuevo_pago.setBorder(null);
-        btn_nuevo_pago.setBorderPainted(false);
-        btn_nuevo_pago.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_nuevo.setBackground(new java.awt.Color(0, 153, 204));
+        btn_nuevo.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        btn_nuevo.setForeground(new java.awt.Color(255, 255, 255));
+        btn_nuevo.setText("Nuevo");
+        btn_nuevo.setBorder(null);
+        btn_nuevo.setBorderPainted(false);
+        btn_nuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_nuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_nuevoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 530, 100, 40));
 
         jLabel62.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         jLabel62.setForeground(new java.awt.Color(110, 110, 110));
         jLabel62.setText("Pagos");
+        jPanel1.add(jLabel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, -1, -1));
 
         jSeparator3.setBackground(new java.awt.Color(51, 204, 255));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(206, 90, 480, 10));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabla_pagos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tabla_pagos);
 
-        cbo_dias_nuevo1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        cbo_dias_nuevo1.setForeground(new java.awt.Color(110, 110, 110));
-        cbo_dias_nuevo1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-        cbo_dias_nuevo1.setToolTipText("");
-        cbo_dias_nuevo1.setBorder(null);
-        cbo_dias_nuevo1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        cbo_meses_nuevo1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        cbo_meses_nuevo1.setForeground(new java.awt.Color(110, 110, 110));
-        cbo_meses_nuevo1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
-        cbo_meses_nuevo1.setToolTipText("");
-        cbo_meses_nuevo1.setBorder(null);
-        cbo_meses_nuevo1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        cbo_meses_nuevo1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbo_meses_nuevo1ActionPerformed(evt);
-            }
-        });
-
-        cbo_anios_nuevo1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        cbo_anios_nuevo1.setForeground(new java.awt.Color(110, 110, 110));
-        cbo_anios_nuevo1.setToolTipText("");
-        cbo_anios_nuevo1.setBorder(null);
-        cbo_anios_nuevo1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbo_anios_nuevo1ActionPerformed(evt);
-            }
-        });
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 730, 750, 200));
 
         btn_cancelar1.setBackground(new java.awt.Color(250, 250, 250));
         btn_cancelar1.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -247,130 +476,53 @@ public class Form_pagos extends javax.swing.JFrame {
                 btn_cancelar1ActionPerformed(evt);
             }
         });
+        jPanel1.add(btn_cancelar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 23, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(200, 200, 200)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(497, 497, 497))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel59)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(200, 200, 200)
-                        .addComponent(jLabel61)
-                        .addGap(67, 67, 67)
-                        .addComponent(txt_cedula_nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(200, 200, 200)
-                        .addComponent(jLabel58, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(cbo_membresia, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(290, 290, 290)
-                        .addComponent(btn_guardar_pago, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(btn_nuevo_pago, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(btn_cancelar_pago, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(330, 330, 330)
-                        .addComponent(jLabel56))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(200, 200, 200)
-                        .addComponent(jLabel57)
-                        .addGap(76, 76, 76)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_costo, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(cbo_dias_nuevo1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbo_dias_nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(58, 58, 58)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cbo_meses_nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbo_meses_nuevo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cbo_anios_nuevo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbo_anios_nuevo1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(btn_cancelar1)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(333, 333, 333)
-                                .addComponent(jLabel62))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(119, 119, 119)
-                                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel62)
-                        .addGap(20, 20, 20)
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btn_cancelar1))
-                .addGap(40, 40, 40)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel61))
-                    .addComponent(txt_cedula_nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel58))
-                    .addComponent(cbo_membresia, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel57))
-                    .addComponent(txt_costo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbo_dias_nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel59)
-                    .addComponent(cbo_meses_nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbo_anios_nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbo_dias_nuevo1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbo_meses_nuevo1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbo_anios_nuevo1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_guardar_pago, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_nuevo_pago, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_cancelar_pago, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60)
-                .addComponent(jLabel56)
-                .addGap(20, 20, 20)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        txt_cedula.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        txt_cedula.setForeground(new java.awt.Color(110, 110, 110));
+        txt_cedula.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
+        txt_cedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_cedulaActionPerformed(evt);
+            }
+        });
+        txt_cedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_cedulaKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txt_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 350, 39));
+
+        txt_dias.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        txt_dias.setForeground(new java.awt.Color(110, 110, 110));
+        txt_dias.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
+        txt_dias.setDisabledTextColor(new java.awt.Color(0, 204, 255));
+        txt_dias.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_diasKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_diasKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txt_dias, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 200, 120, 40));
+
+        lbl_dias.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        lbl_dias.setForeground(new java.awt.Color(110, 110, 110));
+        lbl_dias.setText("Días:");
+        jPanel1.add(lbl_dias, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 200, -1, 40));
+
+        txt_total_pagar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        txt_total_pagar.setForeground(new java.awt.Color(110, 110, 110));
+        txt_total_pagar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
+        txt_total_pagar.setDisabledTextColor(new java.awt.Color(110, 110, 110));
+        txt_total_pagar.setEnabled(false);
+        jPanel1.add(txt_total_pagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, 350, 39));
+
+        jLabel72.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel72.setForeground(new java.awt.Color(110, 110, 110));
+        jLabel72.setText("Total a pagar:");
+        jPanel1.add(jLabel72, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 450, 160, 30));
 
         jScrollPane1.setViewportView(jPanel1);
 
@@ -389,10 +541,15 @@ public class Form_pagos extends javax.swing.JFrame {
         jLabel13.setText("Cédula:");
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 139, -1, -1));
 
-        txt_cedula.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        txt_cedula.setForeground(new java.awt.Color(110, 110, 110));
-        txt_cedula.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
-        jPanel2.add(txt_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 129, 242, 39));
+        txt_buscar_cedula.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        txt_buscar_cedula.setForeground(new java.awt.Color(110, 110, 110));
+        txt_buscar_cedula.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
+        txt_buscar_cedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_buscar_cedulaKeyTyped(evt);
+            }
+        });
+        jPanel2.add(txt_buscar_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 129, 242, 39));
 
         btn_buscar.setBackground(new java.awt.Color(0, 153, 204));
         btn_buscar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -474,37 +631,34 @@ public class Form_pagos extends javax.swing.JFrame {
         jLabel22.setText("Fecha pago:");
         jPanel2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 650, -1, -1));
 
-        cbo_dias.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        cbo_dias.setForeground(new java.awt.Color(110, 110, 110));
-        cbo_dias.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-        cbo_dias.setToolTipText("");
-        cbo_dias.setBorder(null);
-        cbo_dias.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(cbo_dias, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 640, 80, 33));
+        cbo_day1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cbo_day1.setForeground(new java.awt.Color(110, 110, 110));
+        cbo_day1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        cbo_day1.setToolTipText("");
+        cbo_day1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel2.add(cbo_day1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 640, 80, 33));
 
-        cbo_meses.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        cbo_meses.setForeground(new java.awt.Color(110, 110, 110));
-        cbo_meses.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
-        cbo_meses.setToolTipText("");
-        cbo_meses.setBorder(null);
-        cbo_meses.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        cbo_meses.addActionListener(new java.awt.event.ActionListener() {
+        cbo_month1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cbo_month1.setForeground(new java.awt.Color(110, 110, 110));
+        cbo_month1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+        cbo_month1.setToolTipText("");
+        cbo_month1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        cbo_month1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbo_mesesActionPerformed(evt);
+                cbo_month1ActionPerformed(evt);
             }
         });
-        jPanel2.add(cbo_meses, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 640, 140, 33));
+        jPanel2.add(cbo_month1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 640, 140, 33));
 
-        cbo_años.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        cbo_años.setForeground(new java.awt.Color(110, 110, 110));
-        cbo_años.setToolTipText("");
-        cbo_años.setBorder(null);
-        cbo_años.addActionListener(new java.awt.event.ActionListener() {
+        cbo_year1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cbo_year1.setForeground(new java.awt.Color(110, 110, 110));
+        cbo_year1.setToolTipText("");
+        cbo_year1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbo_añosActionPerformed(evt);
+                cbo_year1ActionPerformed(evt);
             }
         });
-        jPanel2.add(cbo_años, new org.netbeans.lib.awtextra.AbsoluteConstraints(616, 640, 110, 33));
+        jPanel2.add(cbo_year1, new org.netbeans.lib.awtextra.AbsoluteConstraints(616, 640, 110, 33));
 
         txt_dir.setBackground(new java.awt.Color(197, 230, 197));
         txt_dir.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -538,37 +692,34 @@ public class Form_pagos extends javax.swing.JFrame {
         jLabel23.setText("Fecha prox pago:");
         jPanel2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 710, -1, -1));
 
-        cbo_dias2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        cbo_dias2.setForeground(new java.awt.Color(110, 110, 110));
-        cbo_dias2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-        cbo_dias2.setToolTipText("");
-        cbo_dias2.setBorder(null);
-        cbo_dias2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(cbo_dias2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 700, 80, 33));
+        cbo_day2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cbo_day2.setForeground(new java.awt.Color(110, 110, 110));
+        cbo_day2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        cbo_day2.setToolTipText("");
+        cbo_day2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel2.add(cbo_day2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 700, 80, 33));
 
-        cbo_meses2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        cbo_meses2.setForeground(new java.awt.Color(110, 110, 110));
-        cbo_meses2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
-        cbo_meses2.setToolTipText("");
-        cbo_meses2.setBorder(null);
-        cbo_meses2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        cbo_meses2.addActionListener(new java.awt.event.ActionListener() {
+        cbo_month2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cbo_month2.setForeground(new java.awt.Color(110, 110, 110));
+        cbo_month2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+        cbo_month2.setToolTipText("");
+        cbo_month2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        cbo_month2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbo_meses2ActionPerformed(evt);
+                cbo_month2ActionPerformed(evt);
             }
         });
-        jPanel2.add(cbo_meses2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 700, 140, 33));
+        jPanel2.add(cbo_month2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 700, 140, 33));
 
-        cbo_años2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        cbo_años2.setForeground(new java.awt.Color(110, 110, 110));
-        cbo_años2.setToolTipText("");
-        cbo_años2.setBorder(null);
-        cbo_años2.addActionListener(new java.awt.event.ActionListener() {
+        cbo_year2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cbo_year2.setForeground(new java.awt.Color(110, 110, 110));
+        cbo_year2.setToolTipText("");
+        cbo_year2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbo_años2ActionPerformed(evt);
+                cbo_year2ActionPerformed(evt);
             }
         });
-        jPanel2.add(cbo_años2, new org.netbeans.lib.awtextra.AbsoluteConstraints(616, 700, 110, 33));
+        jPanel2.add(cbo_year2, new org.netbeans.lib.awtextra.AbsoluteConstraints(616, 700, 110, 33));
 
         jSeparator5.setBackground(new java.awt.Color(51, 204, 255));
         jPanel2.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 98, 589, 11));
@@ -582,45 +733,85 @@ public class Form_pagos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
+    
+    
+    
     private void cbo_membresiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_membresiaActionPerformed
-        // TODO add your handling code here:
+        if(cbo_membresia.getSelectedIndex() > 0){
+            
+            try{
+                sql = "select costo from tipo where tipo = '"+cbo_membresia.getSelectedItem().toString()+"'";
+                                
+                ps = conexion.prepareStatement(sql);
+                rs = ps.executeQuery();
+                  if(rs.next()){
+                        txt_costo.setText(String.valueOf(rs.getFloat("costo")));
+                        txt_total_pagar.setText(String.valueOf(rs.getFloat("costo")));
+                        
+                        if(cbo_membresia.getSelectedItem().toString().equals("Especial")){
+                           lbl_dias.setVisible(true);
+                           txt_dias.setVisible(true);
+                           txt_total_pagar.setText("");
+                           txt_prox_pago.setText("");
+                           txt_dias.setText("");
+                           txt_dias.requestFocus();
+                           
+                        }else{
+                           lbl_dias.setVisible(false);
+                           txt_dias.setVisible(false);
+                        }
+                       cargarProxPago(); 
+                    }
+              
+               }catch(Exception ex){
+                   JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+               }  
+            //JOptionPane.showMessageDialog(rootPane, "elegiste la membresia "  + cbo_membresia.getSelectedItem().toString());        // TODO add your handling code here:        
+        }else{
+            txt_dias.setText("");
+            txt_costo.setText("");
+            txt_prox_pago.setText("");
+            txt_total_pagar.setText("");
+            lbl_dias.setVisible(false);
+        txt_dias.setVisible(false);
+        
+        } 
     }//GEN-LAST:event_cbo_membresiaActionPerformed
 
-    private void cbo_meses_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_meses_nuevoActionPerformed
+    
+    
+    
+    
+    
+    private void cbo_monthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_monthActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbo_meses_nuevoActionPerformed
+    }//GEN-LAST:event_cbo_monthActionPerformed
 
-    private void cbo_anios_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_anios_nuevoActionPerformed
+    private void cbo_yearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_yearActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbo_anios_nuevoActionPerformed
+    }//GEN-LAST:event_cbo_yearActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
-    private void cbo_mesesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_mesesActionPerformed
+    private void cbo_month1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_month1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbo_mesesActionPerformed
+    }//GEN-LAST:event_cbo_month1ActionPerformed
 
-    private void cbo_añosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_añosActionPerformed
+    private void cbo_year1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_year1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbo_añosActionPerformed
+    }//GEN-LAST:event_cbo_year1ActionPerformed
 
-    private void cbo_meses2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_meses2ActionPerformed
+    private void cbo_month2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_month2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbo_meses2ActionPerformed
+    }//GEN-LAST:event_cbo_month2ActionPerformed
 
-    private void cbo_años2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_años2ActionPerformed
+    private void cbo_year2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_year2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbo_años2ActionPerformed
-
-    private void cbo_meses_nuevo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_meses_nuevo1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbo_meses_nuevo1ActionPerformed
-
-    private void cbo_anios_nuevo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_anios_nuevo1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbo_anios_nuevo1ActionPerformed
+    }//GEN-LAST:event_cbo_year2ActionPerformed
 
     
     
@@ -633,33 +824,197 @@ public class Form_pagos extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btn_cancelar1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Form_pagos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Form_pagos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Form_pagos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Form_pagos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void txt_cedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cedulaActionPerformed
+            Validar.soloNumeros(evt);
+    }//GEN-LAST:event_txt_cedulaActionPerformed
+
+    private void txt_cedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cedulaKeyTyped
+        Validar.soloNumeros(evt);
+    }//GEN-LAST:event_txt_cedulaKeyTyped
+
+    private void txt_buscar_cedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buscar_cedulaKeyTyped
+            Validar.soloNumeros(evt);
+    }//GEN-LAST:event_txt_buscar_cedulaKeyTyped
+
+    private void txt_diasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_diasKeyReleased
+        if(!txt_dias.getText().equals("") && Integer.parseInt(txt_dias.getText()) > 0){
+
+            float total;
+            total =  Float.parseFloat(txt_costo.getText()) * Float.parseFloat(txt_dias.getText());
+            this.txt_prox_pago.setText("Hasta agotar los " + txt_dias.getText() + " contratados");
+            this.txt_total_pagar.setText(String.valueOf(total ));
+
         }
-        //</editor-fold>
-        //</editor-fold>
+        else{
+            this.txt_total_pagar.setText("");
+            this.txt_prox_pago.setText("");
+        }
+    }//GEN-LAST:event_txt_diasKeyReleased
+
+    private void txt_diasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_diasKeyTyped
+
+        Validar.soloNumeros(evt);
+
+        //JOptionPane.showMessageDialog(rootPane, "Datos ingresados conexito");
+
+    }//GEN-LAST:event_txt_diasKeyTyped
+
+    private void btn_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nuevoActionPerformed
+      cbo_membresia.setSelectedIndex(0);
+        txt_costo.setText("");
+        txt_prox_pago.setText("");
+        lbl_dias.setVisible(false);
+        txt_dias.setVisible(false);
+    }//GEN-LAST:event_btn_nuevoActionPerformed
+
+    
+    
+    
+    
+    
+    private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
+            
+    
+          if(txt_costo.getText().length() >  0 && txt_prox_pago.getText().length() > 0 
+                  && txt_total_pagar.getText().length() > 0 && txt_cedula.getText().length()>0){
+              
+              if(Validar.VerificarCedula(txt_cedula.getText())){
+                  
+                   String fecha_inicio = cbo_year.getSelectedItem().toString() +"-"+ String.valueOf(this.cbo_month.getSelectedIndex() + 1) + "-"+cbo_day.getSelectedItem().toString();
+                   String mem = cbo_membresia.getSelectedItem().toString(); 
+                   
+                  try{
+                      
+    
+                      
+                      sql = "select * from clientes where cedula = "+txt_cedula.getText()+"";
+                      ps =  conexion.prepareStatement(sql);
+                      rs = ps.executeQuery();
+                      //hacemos esto para obtener el id de mebresia del cliente para ingresarlo en pagos
+                      if(rs.next()){
+                          
+                           
+                            
+                          
+                          sql = "select id_tipo from tipo where tipo = '"+mem+"'";
+                 
+                 
+                            ps = conexion.prepareStatement(sql);
+                            rs = ps.executeQuery(sql);
+                           if(rs.next()){
+                               membresia.setIdTipoMembresia(rs.getInt("id_tipo"));
+                           }
+                           
+                           if(!mem.equals("Especial")){
+/*________________________________________________________________________________________________________________________*/
+                               
+                                membresia.setFechaInicio(fecha_inicio);
+                                membresia.setFechaFin(fecha_fin);
+                                membresia.setAsistencias(0);
+                                membresia.setDiasTotal(0);
+                                membresia.setMembresia(Integer.parseInt(txt_cedula.getText()));
+                                                                       
+                               
+                                sql="select max(id_membresia) from membresia where cedula = "+txt_cedula.getText()+"";
+                                ps =  conexion.prepareStatement(sql);
+                                rs = ps.executeQuery();
+                           
+                                    if(rs.next()){
+
+                                       pagos.setIdMembresia(rs.getInt(1));
+                                       pagos.setCosto(Float.parseFloat(txt_costo.getText()));
+                                       pagos.setTotal(Float.parseFloat(txt_total_pagar.getText()));
+
+                                       //llamamos a los metodos de insertar
+                                       
+                                       pagos.setPago(Integer.parseInt(txt_cedula.getText()));
+                                        cargarTabla();
+
+                                        JOptionPane.showMessageDialog(rootPane,"id:"+membresia.getIdTipoMembresia()+ " costo: " + pagos.getCosto()
+                                                +" total:" + pagos.getTotal() + " fechaini:" + membresia.getFechaInicio()+ " fechaend: " + membresia.getFechaFin() );
+
+                                    }else{
+                                        JOptionPane.showMessageDialog(rootPane,"aqui se queda");
+                                    
+                                    }
+  
+/*____________________________________________________________________________________________________________________________*/                               
+
+                           }else{
+/*______________________________________________________________________________________________________________________________*/
+                               
+                                membresia.setFechaInicio(fecha_inicio);
+                                membresia.setFechaFin(fecha_fin);
+                                membresia.setAsistencias(0);
+                                membresia.setDiasTotal(0);
+                                membresia.setMembresia(Integer.parseInt(txt_cedula.getText()));
+                               
+                               
+                                sql="select max(id_membresia) from membresia where cedula = "+txt_cedula.getText()+"";
+                                ps =  conexion.prepareStatement(sql);
+                                rs = ps.executeQuery();
+                           
+                                    if(rs.next()){
+
+
+                                       pagos.setIdMembresia(rs.getInt(1));
+                                       pagos.setCosto(Float.parseFloat(txt_costo.getText()));
+                                       pagos.setTotal(Float.parseFloat(txt_total_pagar.getText()));
+
+                                       //llamamos a los metodos de insertar
+                                       membresia.setMembresia(Integer.parseInt(txt_cedula.getText()));
+                                       pagos.setPago(Integer.parseInt(txt_cedula.getText()));
+                                       cargarTabla();
+
+                                        JOptionPane.showMessageDialog(rootPane,"id:"+membresia.getIdTipoMembresia()+ " costo: " + pagos.getCosto()
+                                                +" total:" + pagos.getTotal() + " fechaini:" + membresia.getFechaInicio()+ " fechaend: " + membresia.getFechaFin() );
+
+                                    }else{
+                                        JOptionPane.showMessageDialog(rootPane,"aqui se queda con membresia especial");
+                                    
+                                    }
+  
+/*_____________________________________________________________________________________________________________________________________*/    
+                           
+                           }
+
+              
+                      }else{
+                      
+                       JOptionPane.showMessageDialog(rootPane,"El cliente no existe");
+                       txt_cedula.setText("");
+                       txt_cedula.requestFocus();
+                      }
+                      
+
+                    }catch(Exception ex){
+                       JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+                    }  
+      
+              }else{
+                  JOptionPane.showMessageDialog(rootPane, "Cedula incorrecta ");
+                  txt_cedula.setText("");
+                  txt_cedula.requestFocus();
+              }
+              
+          
+          }else{
+               
+              JOptionPane.showMessageDialog(rootPane, "Llena todos los datos");
+              txt_cedula.requestFocus();
+          }
+      
+
+    }//GEN-LAST:event_btn_guardarActionPerformed
+
+
+    
+    
+    
+    
+    
+    public static void main(String args[]) {
+      
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -672,25 +1027,22 @@ public class Form_pagos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_actualizar;
     private javax.swing.JButton btn_buscar;
+    private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_cancelar1;
-    private javax.swing.JButton btn_cancelar_pago;
     private javax.swing.JButton btn_editar;
     private javax.swing.JButton btn_eliminar;
-    private javax.swing.JButton btn_guardar_pago;
-    private javax.swing.JButton btn_nuevo_pago;
-    private javax.swing.JComboBox cbo_anios_nuevo;
-    private javax.swing.JComboBox cbo_anios_nuevo1;
-    private javax.swing.JComboBox cbo_años;
-    private javax.swing.JComboBox cbo_años2;
-    private javax.swing.JComboBox cbo_dias;
-    private javax.swing.JComboBox cbo_dias2;
-    private javax.swing.JComboBox cbo_dias_nuevo;
-    private javax.swing.JComboBox cbo_dias_nuevo1;
+    private javax.swing.JButton btn_guardar;
+    private javax.swing.JButton btn_nuevo;
+    private javax.swing.JComboBox cbo_day;
+    private javax.swing.JComboBox cbo_day1;
+    private javax.swing.JComboBox cbo_day2;
     private javax.swing.JComboBox cbo_membresia;
-    private javax.swing.JComboBox cbo_meses;
-    private javax.swing.JComboBox cbo_meses2;
-    private javax.swing.JComboBox cbo_meses_nuevo;
-    private javax.swing.JComboBox cbo_meses_nuevo1;
+    private javax.swing.JComboBox cbo_month;
+    private javax.swing.JComboBox cbo_month1;
+    private javax.swing.JComboBox cbo_month2;
+    private javax.swing.JComboBox cbo_year;
+    private javax.swing.JComboBox cbo_year1;
+    private javax.swing.JComboBox cbo_year2;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -708,6 +1060,7 @@ public class Form_pagos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel72;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -718,13 +1071,17 @@ public class Form_pagos extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lbl_dias;
+    private javax.swing.JTable tabla_pagos;
     private javax.swing.JTextField txt_apellildos;
+    private javax.swing.JTextField txt_buscar_cedula;
     private javax.swing.JTextField txt_cedula;
-    private javax.swing.JTextField txt_cedula_nuevo;
     private javax.swing.JTextField txt_costo;
+    private javax.swing.JTextField txt_dias;
     private javax.swing.JTextField txt_dir;
     private javax.swing.JTextField txt_nombres;
+    private javax.swing.JTextField txt_prox_pago;
     private javax.swing.JTextField txt_result_cedula;
+    private javax.swing.JTextField txt_total_pagar;
     // End of variables declaration//GEN-END:variables
 }

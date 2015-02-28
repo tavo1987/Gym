@@ -230,7 +230,7 @@ public class Form_clientes extends JFrame {
  
  
    /*-----------------------------------------------------------------------------------
-      metodo para limpiar cajas de texto
+      metodo para cargar mmebresias
  -------------------------------------------------------------------------------------*/ 
  public void cargarMembresias(){
         try{
@@ -413,6 +413,7 @@ public class Form_clientes extends JFrame {
         jSeparator29 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelPrincipal.setBackground(new java.awt.Color(250, 250, 250));
         panelPrincipal.setForeground(new java.awt.Color(110, 110, 110));
@@ -661,14 +662,17 @@ public class Form_clientes extends JFrame {
 
         panel_membresia.setBackground(new java.awt.Color(250, 250, 250));
         panel_membresia.setPreferredSize(new java.awt.Dimension(800, 900));
+        panel_membresia.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel56.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         jLabel56.setForeground(new java.awt.Color(110, 110, 110));
         jLabel56.setText("Datos Personales");
+        panel_membresia.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 50, -1, -1));
 
         lbl_dias.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         lbl_dias.setForeground(new java.awt.Color(110, 110, 110));
         lbl_dias.setText("Días:");
+        panel_membresia.add(lbl_dias, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 170, 50, -1));
 
         cbo_membresia.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         cbo_membresia.setForeground(new java.awt.Color(110, 110, 110));
@@ -680,10 +684,12 @@ public class Form_clientes extends JFrame {
                 cbo_membresiaActionPerformed(evt);
             }
         });
+        panel_membresia.add(cbo_membresia, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 160, 150, 43));
 
         jLabel57.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel57.setForeground(new java.awt.Color(110, 110, 110));
         jLabel57.setText("Costo:");
+        panel_membresia.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 230, -1, -1));
 
         txt_dias.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         txt_dias.setForeground(new java.awt.Color(110, 110, 110));
@@ -697,20 +703,24 @@ public class Form_clientes extends JFrame {
                 txt_diasKeyTyped(evt);
             }
         });
+        panel_membresia.add(txt_dias, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 160, 130, 40));
 
         jLabel59.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel59.setForeground(new java.awt.Color(110, 110, 110));
         jLabel59.setText("Fecha pago:");
+        panel_membresia.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 291, -1, -1));
 
         jLabel60.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel60.setForeground(new java.awt.Color(110, 110, 110));
         jLabel60.setText("Proximo pago:");
+        panel_membresia.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 361, 160, 30));
 
         txt_prox_pago.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         txt_prox_pago.setForeground(new java.awt.Color(110, 110, 110));
         txt_prox_pago.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
         txt_prox_pago.setDisabledTextColor(new java.awt.Color(110, 110, 110));
         txt_prox_pago.setEnabled(false);
+        panel_membresia.add(txt_prox_pago, new org.netbeans.lib.awtextra.AbsoluteConstraints(356, 351, 350, 39));
 
         cbo_days1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         cbo_days1.setForeground(new java.awt.Color(110, 110, 110));
@@ -722,6 +732,7 @@ public class Form_clientes extends JFrame {
                 cbo_days1ActionPerformed(evt);
             }
         });
+        panel_membresia.add(cbo_days1, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 281, 70, 33));
 
         cbo_month1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         cbo_month1.setForeground(new java.awt.Color(110, 110, 110));
@@ -733,6 +744,7 @@ public class Form_clientes extends JFrame {
                 cbo_month1ActionPerformed(evt);
             }
         });
+        panel_membresia.add(cbo_month1, new org.netbeans.lib.awtextra.AbsoluteConstraints(444, 281, -1, 33));
 
         cbo_years1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         cbo_years1.setForeground(new java.awt.Color(110, 110, 110));
@@ -742,6 +754,7 @@ public class Form_clientes extends JFrame {
                 cbo_years1ActionPerformed(evt);
             }
         });
+        panel_membresia.add(cbo_years1, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 281, 73, 33));
 
         btn_siguiente2.setBackground(new java.awt.Color(0, 153, 204));
         btn_siguiente2.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -756,6 +769,7 @@ public class Form_clientes extends JFrame {
                 btn_siguiente2ActionPerformed(evt);
             }
         });
+        panel_membresia.add(btn_siguiente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(578, 510, 100, 40));
 
         btn_atras.setBackground(new java.awt.Color(0, 153, 204));
         btn_atras.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -769,32 +783,39 @@ public class Form_clientes extends JFrame {
                 btn_atrasActionPerformed(evt);
             }
         });
+        panel_membresia.add(btn_atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(261, 510, 100, 40));
 
         jSeparator2.setBackground(new java.awt.Color(51, 204, 255));
+        panel_membresia.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 110, 426, 10));
 
         txt_costo.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         txt_costo.setForeground(new java.awt.Color(110, 110, 110));
         txt_costo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
         txt_costo.setDisabledTextColor(new java.awt.Color(110, 110, 110));
         txt_costo.setEnabled(false);
+        panel_membresia.add(txt_costo, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 220, 150, 39));
 
         jLabel71.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel71.setForeground(new java.awt.Color(110, 110, 110));
         jLabel71.setText("Membresia:");
+        panel_membresia.add(jLabel71, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 170, 100, -1));
 
         jLabel1.setFont(new java.awt.Font("Verdana", 2, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(110, 110, 110));
         jLabel1.setText("Dólares");
+        panel_membresia.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(476, 221, 74, 39));
 
         jLabel72.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel72.setForeground(new java.awt.Color(110, 110, 110));
         jLabel72.setText("Total a pagar:");
+        panel_membresia.add(jLabel72, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 427, 160, 30));
 
         txt_total_pagar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         txt_total_pagar.setForeground(new java.awt.Color(110, 110, 110));
         txt_total_pagar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
         txt_total_pagar.setDisabledTextColor(new java.awt.Color(110, 110, 110));
         txt_total_pagar.setEnabled(false);
+        panel_membresia.add(txt_total_pagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(356, 423, 350, 39));
 
         btn_limpiar42.setBackground(new java.awt.Color(0, 153, 204));
         btn_limpiar42.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -808,117 +829,7 @@ public class Form_clientes extends JFrame {
                 btn_limpiar42ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout panel_membresiaLayout = new javax.swing.GroupLayout(panel_membresia);
-        panel_membresia.setLayout(panel_membresiaLayout);
-        panel_membresiaLayout.setHorizontalGroup(
-            panel_membresiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_membresiaLayout.createSequentialGroup()
-                .addGroup(panel_membresiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_membresiaLayout.createSequentialGroup()
-                        .addGap(314, 314, 314)
-                        .addComponent(jLabel56))
-                    .addGroup(panel_membresiaLayout.createSequentialGroup()
-                        .addGap(224, 224, 224)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panel_membresiaLayout.createSequentialGroup()
-                        .addGap(184, 184, 184)
-                        .addComponent(jLabel59)
-                        .addGap(30, 30, 30)
-                        .addComponent(cbo_days1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60)
-                        .addComponent(cbo_month1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(cbo_years1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panel_membresiaLayout.createSequentialGroup()
-                        .addGap(184, 184, 184)
-                        .addGroup(panel_membresiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panel_membresiaLayout.createSequentialGroup()
-                                .addComponent(jLabel72, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(panel_membresiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_prox_pago, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_total_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(panel_membresiaLayout.createSequentialGroup()
-                        .addGap(184, 184, 184)
-                        .addGroup(panel_membresiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(panel_membresiaLayout.createSequentialGroup()
-                                .addComponent(jLabel57)
-                                .addGap(76, 76, 76)
-                                .addComponent(txt_costo))
-                            .addGroup(panel_membresiaLayout.createSequentialGroup()
-                                .addComponent(jLabel71, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(cbo_membresia, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(panel_membresiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panel_membresiaLayout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addComponent(lbl_dias, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(txt_dias, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panel_membresiaLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(0, 280, Short.MAX_VALUE))
-            .addGroup(panel_membresiaLayout.createSequentialGroup()
-                .addGap(261, 261, 261)
-                .addComponent(btn_atras, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addComponent(btn_limpiar42, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70)
-                .addComponent(btn_siguiente2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        panel_membresiaLayout.setVerticalGroup(
-            panel_membresiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_membresiaLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jLabel56)
-                .addGap(30, 30, 30)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addGroup(panel_membresiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbo_membresia, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_dias, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panel_membresiaLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(panel_membresiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel71)
-                            .addComponent(lbl_dias))))
-                .addGap(17, 17, 17)
-                .addGroup(panel_membresiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_membresiaLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel57))
-                    .addGroup(panel_membresiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txt_costo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(21, 21, 21)
-                .addGroup(panel_membresiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_membresiaLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel59))
-                    .addComponent(cbo_days1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbo_month1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbo_years1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addGroup(panel_membresiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_prox_pago, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panel_membresiaLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(32, 32, 32)
-                .addGroup(panel_membresiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_total_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel72, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
-                .addGroup(panel_membresiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_siguiente2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_limpiar42, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_atras, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(350, 350, 350))
-        );
+        panel_membresia.add(btn_limpiar42, new org.netbeans.lib.awtextra.AbsoluteConstraints(408, 510, 100, 40));
 
         spanel_membresia.setViewportView(panel_membresia);
 
@@ -1455,7 +1366,7 @@ public class Form_clientes extends JFrame {
 
         panelPrincipal.addTab("Datos finales", spanel_finales);
 
-        getContentPane().add(panelPrincipal, java.awt.BorderLayout.CENTER);
+        getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 991, 958));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -2185,9 +2096,7 @@ public class Form_clientes extends JFrame {
     }//GEN-LAST:event_btn_atras_finalActionPerformed
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
-
-        
-        
+    
         if(cliente.SetCliente() && membresia.setMembresia(cliente.getCi())){
            //para traer el id de membresia
                 try{

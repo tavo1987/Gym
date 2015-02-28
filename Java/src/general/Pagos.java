@@ -88,8 +88,10 @@ public class Pagos extends Membresia{
                         int n = ps.executeUpdate();
                         
                         if(n > 0){
+                            JOptionPane.showMessageDialog(null, "Pago insertado cone éxito");
                              return true;   
                         }else{
+                            JOptionPane.showMessageDialog(null, "El pago no se inserto");
                              return false;
                         }
 
