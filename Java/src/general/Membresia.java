@@ -53,7 +53,7 @@ public class Membresia extends Cliente{
   
     
 /*---------------------------------------------------------------------------------------------------------------------------------------
-        Metodos getter de memebresia
+        Metodos getter de membresia
  ------------------------------------------------------------------------------------------------------------------------------------------*/
   public int getIdTipoMembresia(){
        return id_tipo_membresia;

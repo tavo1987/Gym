@@ -45,13 +45,21 @@ public class Form_pagos extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         
         //para limitar ingreso de caracteres en la cajas      
-         txt_buscar_cedula.setDocument(new Validar(txt_buscar_cedula,10));
+         txt_buscar_pago.setDocument(new Validar(txt_buscar_pago,10));
          txt_cedula.setDocument(new Validar(txt_cedula,10));
          
          //para poner los campos de tesxto editables
           txt_costo.setEditable(false);
           txt_costo.setEditable(false);
           txt_prox_pago.setEditable(false);
+          txt_result_cedula.setEditable(false);
+          txt_nombres.setEditable(false);
+          txt_apellildos.setEditable(false);
+          txt_pago_vence.setEditable(false);
+          txt_fecha_pago.setEditable(false);
+          txt_pago_vence.setEditable(false);
+          txt_tipo.setEditable(false);
+           txt_total1.setEditable(false);
 
          
           cargarTabla();
@@ -69,6 +77,8 @@ public class Form_pagos extends javax.swing.JFrame {
  }//fin del metodo
   
    
+  
+    
     
     
     
@@ -84,8 +94,7 @@ public class Form_pagos extends javax.swing.JFrame {
         
         for(int i= 0;i<80;i++){        
           cbo_year.addItem(year = year - 1);
-          
-         }     
+          }     
     }   
  
     
@@ -95,7 +104,7 @@ public class Form_pagos extends javax.swing.JFrame {
  public  void cargarProxPago(){
      
       day = this.cbo_day.getSelectedItem().toString();
-      month = String.valueOf(this.cbo_month1.getSelectedIndex() + 1);
+      month = String.valueOf(this.cbo_month.getSelectedIndex() + 1);
       int year = Integer.parseInt(this.cbo_year.getSelectedItem().toString());
       int month2 = Integer.parseInt(month);
       String membresia = cbo_membresia.getSelectedItem().toString();
@@ -202,7 +211,7 @@ public class Form_pagos extends javax.swing.JFrame {
 	//la conexion a la base
 	
 	//mandamos la sentencia sql
-	sql = "select * from vista_pagos";
+	sql = "select * from vista_pagos order by id_pago desc";
 			
 	//creamos stament
        
@@ -226,6 +235,7 @@ public class Form_pagos extends javax.swing.JFrame {
 		}
 		
 		tabla_pagos.setModel(modelo);//cargamos los datos dfel modelo a la tabla
+                tabla_buscar_pagos.setModel(modelo);//cargamos los datos dfel modelo a la tabla
                 
 		
 	}catch(SQLException ex){
@@ -275,31 +285,30 @@ public class Form_pagos extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        txt_buscar_cedula = new javax.swing.JTextField();
+        txt_buscar_pago = new javax.swing.JTextField();
         btn_buscar = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
-        btn_editar = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
-        btn_actualizar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        cbo_day1 = new javax.swing.JComboBox();
-        cbo_month1 = new javax.swing.JComboBox();
-        cbo_year1 = new javax.swing.JComboBox();
-        txt_dir = new javax.swing.JTextField();
+        txt_pago_vence = new javax.swing.JTextField();
         txt_apellildos = new javax.swing.JTextField();
         txt_nombres = new javax.swing.JTextField();
         txt_result_cedula = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
-        jLabel23 = new javax.swing.JLabel();
-        cbo_day2 = new javax.swing.JComboBox();
-        cbo_month2 = new javax.swing.JComboBox();
-        cbo_year2 = new javax.swing.JComboBox();
+        Vence = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
+        txt_tipo = new javax.swing.JTextField();
+        txt_fecha_pago = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tabla_buscar_pagos = new javax.swing.JTable();
+        txt_total = new javax.swing.JLabel();
+        txt_total1 = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -315,10 +324,10 @@ public class Form_pagos extends javax.swing.JFrame {
         jLabel56.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         jLabel56.setForeground(new java.awt.Color(110, 110, 110));
         jLabel56.setText("Últimos pagos");
-        jPanel1.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 640, -1, -1));
+        jPanel1.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 620, -1, -1));
 
         jSeparator2.setBackground(new java.awt.Color(51, 204, 255));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 690, 650, 10));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 670, 650, 10));
 
         cbo_membresia.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         cbo_membresia.setForeground(new java.awt.Color(110, 110, 110));
@@ -455,7 +464,7 @@ public class Form_pagos extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tabla_pagos);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 730, 750, 200));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 690, 750, 240));
 
         btn_cancelar1.setBackground(new java.awt.Color(250, 250, 250));
         btn_cancelar1.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -534,22 +543,22 @@ public class Form_pagos extends javax.swing.JFrame {
         jLabel26.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(110, 110, 110));
         jLabel26.setText("Buscar  pagos");
-        jPanel2.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 39, 197, -1));
+        jPanel2.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 197, -1));
 
         jLabel13.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(110, 110, 110));
         jLabel13.setText("Cédula:");
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 139, -1, -1));
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, -1, -1));
 
-        txt_buscar_cedula.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        txt_buscar_cedula.setForeground(new java.awt.Color(110, 110, 110));
-        txt_buscar_cedula.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
-        txt_buscar_cedula.addKeyListener(new java.awt.event.KeyAdapter() {
+        txt_buscar_pago.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        txt_buscar_pago.setForeground(new java.awt.Color(110, 110, 110));
+        txt_buscar_pago.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
+        txt_buscar_pago.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_buscar_cedulaKeyTyped(evt);
+                txt_buscar_pagoKeyTyped(evt);
             }
         });
-        jPanel2.add(txt_buscar_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 129, 242, 39));
+        jPanel2.add(txt_buscar_pago, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, 242, 39));
 
         btn_buscar.setBackground(new java.awt.Color(0, 153, 204));
         btn_buscar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -559,37 +568,22 @@ public class Form_pagos extends javax.swing.JFrame {
         btn_buscar.setBorderPainted(false);
         btn_buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_buscar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(594, 129, 100, 40));
+        btn_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_buscarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 130, 100, 40));
 
         jLabel20.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(110, 110, 110));
-        jLabel20.setText("Resultados de búsqueda");
-        jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 229, 310, -1));
-
-        btn_editar.setBackground(new java.awt.Color(0, 153, 204));
-        btn_editar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        btn_editar.setForeground(new java.awt.Color(255, 255, 255));
-        btn_editar.setText("Editar");
-        btn_editar.setBorder(null);
-        btn_editar.setBorderPainted(false);
-        btn_editar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_editar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(btn_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 289, 100, 40));
+        jLabel20.setText("Tabla de Últimos pagos");
+        jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 550, 310, -1));
 
         jLabel16.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(110, 110, 110));
         jLabel16.setText("Acciones:");
-        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 299, 100, -1));
-
-        btn_actualizar.setBackground(new java.awt.Color(0, 153, 204));
-        btn_actualizar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        btn_actualizar.setForeground(new java.awt.Color(255, 255, 255));
-        btn_actualizar.setText("Actualizar");
-        btn_actualizar.setBorder(null);
-        btn_actualizar.setBorderPainted(false);
-        btn_actualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_actualizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 100, 40));
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, 80, -1));
 
         btn_eliminar.setBackground(new java.awt.Color(0, 153, 204));
         btn_eliminar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -598,131 +592,117 @@ public class Form_pagos extends javax.swing.JFrame {
         btn_eliminar.setBorder(null);
         btn_eliminar.setBorderPainted(false);
         btn_eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_eliminar.setEnabled(false);
         btn_eliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_eliminarActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(594, 289, 100, 40));
+        jPanel2.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, 100, 40));
 
         jLabel19.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(110, 110, 110));
         jLabel19.setText("Cédula:");
-        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 400, -1, -1));
+        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, -1, 30));
 
         jLabel17.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(110, 110, 110));
         jLabel17.setText("Nombres:");
-        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 460, -1, -1));
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 380, -1, 30));
 
         jLabel18.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(110, 110, 110));
         jLabel18.setText("Apellidos:");
-        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 520, -1, -1));
+        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 380, -1, 30));
 
         jLabel21.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(110, 110, 110));
-        jLabel21.setText("Dirección:");
-        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 590, -1, -1));
+        jLabel21.setText("Tipo:");
+        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, -1, 30));
 
-        jLabel22.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(110, 110, 110));
-        jLabel22.setText("Fecha pago:");
-        jPanel2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 650, -1, -1));
-
-        cbo_day1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        cbo_day1.setForeground(new java.awt.Color(110, 110, 110));
-        cbo_day1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-        cbo_day1.setToolTipText("");
-        cbo_day1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(cbo_day1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 640, 80, 33));
-
-        cbo_month1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        cbo_month1.setForeground(new java.awt.Color(110, 110, 110));
-        cbo_month1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
-        cbo_month1.setToolTipText("");
-        cbo_month1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        cbo_month1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbo_month1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(cbo_month1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 640, 140, 33));
-
-        cbo_year1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        cbo_year1.setForeground(new java.awt.Color(110, 110, 110));
-        cbo_year1.setToolTipText("");
-        cbo_year1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbo_year1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(cbo_year1, new org.netbeans.lib.awtextra.AbsoluteConstraints(616, 640, 110, 33));
-
-        txt_dir.setBackground(new java.awt.Color(197, 230, 197));
-        txt_dir.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        txt_dir.setForeground(new java.awt.Color(110, 110, 110));
-        txt_dir.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(162, 214, 162), 1, true));
-        jPanel2.add(txt_dir, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 570, 431, 39));
+        txt_pago_vence.setBackground(new java.awt.Color(197, 230, 197));
+        txt_pago_vence.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        txt_pago_vence.setForeground(new java.awt.Color(110, 110, 110));
+        txt_pago_vence.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(162, 214, 162), 1, true));
+        jPanel2.add(txt_pago_vence, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 430, 140, 30));
 
         txt_apellildos.setBackground(new java.awt.Color(197, 230, 197));
         txt_apellildos.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         txt_apellildos.setForeground(new java.awt.Color(110, 110, 110));
         txt_apellildos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(162, 214, 162), 1, true));
-        jPanel2.add(txt_apellildos, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 510, 431, 39));
+        jPanel2.add(txt_apellildos, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 380, 140, 30));
 
         txt_nombres.setBackground(new java.awt.Color(197, 230, 197));
         txt_nombres.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         txt_nombres.setForeground(new java.awt.Color(110, 110, 110));
         txt_nombres.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(162, 214, 162), 1, true));
-        jPanel2.add(txt_nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 450, 431, 39));
+        jPanel2.add(txt_nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 380, 140, 30));
 
         txt_result_cedula.setBackground(new java.awt.Color(197, 230, 197));
         txt_result_cedula.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         txt_result_cedula.setForeground(new java.awt.Color(110, 110, 110));
         txt_result_cedula.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(162, 214, 162), 1, true));
-        jPanel2.add(txt_result_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, 431, 39));
+        jPanel2.add(txt_result_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 380, 140, 30));
 
         jSeparator4.setBackground(new java.awt.Color(51, 204, 255));
-        jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 359, 589, 11));
+        jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 840, 11));
 
-        jLabel23.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(110, 110, 110));
-        jLabel23.setText("Fecha prox pago:");
-        jPanel2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 710, -1, -1));
-
-        cbo_day2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        cbo_day2.setForeground(new java.awt.Color(110, 110, 110));
-        cbo_day2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-        cbo_day2.setToolTipText("");
-        cbo_day2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(cbo_day2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 700, 80, 33));
-
-        cbo_month2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        cbo_month2.setForeground(new java.awt.Color(110, 110, 110));
-        cbo_month2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
-        cbo_month2.setToolTipText("");
-        cbo_month2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        cbo_month2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbo_month2ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(cbo_month2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 700, 140, 33));
-
-        cbo_year2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        cbo_year2.setForeground(new java.awt.Color(110, 110, 110));
-        cbo_year2.setToolTipText("");
-        cbo_year2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbo_year2ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(cbo_year2, new org.netbeans.lib.awtextra.AbsoluteConstraints(616, 700, 110, 33));
+        Vence.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        Vence.setForeground(new java.awt.Color(110, 110, 110));
+        Vence.setText("Vence:");
+        jPanel2.add(Vence, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 430, -1, 30));
 
         jSeparator5.setBackground(new java.awt.Color(51, 204, 255));
-        jPanel2.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 98, 589, 11));
+        jPanel2.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 630, 11));
+
+        txt_tipo.setBackground(new java.awt.Color(197, 230, 197));
+        txt_tipo.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        txt_tipo.setForeground(new java.awt.Color(110, 110, 110));
+        txt_tipo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(162, 214, 162), 1, true));
+        jPanel2.add(txt_tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 430, 140, 30));
+
+        txt_fecha_pago.setBackground(new java.awt.Color(197, 230, 197));
+        txt_fecha_pago.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        txt_fecha_pago.setForeground(new java.awt.Color(110, 110, 110));
+        txt_fecha_pago.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(162, 214, 162), 1, true));
+        jPanel2.add(txt_fecha_pago, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 430, 140, 30));
+
+        jLabel24.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(110, 110, 110));
+        jLabel24.setText("Fecha pago:");
+        jPanel2.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 430, -1, 30));
+
+        tabla_buscar_pagos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane4.setViewportView(tabla_buscar_pagos);
+
+        jPanel2.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 610, 820, 290));
+
+        txt_total.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        txt_total.setForeground(new java.awt.Color(110, 110, 110));
+        txt_total.setText("Total:");
+        jPanel2.add(txt_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 490, -1, 30));
+
+        txt_total1.setBackground(new java.awt.Color(197, 230, 197));
+        txt_total1.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        txt_total1.setForeground(new java.awt.Color(110, 110, 110));
+        txt_total1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(162, 214, 162), 1, true));
+        jPanel2.add(txt_total1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 490, 140, 30));
+
+        jLabel22.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(110, 110, 110));
+        jLabel22.setText("Resultados de búsqueda");
+        jPanel2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 310, -1));
 
         jScrollPane3.setViewportView(jPanel2);
 
@@ -793,26 +773,39 @@ public class Form_pagos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbo_yearActionPerformed
 
+    
+    
+    
+    
+ /*-----------------------------------------------------------------------------
+     Metodo para eliminar un pago
+ ------------------------------------------------------------------------------*/
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        // TODO add your handling code here:
+         if(txt_buscar_pago.getText().length()>0 && Validar.VerificarCedula(txt_buscar_pago.getText())){
+            
+             int cedula =  Integer.parseInt(txt_buscar_pago.getText());
+             
+             int confirm = JOptionPane.showConfirmDialog(rootPane, "¿Esta seguro que deseae elimnar este pago? \n con la cedula:" + cedula);
+             
+             if(confirm == JOptionPane.YES_OPTION){
+                  pagos.eliminarPago(cedula);
+                  cargarTabla();
+                  btn_eliminar.setEnabled(false);
+                  txt_buscar_pago.setText("");
+                  txt_buscar_pago.requestFocus();
+             }
+             
+         }else{
+         
+          JOptionPane.showMessageDialog(this, "Campo vacio o cedula incorracta");
+         }
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
-    private void cbo_month1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_month1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbo_month1ActionPerformed
-
-    private void cbo_year1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_year1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbo_year1ActionPerformed
-
-    private void cbo_month2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_month2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbo_month2ActionPerformed
-
-    private void cbo_year2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_year2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbo_year2ActionPerformed
-
+    
+    
+    
+    
+    
     
     
 /*-----------------------------------------------------------------------------
@@ -832,9 +825,9 @@ public class Form_pagos extends javax.swing.JFrame {
         Validar.soloNumeros(evt);
     }//GEN-LAST:event_txt_cedulaKeyTyped
 
-    private void txt_buscar_cedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buscar_cedulaKeyTyped
+    private void txt_buscar_pagoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buscar_pagoKeyTyped
             Validar.soloNumeros(evt);
-    }//GEN-LAST:event_txt_buscar_cedulaKeyTyped
+    }//GEN-LAST:event_txt_buscar_pagoKeyTyped
 
     private void txt_diasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_diasKeyReleased
         if(!txt_dias.getText().equals("") && Integer.parseInt(txt_dias.getText()) > 0){
@@ -930,8 +923,8 @@ public class Form_pagos extends javax.swing.JFrame {
                                        pagos.setPago(Integer.parseInt(txt_cedula.getText()));
                                         cargarTabla();
 
-                                        JOptionPane.showMessageDialog(rootPane,"id:"+membresia.getIdTipoMembresia()+ " costo: " + pagos.getCosto()
-                                                +" total:" + pagos.getTotal() + " fechaini:" + membresia.getFechaInicio()+ " fechaend: " + membresia.getFechaFin() );
+                                       /* JOptionPane.showMessageDialog(rootPane,"id:"+membresia.getIdTipoMembresia()+ " costo: " + pagos.getCosto()
+                                                +" total:" + pagos.getTotal() + " fechaini:" + membresia.getFechaInicio()+ " fechaend: " + membresia.getFechaFin() );*/
 
                                     }else{
                                         JOptionPane.showMessageDialog(rootPane,"aqui se queda");
@@ -944,9 +937,9 @@ public class Form_pagos extends javax.swing.JFrame {
 /*______________________________________________________________________________________________________________________________*/
                                
                                 membresia.setFechaInicio(fecha_inicio);
-                                membresia.setFechaFin(fecha_fin);
+                                membresia.setFechaFin(null);
                                 membresia.setAsistencias(0);
-                                membresia.setDiasTotal(0);
+                                membresia.setDiasTotal(Integer.parseInt(txt_dias.getText()));
                                 membresia.setMembresia(Integer.parseInt(txt_cedula.getText()));
                                
                                
@@ -1007,6 +1000,34 @@ public class Form_pagos extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btn_guardarActionPerformed
 
+    private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
+       
+        if(txt_buscar_pago.getText().length()>0 && Validar.VerificarCedula(txt_buscar_pago.getText())){
+            
+            int cedula =  Integer.parseInt(txt_buscar_pago.getText());
+            
+            String registros[] = pagos.buscarPagos(cedula);
+            
+            txt_result_cedula.setText(registros[0]);
+            txt_nombres.setText(registros[1]);
+            txt_apellildos.setText(registros[2]);
+            txt_tipo.setText(registros[3]);
+            txt_fecha_pago.setText(registros[4]);
+            txt_pago_vence.setText(registros[5]);
+            txt_total1.setText(registros[6] + "$");
+            
+            btn_eliminar.setEnabled(true);
+                    
+        }else{
+                
+            JOptionPane.showMessageDialog(this, "Campo vacio o cedula incorracta");
+                    
+        }
+        
+        
+        
+    }//GEN-LAST:event_btn_buscarActionPerformed
+
 
     
     
@@ -1025,24 +1046,17 @@ public class Form_pagos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_actualizar;
+    private javax.swing.JLabel Vence;
     private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_cancelar1;
-    private javax.swing.JButton btn_editar;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_guardar;
     private javax.swing.JButton btn_nuevo;
     private javax.swing.JComboBox cbo_day;
-    private javax.swing.JComboBox cbo_day1;
-    private javax.swing.JComboBox cbo_day2;
     private javax.swing.JComboBox cbo_membresia;
     private javax.swing.JComboBox cbo_month;
-    private javax.swing.JComboBox cbo_month1;
-    private javax.swing.JComboBox cbo_month2;
     private javax.swing.JComboBox cbo_year;
-    private javax.swing.JComboBox cbo_year1;
-    private javax.swing.JComboBox cbo_year2;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -1051,7 +1065,7 @@ public class Form_pagos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
@@ -1066,22 +1080,28 @@ public class Form_pagos extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lbl_dias;
+    private javax.swing.JTable tabla_buscar_pagos;
     private javax.swing.JTable tabla_pagos;
     private javax.swing.JTextField txt_apellildos;
-    private javax.swing.JTextField txt_buscar_cedula;
+    private javax.swing.JTextField txt_buscar_pago;
     private javax.swing.JTextField txt_cedula;
     private javax.swing.JTextField txt_costo;
     private javax.swing.JTextField txt_dias;
-    private javax.swing.JTextField txt_dir;
+    private javax.swing.JTextField txt_fecha_pago;
     private javax.swing.JTextField txt_nombres;
+    private javax.swing.JTextField txt_pago_vence;
     private javax.swing.JTextField txt_prox_pago;
     private javax.swing.JTextField txt_result_cedula;
+    private javax.swing.JTextField txt_tipo;
+    private javax.swing.JLabel txt_total;
+    private javax.swing.JTextField txt_total1;
     private javax.swing.JTextField txt_total_pagar;
     // End of variables declaration//GEN-END:variables
 }

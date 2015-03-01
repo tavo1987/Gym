@@ -102,5 +102,93 @@ public class Pagos extends Membresia{
           }  
     
     }
+     
+     
+     
+     
+/*----------------------------------------------------------------------------------------------------------------------------------------
+        Metodos buscar pagos
+ ------------------------------------------------------------------------------------------------------------------------------------------*/
+     
+public String[] buscarPagos(int cedula){    
+    
+            String[] registros = new String[7];
+
+           try{  
+               sql = "select * from clientes where cedula = "+cedula+"";
+               ps =  conexion.prepareStatement(sql);
+               rs = ps.executeQuery();
+
+               if(rs.next()){
+                   sql="call sp_pagos("+cedula+")";
+               ps =  conexion.prepareStatement(sql);
+               rs = ps.executeQuery();
+
+                       if(rs.next()){
+
+                          registros[0]  = String.valueOf(rs.getInt("cedula"));
+                          registros[1]  = rs.getString("nombres");
+                          registros[2]  = rs.getString("apellidos");
+                          registros[3]  = rs.getString("tipo");
+                          registros[4]  = rs.getString("date_ini");
+                          registros[5]  = rs.getString("date_end");
+                          registros[6]  = rs.getString("total");
+
+
+                          JOptionPane.showMessageDialog(null, "Pago encontrado");
+                          return registros;
+                       }
+               }
+
+
+           }catch(Exception ex){
+               JOptionPane.showMessageDialog(null, ex.getMessage());
+           } 
+           JOptionPane.showMessageDialog(null, "Cliente no existe");
+           return registros; 
+    
+        }
+
+
+/*----------------------------------------------------------------------------------------------------------------------------------------
+        Metodo eliminar
+ ------------------------------------------------------------------------------------------------------------------------------------------*/
+     
+public void eliminarPago(int cedula){    
+    
+           int id_pago;
+           int id_membresia;
+
+           try{  
+               sql = "select * from clientes where cedula = "+cedula+"";
+               ps =  conexion.prepareStatement(sql);
+               rs = ps.executeQuery();
+
+               if(rs.next()){
+                   sql="call sp_pagos("+cedula+")";
+               ps =  conexion.prepareStatement(sql);
+               rs = ps.executeQuery();
+
+                       if(rs.next()){
+
+                           id_membresia = rs.getInt("id_membresia");
+                           id_pago  = rs.getInt("id_pago");
+                                                   
+                           sql="delete from membresia where id_membresia = "+id_membresia+"";
+                            ps =  conexion.prepareStatement(sql);
+                            ps.executeUpdate();
+                           
+                             JOptionPane.showMessageDialog(null,"Pago eliminado con éxito");
+                        }
+               }else{
+                    JOptionPane.showMessageDialog(null, "Cliente no existe");
+               }
+
+           }catch(Exception ex){
+               JOptionPane.showMessageDialog(null, ex.getMessage());
+           } 
+                 
+     }
+
     
 }
