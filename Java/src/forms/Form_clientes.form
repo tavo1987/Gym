@@ -816,6 +816,8 @@
                     </Property>
                   </Properties>
                   <Events>
+                    <EventHandler event="inputMethodTextChanged" listener="java.awt.event.InputMethodListener" parameters="java.awt.event.InputMethodEvent" handler="txt_diasInputMethodTextChanged"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_diasActionPerformed"/>
                     <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_diasKeyReleased"/>
                     <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_diasKeyTyped"/>
                   </Events>

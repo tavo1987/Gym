@@ -56,6 +56,7 @@ public class Form_clientes extends JFrame {
              this.panelPrincipal.setEnabledAt(1,false);
              this.panelPrincipal.setEnabledAt(2,false);
              this.panelPrincipal.setEnabledAt(3,false);
+             
                 try{
                     
                     /*this.panelPrincipal.removeTabAt(1);
@@ -695,6 +696,18 @@ public class Form_clientes extends JFrame {
         txt_dias.setForeground(new java.awt.Color(110, 110, 110));
         txt_dias.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
         txt_dias.setDisabledTextColor(new java.awt.Color(0, 204, 255));
+        txt_dias.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                txt_diasInputMethodTextChanged(evt);
+            }
+        });
+        txt_dias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_diasActionPerformed(evt);
+            }
+        });
         txt_dias.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txt_diasKeyReleased(evt);
@@ -2150,6 +2163,14 @@ public class Form_clientes extends JFrame {
           
        }
     }//GEN-LAST:event_btn_guardarActionPerformed
+
+    private void txt_diasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_diasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_diasActionPerformed
+
+    private void txt_diasInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txt_diasInputMethodTextChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_diasInputMethodTextChanged
 
     
     

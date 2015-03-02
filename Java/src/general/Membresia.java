@@ -124,5 +124,70 @@ public class Membresia extends Cliente{
     
     
     
+    /*---------------------------------------------------------------------------------------------------------------------------------------
+        cargar membresia su 
+ ------------------------------------------------------------------------------------------------------------------------------------------*/
+    
+    public String[] buscarMembresia(int id){    
+    
+            String[] registros = new String[3];
+
+           try{  
+              
+               sql="select * from  tipo where id_tipo = "+id+"";
+               ps =  conexion.prepareStatement(sql);
+               rs = ps.executeQuery();
+              
+               
+                       if(rs.next()){
+
+                          registros[0]  = rs.getString(2);
+                          registros[1]  = String.valueOf(rs.getFloat(3));
+                          
+                          JOptionPane.showMessageDialog(null,  "Membresia Encontrada");
+                          return registros;
+                       }                                  
+
+           }catch(Exception ex){
+               JOptionPane.showMessageDialog(null, ex.getMessage()+ "hola");
+           } 
+           JOptionPane.showMessageDialog(null, "Membresia con el id "+id+" no existe");
+           return registros; 
+    
+        }
+    
+    
+    
+    
+/*---------------------------------------------------------------------------------------------------------------------------------------
+        Metodo para eliminar
+ ------------------------------------------------------------------------------------------------------------------------------------------*/
+    
+    public void updaterMemebresia(int id,double costo){
+        
+       try{  
+              
+               sql="update tipo  set costo = "+costo+" where id_tipo = "+id+"";
+               ps =  conexion.prepareStatement(sql);
+               int a = ps.executeUpdate();
+               if(a > 0){
+                   
+                   JOptionPane.showMessageDialog(null,"Precio Acualizado");               
+               }else{
+                       JOptionPane.showMessageDialog(null,"El precio no se pudo actualizar");               
+               }
+               
+               
+               
+              
+           }catch(Exception ex){
+               JOptionPane.showMessageDialog(null, ex.getMessage()+ "hola");
+           } 
+        
+    }
+    
+    
+    
+    
     
 }
