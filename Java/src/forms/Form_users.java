@@ -279,7 +279,6 @@ public class Form_users extends javax.swing.JFrame {
         cbo_tipos_users.setForeground(new java.awt.Color(110, 110, 110));
         cbo_tipos_users.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Administrador" }));
         cbo_tipos_users.setToolTipText("");
-        cbo_tipos_users.setBorder(null);
         cbo_tipos_users.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         cbo_tipos_users.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -347,7 +346,7 @@ public class Form_users extends javax.swing.JFrame {
                 btn_buscarActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(594, 129, 100, 40));
+        jPanel2.add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 130, 100, 40));
 
         txt_buscar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         txt_buscar.setForeground(new java.awt.Color(110, 110, 110));
@@ -357,7 +356,7 @@ public class Form_users extends javax.swing.JFrame {
                 txt_buscarKeyReleased(evt);
             }
         });
-        jPanel2.add(txt_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 129, 242, 39));
+        jPanel2.add(txt_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 242, 39));
 
         jLabel14.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(110, 110, 110));
@@ -420,7 +419,7 @@ public class Form_users extends javax.swing.JFrame {
                 btn_guardar2ActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_guardar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 610, 100, 40));
+        jPanel2.add(btn_guardar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 600, 100, 40));
 
         btn_eliminar.setBackground(new java.awt.Color(0, 153, 204));
         btn_eliminar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -467,7 +466,7 @@ public class Form_users extends javax.swing.JFrame {
         table_users2.setSelectionBackground(new java.awt.Color(137, 215, 245));
         jScrollPane5.setViewportView(table_users2);
 
-        jPanel2.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 710, 620, 205));
+        jPanel2.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 680, 670, 205));
 
         jScrollPane2.setViewportView(jPanel2);
 

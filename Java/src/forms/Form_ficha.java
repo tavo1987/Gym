@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import validaciones.Validar;
 
 public class Form_ficha extends javax.swing.JFrame {
@@ -21,6 +22,7 @@ public class Form_ficha extends javax.swing.JFrame {
      Cliente cliente  = new Cliente();
     private Ficha ficha = new Ficha();
     private Rutina rutinas = new Rutina();
+    
      
     
      
@@ -53,9 +55,11 @@ public class Form_ficha extends javax.swing.JFrame {
           txt_cintura.setDocument(new Validar(txt_cintura,3));
           txt_cuello.setDocument(new Validar(txt_cuello,2));
           txt_cadera.setDocument(new Validar(txt_cadera,3));
+          txt_cedula_buscar.setDocument(new Validar( txt_cedula_buscar,10));
         
         //para cargar rutinas
         cargarRutinas();
+        cargarFichas();
         
         //para esconder los demas paneles
              this.panelPrincipal.setEnabledAt(1,false);
@@ -63,9 +67,10 @@ public class Form_ficha extends javax.swing.JFrame {
         //para esconder el label cadera y la ceja de texta
           lbl_cadera1.setVisible(false);
           txt_cadera.setVisible(false);
+          txt_cedula_buscar.setEditable(false);
+          btn_buscar.setEnabled(false);
              
-        
-        
+  
     }
     
  
@@ -81,8 +86,164 @@ public class Form_ficha extends javax.swing.JFrame {
         txt_cadera.setText("");
     
     }
+
     
     
+    
+/*-----------------------------------------------------------------------------------------------------------
+        $cagar tablas de las fichas que existen de los clientes
+ ------------------------------------------------------------------------------------------------------------*/ 
+public void cargarFichas(){
+    
+    String[] titulos = {"ID ficha","Cedula","Nombre","Apellidos","Nivel","Peso kg","Cintura","Cadera","% Grasa Corp","% IMC","% IMC Cintura/Altura",
+        "Masa Magra","Sobrepso"};
+    
+    String registros[] =  new String[13];
+    
+    DefaultTableModel modelo = new DefaultTableModel(null,titulos);
+    
+        try{
+            
+            sql = "select * from vista_fichas\n" +
+            "order by id_ficha desc";
+            
+            ps = conexion.prepareStatement(sql);
+            
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+                
+                registros[0] = String.valueOf(rs.getInt(1));
+                registros[1] = String.valueOf(rs.getInt(2));
+                registros[2] = rs.getString(3);
+                registros[3] = rs.getString(4);
+                registros[4] = rs.getString(5);
+                registros[5] = String.valueOf(rs.getFloat(6));
+                registros[6] = String.valueOf(rs.getFloat(7));
+                registros[7] = String.valueOf(rs.getFloat(8));
+                registros[8] = String.valueOf(rs.getFloat(9));
+                registros[9] = String.valueOf(rs.getFloat(10));
+                registros[10] = String.valueOf(rs.getFloat(11));
+                registros[11] = String.valueOf(rs.getFloat(12));
+                registros[12] = String.valueOf(rs.getFloat(13));
+                    
+                modelo.addRow(registros);
+            
+            }
+            tabla_fichas.setModel(modelo);
+            
+            
+        }catch(Exception ex){
+           JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+        }  
+
+    
+
+}
+    
+    
+    
+    /*metodos sopbrecargdo de fichas*/
+/*-----------------------------------------------------------------------------------------------------------
+        $cagar tablas de las fichas que existen de los clientes sobrecargado
+ ------------------------------------------------------------------------------------------------------------*/ 
+public void cargarFichas(int valor){
+    
+    String[] titulos = {"ID ficha","Cedula","Nombre","Apellidos","Nivel","Peso kg","Cintura","Cadera","% Grasa Corp","% IMC","% IMC Cintura/Altura",
+        "Masa Magra","Sobrepso"};
+    
+    String registros[] =  new String[13];
+    
+    DefaultTableModel modelo = new DefaultTableModel(null,titulos);
+    
+        try{
+            
+            sql = "select * from vista_fichas\n" +
+            "where cedula  = "+valor+"  order by id_ficha desc ";
+            
+            ps = conexion.prepareStatement(sql);
+            
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+                
+                registros[0] = String.valueOf(rs.getInt(1));
+                registros[1] = String.valueOf(rs.getInt(2));
+                registros[2] = rs.getString(3);
+                registros[3] = rs.getString(4);
+                registros[4] = rs.getString(5);
+                registros[5] = String.valueOf(rs.getFloat(6));
+                registros[6] = String.valueOf(rs.getFloat(7));
+                registros[7] = String.valueOf(rs.getFloat(8));
+                registros[8] = String.valueOf(rs.getFloat(9));
+                registros[9] = String.valueOf(rs.getFloat(10));
+                registros[10] = String.valueOf(rs.getFloat(11));
+                registros[11] = String.valueOf(rs.getFloat(12));
+                registros[12] = String.valueOf(rs.getFloat(13));
+                    
+                modelo.addRow(registros);
+            
+            }
+            tabla_fichas.setModel(modelo);
+            
+            
+        }catch(Exception ex){
+           JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+        }  
+
+}
+
+
+
+
+   /*metodos sopbrecargdo de fichas*/
+public void cargarFichas(String valor){
+    
+    String[] titulos = {"ID ficha","Cedula","Nombre","Apellidos","Nivel","Peso kg","Cintura","Cadera","% Grasa Corp","% IMC","% IMC Cintura/Altura",
+        "Masa Magra","Sobrepso"};
+    
+    String registros[] =  new String[13];
+    
+    DefaultTableModel modelo = new DefaultTableModel(null,titulos);
+    
+        try{
+            
+            sql = "select * from vista_fichas\n" +
+            " where nombres like '"+valor+"%' or apellidos like '"+valor+"%' order by id_ficha desc";
+            
+            ps = conexion.prepareStatement(sql);
+            
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+                
+                registros[0] = String.valueOf(rs.getInt(1));
+                registros[1] = String.valueOf(rs.getInt(2));
+                registros[2] = rs.getString(3);
+                registros[3] = rs.getString(4);
+                registros[4] = rs.getString(5);
+                registros[5] = String.valueOf(rs.getFloat(6));
+                registros[6] = String.valueOf(rs.getFloat(7));
+                registros[7] = String.valueOf(rs.getFloat(8));
+                registros[8] = String.valueOf(rs.getFloat(9));
+                registros[9] = String.valueOf(rs.getFloat(10));
+                registros[10] = String.valueOf(rs.getFloat(11));
+                registros[11] = String.valueOf(rs.getFloat(12));
+                registros[12] = String.valueOf(rs.getFloat(13));
+                    
+                modelo.addRow(registros);
+            
+            }
+            tabla_fichas.setModel(modelo);
+            
+            
+        }catch(Exception ex){
+           JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+        }  
+
+    
+
+}
     
     
     
@@ -192,23 +353,18 @@ public class Form_ficha extends javax.swing.JFrame {
         spanel_buscar = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
         jLabel65 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        lbl_buscar = new javax.swing.JLabel();
         txt_cedula_buscar = new javax.swing.JTextField();
         btn_buscar = new javax.swing.JButton();
         jLabel66 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         btn_eliminar = new javax.swing.JButton();
-        txt_result_cedula = new javax.swing.JTextField();
-        jLabel67 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        txt_nombres = new javax.swing.JTextField();
-        txt_apellidos = new javax.swing.JTextField();
-        jLabel18 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        table_fichas = new javax.swing.JTable();
+        tabla_fichas = new javax.swing.JTable();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
+        cbo_buscar = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -642,18 +798,30 @@ public class Form_ficha extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(250, 250, 250));
         jPanel3.setPreferredSize(new java.awt.Dimension(800, 977));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel65.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         jLabel65.setForeground(new java.awt.Color(110, 110, 110));
         jLabel65.setText("Buscar  fichas de clientes");
+        jPanel3.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 42, 343, -1));
 
-        jLabel13.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(110, 110, 110));
-        jLabel13.setText("Cédula:");
+        lbl_buscar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        lbl_buscar.setForeground(new java.awt.Color(110, 110, 110));
+        lbl_buscar.setText("Cédula:");
+        jPanel3.add(lbl_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, -1, -1));
 
         txt_cedula_buscar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         txt_cedula_buscar.setForeground(new java.awt.Color(110, 110, 110));
         txt_cedula_buscar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
+        txt_cedula_buscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_cedula_buscarKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_cedula_buscarKeyTyped(evt);
+            }
+        });
+        jPanel3.add(txt_cedula_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 242, 39));
 
         btn_buscar.setBackground(new java.awt.Color(0, 153, 204));
         btn_buscar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -663,14 +831,22 @@ public class Form_ficha extends javax.swing.JFrame {
         btn_buscar.setBorderPainted(false);
         btn_buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_buscar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_buscarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 100, 40));
 
         jLabel66.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         jLabel66.setForeground(new java.awt.Color(110, 110, 110));
         jLabel66.setText("Resultados de búsqueda");
+        jPanel3.add(jLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, 310, -1));
 
         jLabel16.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(110, 110, 110));
         jLabel16.setText("Acciones:");
+        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, 80, -1));
 
         btn_eliminar.setBackground(new java.awt.Color(0, 153, 204));
         btn_eliminar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -685,35 +861,9 @@ public class Form_ficha extends javax.swing.JFrame {
                 btn_eliminarActionPerformed(evt);
             }
         });
+        jPanel3.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 320, 100, 40));
 
-        txt_result_cedula.setBackground(new java.awt.Color(197, 230, 197));
-        txt_result_cedula.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        txt_result_cedula.setForeground(new java.awt.Color(110, 110, 110));
-        txt_result_cedula.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(162, 214, 162), 1, true));
-
-        jLabel67.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        jLabel67.setForeground(new java.awt.Color(110, 110, 110));
-        jLabel67.setText("Cédula:");
-
-        jLabel17.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(110, 110, 110));
-        jLabel17.setText("Nombres:");
-
-        txt_nombres.setBackground(new java.awt.Color(197, 230, 197));
-        txt_nombres.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        txt_nombres.setForeground(new java.awt.Color(110, 110, 110));
-        txt_nombres.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(162, 214, 162), 1, true));
-
-        txt_apellidos.setBackground(new java.awt.Color(197, 230, 197));
-        txt_apellidos.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        txt_apellidos.setForeground(new java.awt.Color(110, 110, 110));
-        txt_apellidos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(162, 214, 162), 1, true));
-
-        jLabel18.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(110, 110, 110));
-        jLabel18.setText("Apellidos:");
-
-        table_fichas.setModel(new javax.swing.table.DefaultTableModel(
+        tabla_fichas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -724,114 +874,26 @@ public class Form_ficha extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane4.setViewportView(table_fichas);
+        jScrollPane4.setViewportView(tabla_fichas);
+
+        jPanel3.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 390, 780, 330));
 
         jSeparator2.setBackground(new java.awt.Color(51, 204, 255));
+        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 84, 673, 22));
 
         jSeparator3.setBackground(new java.awt.Color(51, 204, 255));
+        jPanel3.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 93, 1, 10));
 
         jSeparator5.setBackground(new java.awt.Color(51, 204, 255));
+        jPanel3.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, 673, 22));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 664, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(235, 235, 235)
-                                .addComponent(jLabel13)
-                                .addGap(7, 7, 7)
-                                .addComponent(txt_cedula_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(8, 8, 8)
-                                .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(293, 293, 293)
-                                .addComponent(jLabel65, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(251, 251, 251)
-                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(315, 315, 315)
-                                .addComponent(jLabel66, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(118, 118, 118)
-                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(177, 177, 177)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(115, 115, 115)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_result_cedula, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_nombres, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_apellidos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel67)
-                            .addComponent(jLabel17)
-                            .addComponent(jLabel18))))
-                .addContainerGap(606, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(210, 210, 210)
-                    .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, 1, Short.MAX_VALUE)
-                    .addGap(1186, 1186, 1186)))
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(128, 128, 128)
-                    .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(596, Short.MAX_VALUE)))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jLabel65)
-                .addGap(12, 12, 12)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel13))
-                    .addComponent(txt_cedula_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(62, 62, 62)
-                .addComponent(jLabel66)
-                .addGap(34, 34, 34)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel16)
-                    .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(64, 64, 64)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel67)
-                    .addComponent(txt_result_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(txt_nombres, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(txt_apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(168, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(93, 93, 93)
-                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(874, Short.MAX_VALUE)))
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(358, 358, 358)
-                    .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(597, Short.MAX_VALUE)))
-        );
+        cbo_buscar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Buscar por...", "Cedula", "Nombres" }));
+        cbo_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbo_buscarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(cbo_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 130, 110, 40));
 
         spanel_buscar.setViewportView(jPanel3);
 
@@ -858,9 +920,11 @@ public class Form_ficha extends javax.swing.JFrame {
     
     
     
-    
+ /*---------------------------------------------------------
+    $metodo para eliminar
+ ----------------------------------------------------------*/    
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        // TODO add your handling code here:
+            
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void txt_pesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_pesoActionPerformed
@@ -891,7 +955,7 @@ public class Form_ficha extends javax.swing.JFrame {
     
     
  /*-----------------------------------------------------------------------------------------------------------
-        $metodo para el boton gurdar ficha nueva 
+        $metodo para el boton siguiente ficha nueva 
  ------------------------------------------------------------------------------------------------------------*/ 
     
     private void btn_siguiente3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_siguiente3ActionPerformed
@@ -1050,6 +1114,13 @@ public class Form_ficha extends javax.swing.JFrame {
             Validar.soloNumeros(evt);
     }//GEN-LAST:event_txt_cedulaKeyTyped
 
+    
+    
+    
+    
+  /*-----------------------------------------------------------------------------------------------------------
+        Metodo para el boton guradar
+ ------------------------------------------------------------------------------------------------------------*/       
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
             ficha.setFicha(cliente.getCi(),rutinas.getIdRutina(), cliente.getSexo());
              JOptionPane.showMessageDialog(rootPane, "Ficha Guardada con éxito");
@@ -1068,17 +1139,110 @@ public class Form_ficha extends javax.swing.JFrame {
              
     }//GEN-LAST:event_btn_guardarActionPerformed
 
+    
+    
+    
+/*-----------------------------------------------------------------------------------------------------------
+        método para el boton limpiar
+ ------------------------------------------------------------------------------------------------------------*/   
     private void btn_limpiar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiar3ActionPerformed
         limpiarFicha();
         txt_cedula.requestFocus();
     }//GEN-LAST:event_btn_limpiar3ActionPerformed
 
+    
+    
+    
+    
+/*-----------------------------------------------------------------------------------------------------------
+        método para el boton cancelar
+ ------------------------------------------------------------------------------------------------------------*/  
     private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
         Home home = new Home();
         home.setVisible(true);
         dispose();
        
     }//GEN-LAST:event_btn_cancelarActionPerformed
+
+    /*-----------------------------------------------------------------------------------------------------------
+        método para el boton cancelar
+ ------------------------------------------------------------------------------------------------------------*/  
+    private void txt_cedula_buscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cedula_buscarKeyReleased
+            if(cbo_buscar.getSelectedItem().equals("Nombres")){
+                cargarFichas(txt_cedula_buscar.getText());
+            }
+    }//GEN-LAST:event_txt_cedula_buscarKeyReleased
+
+    
+    
+/*-----------------------------------------------------------------------------------------------------------
+        método para cbo_buscar segun eleccion moficiamos los caracteres que puede escribir
+ ------------------------------------------------------------------------------------------------------------*/  
+    private void cbo_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_buscarActionPerformed
+        if(cbo_buscar.getSelectedIndex()>0){
+            if(cbo_buscar.getSelectedItem().toString().equals("Cedula")){
+                lbl_buscar.setText("Cedula:");
+                txt_cedula_buscar.setEditable(true);
+                txt_cedula_buscar.requestFocus();
+                txt_cedula_buscar.setDocument(new Validar( txt_cedula_buscar,10));
+                btn_buscar.setEnabled(true);
+            
+            }if(cbo_buscar.getSelectedItem().toString().equals("Nombres")){
+                lbl_buscar.setText("Nombres:");
+                txt_cedula_buscar.setEditable(true);
+                txt_cedula_buscar.requestFocus();
+                txt_cedula_buscar.setDocument(new Validar( txt_cedula_buscar,20));
+                btn_buscar.setEnabled(false);
+            }
+        
+        }else{
+            lbl_buscar.setText("Cedula");
+                txt_cedula_buscar.setEditable(false);
+                lbl_buscar.setText("Buscar:");
+                btn_buscar.setEnabled(false);
+                
+        }
+    }//GEN-LAST:event_cbo_buscarActionPerformed
+
+    
+    
+    
+    
+  /*-----------------------------------------------------------------------------------------------------------
+        método para la caja de tezto de busqueda
+ ------------------------------------------------------------------------------------------------------------*/    
+    private void txt_cedula_buscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cedula_buscarKeyTyped
+       if(cbo_buscar.getSelectedIndex()>0){
+            if(cbo_buscar.getSelectedItem().toString().equals("Cedula")){
+                lbl_buscar.setText("Cedula");
+                Validar.soloNumeros(evt);
+            
+            }if(cbo_buscar.getSelectedItem().toString().equals("Nombres")){
+               
+                Validar.soloLetrasAcentos(evt);
+            }
+        
+        }
+        
+    }//GEN-LAST:event_txt_cedula_buscarKeyTyped
+
+    private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
+        if(txt_cedula_buscar.getText().length()>0){
+            
+            if(Validar.VerificarCedula(txt_cedula_buscar.getText())){
+                cargarFichas(Integer.parseInt(txt_cedula_buscar.getText()));
+            }else{
+            
+             JOptionPane.showMessageDialog(rootPane, "Cedula incorrecta");
+             txt_cedula_buscar.setText("");
+             txt_cedula_buscar.requestFocus();
+            }
+            
+            
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Llene el campo de búsqueda");
+        }
+    }//GEN-LAST:event_btn_buscarActionPerformed
 
 
     
@@ -1104,12 +1268,10 @@ public class Form_ficha extends javax.swing.JFrame {
     private javax.swing.JButton btn_limpiar3;
     private javax.swing.JButton btn_siguiente3;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox cbo_buscar;
     private javax.swing.JComboBox cbo_nivel;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -1134,7 +1296,6 @@ public class Form_ficha extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
-    private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel75;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -1161,6 +1322,7 @@ public class Form_ficha extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JLabel lbl_altura;
     private javax.swing.JLabel lbl_apellidos;
+    private javax.swing.JLabel lbl_buscar;
     private javax.swing.JLabel lbl_cadera1;
     private javax.swing.JLabel lbl_cedula;
     private javax.swing.JLabel lbl_cintura;
@@ -1180,16 +1342,13 @@ public class Form_ficha extends javax.swing.JFrame {
     private javax.swing.JScrollPane spanel_buscar;
     private javax.swing.JScrollPane spanel_final;
     private javax.swing.JScrollPane spanel_nuevo;
-    private javax.swing.JTable table_fichas;
+    private javax.swing.JTable tabla_fichas;
     private javax.swing.JTextField txt_altura;
-    private javax.swing.JTextField txt_apellidos;
     private javax.swing.JTextField txt_cadera;
     private javax.swing.JTextField txt_cedula;
     private javax.swing.JTextField txt_cedula_buscar;
     private javax.swing.JTextField txt_cintura;
     private javax.swing.JTextField txt_cuello;
-    private javax.swing.JTextField txt_nombres;
     private javax.swing.JTextField txt_peso;
-    private javax.swing.JTextField txt_result_cedula;
     // End of variables declaration//GEN-END:variables
 }

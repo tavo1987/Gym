@@ -2108,6 +2108,11 @@ public class Form_clientes extends JFrame {
         panelPrincipal.setSelectedIndex(2);   
     }//GEN-LAST:event_btn_atras_finalActionPerformed
 
+    
+    
+    
+    
+    
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
     
         if(cliente.SetCliente() && membresia.setMembresia(cliente.getCi())){

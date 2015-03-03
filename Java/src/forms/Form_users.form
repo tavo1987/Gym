@@ -642,7 +642,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="594" y="129" width="100" height="40"/>
+                      <AbsoluteConstraints x="550" y="130" width="100" height="40"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -667,7 +667,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="290" y="129" width="242" height="39"/>
+                      <AbsoluteConstraints x="300" y="130" width="242" height="39"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -863,7 +863,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="400" y="610" width="100" height="40"/>
+                      <AbsoluteConstraints x="420" y="600" width="100" height="40"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -933,7 +933,7 @@
                   </AuxValues>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="150" y="710" width="620" height="205"/>
+                      <AbsoluteConstraints x="130" y="680" width="670" height="205"/>
                     </Constraint>
                   </Constraints>
 
