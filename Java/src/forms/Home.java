@@ -1,32 +1,49 @@
 package forms;
 import javax.swing.*;
-import Mysql.*;//clase que me hace la conexion
-import validaciones.*;//clase paera validar
-import java.util.*;
-import java.sql.*;
-import java.util.logging.*;
+import general.User;
+
+
 
 
 public class Home extends JFrame {
 
+    //instanceamos un cliente tipo users
+   
+    
+    
     public Home() {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Bienvenido");
-       
-         }
+        
+   
+        //si es administrador desbloqueamos el menu usuario
+        if(Login.usuario.getTipo().equalsIgnoreCase("Administrador")){
+             bloquearMenu(true,true);
+            
+         }else{
+        
+             bloquearMenu(true,false);
+        }
+        
+        //JOptionPane.showMessageDialog(rootPane,Login.usuario.getTipo()) ;
+ }
 
+    
+    
+    
+    
+    
 /*---------------------------------------------------------
     $Home codigo de la interfaz generado por netbeans 
  ----------------------------------------------------------*/
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jMenuItem3 = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JSeparator();
-        btn_ficha = new javax.swing.JButton();
+        btn_rutina = new javax.swing.JButton();
         lbl_bienvenido1 = new javax.swing.JLabel();
         btn_clientes = new javax.swing.JButton();
         btn_membresia = new javax.swing.JButton();
@@ -35,7 +52,12 @@ public class Home extends JFrame {
         btn_buscar_membresia = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
         btn_membresia1 = new javax.swing.JButton();
-        lbl_bienvenido = new javax.swing.JLabel();
+        lbl_result_tipo = new javax.swing.JLabel();
+        lbl_bienvenido2 = new javax.swing.JLabel();
+        lbl_tipo = new javax.swing.JLabel();
+        lbl_result_user = new javax.swing.JLabel();
+        lbl_user2 = new javax.swing.JLabel();
+        btn_ficha1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnu_archivo = new javax.swing.JMenu();
         mnu_salir = new javax.swing.JMenuItem();
@@ -55,61 +77,37 @@ public class Home extends JFrame {
         setBounds(new java.awt.Rectangle(0, 0, 600, 0));
         setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         setMinimumSize(new java.awt.Dimension(826, 603));
-        setPreferredSize(new java.awt.Dimension(900, 700));
-        getContentPane().setLayout(new java.awt.GridBagLayout());
+        setPreferredSize(new java.awt.Dimension(960, 800));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jSeparator2.setBackground(new java.awt.Color(51, 204, 255));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 9;
-        gridBagConstraints.ipadx = 759;
-        gridBagConstraints.ipady = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 50, 0, 90);
-        getContentPane().add(jSeparator2, gridBagConstraints);
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 840, 10));
 
-        btn_ficha.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        btn_ficha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ficha.png"))); // NOI18N
-        btn_ficha.setText("Nueva ficha");
-        btn_ficha.setBorder(null);
-        btn_ficha.setBorderPainted(false);
-        btn_ficha.setContentAreaFilled(false);
-        btn_ficha.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_ficha.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btn_ficha.setIconTextGap(5);
-        btn_ficha.setInheritsPopupMenu(true);
-        btn_ficha.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        btn_ficha.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btn_ficha.addActionListener(new java.awt.event.ActionListener() {
+        btn_rutina.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        btn_rutina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/dumbbell-512.png"))); // NOI18N
+        btn_rutina.setText("Nueva rutina");
+        btn_rutina.setBorder(null);
+        btn_rutina.setBorderPainted(false);
+        btn_rutina.setContentAreaFilled(false);
+        btn_rutina.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_rutina.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_rutina.setIconTextGap(20);
+        btn_rutina.setInheritsPopupMenu(true);
+        btn_rutina.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btn_rutina.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_rutina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_fichaActionPerformed(evt);
+                btn_rutinaActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 50;
-        gridBagConstraints.ipady = 32;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 10, 52, 90);
-        getContentPane().add(btn_ficha, gridBagConstraints);
+        getContentPane().add(btn_rutina, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 150, 160, 160));
 
-        lbl_bienvenido1.setBackground(new java.awt.Color(110, 110, 110));
+        lbl_bienvenido1.setBackground(new java.awt.Color(119, 119, 119));
         lbl_bienvenido1.setFont(new java.awt.Font("Harlow Solid Italic", 0, 64)); // NOI18N
-        lbl_bienvenido1.setForeground(new java.awt.Color(110, 110, 110));
+        lbl_bienvenido1.setForeground(new java.awt.Color(153, 153, 153));
         lbl_bienvenido1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_bienvenido1.setText("Bienvenido");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.ipadx = 99;
-        gridBagConstraints.ipady = -1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 220, 0, 0);
-        getContentPane().add(lbl_bienvenido1, gridBagConstraints);
+        getContentPane().add(lbl_bienvenido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 380, 80));
 
         btn_clientes.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         btn_clientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/create_user_man2_male-512.png"))); // NOI18N
@@ -128,13 +126,7 @@ public class Home extends JFrame {
                 btn_clientesActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.ipady = -9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(44, 40, 0, 0);
-        getContentPane().add(btn_clientes, gridBagConstraints);
+        getContentPane().add(btn_clientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, 160));
 
         btn_membresia.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         btn_membresia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/exit.png"))); // NOI18N
@@ -146,21 +138,12 @@ public class Home extends JFrame {
         btn_membresia.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_membresia.setIconTextGap(-4);
         btn_membresia.setInheritsPopupMenu(true);
-        btn_membresia.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        btn_membresia.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btn_membresia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_membresiaActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = -2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(40, 100, 0, 0);
-        getContentPane().add(btn_membresia, gridBagConstraints);
+        getContentPane().add(btn_membresia, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 50, 30, -1));
 
         btn_buscar_cliente.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         btn_buscar_cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/buscar.png"))); // NOI18N
@@ -179,14 +162,7 @@ public class Home extends JFrame {
                 btn_buscar_clienteActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipady = -9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(44, 0, 0, 0);
-        getContentPane().add(btn_buscar_cliente, gridBagConstraints);
+        getContentPane().add(btn_buscar_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, 160));
 
         btn_pago.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         btn_pago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pago.png"))); // NOI18N
@@ -196,7 +172,7 @@ public class Home extends JFrame {
         btn_pago.setContentAreaFilled(false);
         btn_pago.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_pago.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btn_pago.setIconTextGap(5);
+        btn_pago.setIconTextGap(20);
         btn_pago.setInheritsPopupMenu(true);
         btn_pago.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         btn_pago.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -205,16 +181,7 @@ public class Home extends JFrame {
                 btn_pagoActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 50;
-        gridBagConstraints.ipady = 42;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 50, 52, 0);
-        getContentPane().add(btn_pago, gridBagConstraints);
+        getContentPane().add(btn_pago, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 150, 150));
 
         btn_buscar_membresia.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         btn_buscar_membresia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/busca_membresia.png"))); // NOI18N
@@ -224,7 +191,7 @@ public class Home extends JFrame {
         btn_buscar_membresia.setContentAreaFilled(false);
         btn_buscar_membresia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_buscar_membresia.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btn_buscar_membresia.setIconTextGap(5);
+        btn_buscar_membresia.setIconTextGap(20);
         btn_buscar_membresia.setInheritsPopupMenu(true);
         btn_buscar_membresia.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         btn_buscar_membresia.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -233,26 +200,11 @@ public class Home extends JFrame {
                 btn_buscar_membresiaActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.ipadx = 32;
-        gridBagConstraints.ipady = 32;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 80, 52, 0);
-        getContentPane().add(btn_buscar_membresia, gridBagConstraints);
+        getContentPane().add(btn_buscar_membresia, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 170, 160));
 
         jSeparator3.setBackground(new java.awt.Color(110, 110, 110));
-        jSeparator3.setForeground(new java.awt.Color(110, 110, 110));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 269;
-        gridBagConstraints.ipady = 19;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(80, 40, 0, 0);
-        getContentPane().add(jSeparator3, gridBagConstraints);
+        jSeparator3.setForeground(new java.awt.Color(51, 153, 255));
+        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 270, 20));
 
         btn_membresia1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         btn_membresia1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/asistencia.png"))); // NOI18N
@@ -263,7 +215,7 @@ public class Home extends JFrame {
         btn_membresia1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_membresia1.setDoubleBuffered(true);
         btn_membresia1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btn_membresia1.setIconTextGap(5);
+        btn_membresia1.setIconTextGap(20);
         btn_membresia1.setInheritsPopupMenu(true);
         btn_membresia1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         btn_membresia1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -272,27 +224,56 @@ public class Home extends JFrame {
                 btn_membresia1ActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.ipadx = 49;
-        gridBagConstraints.ipady = 32;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(44, 80, 0, 0);
-        getContentPane().add(btn_membresia1, gridBagConstraints);
+        getContentPane().add(btn_membresia1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 160, 150));
 
-        lbl_bienvenido.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        lbl_bienvenido.setForeground(new java.awt.Color(110, 110, 110));
-        lbl_bienvenido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_bienvenido.setText("Cerrar Sesión");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.gridheight = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 90, 0, 0);
-        getContentPane().add(lbl_bienvenido, gridBagConstraints);
+        lbl_result_tipo.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        lbl_result_tipo.setForeground(new java.awt.Color(0, 153, 255));
+        lbl_result_tipo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_result_tipo.setText("usuario");
+        getContentPane().add(lbl_result_tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, -1, -1));
+
+        lbl_bienvenido2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        lbl_bienvenido2.setForeground(new java.awt.Color(110, 110, 110));
+        lbl_bienvenido2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_bienvenido2.setText("Cerrar Sesión");
+        getContentPane().add(lbl_bienvenido2, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 90, -1, -1));
+
+        lbl_tipo.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        lbl_tipo.setForeground(new java.awt.Color(110, 110, 110));
+        lbl_tipo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_tipo.setText("Tipo:");
+        getContentPane().add(lbl_tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 10, -1, -1));
+
+        lbl_result_user.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        lbl_result_user.setForeground(new java.awt.Color(0, 153, 255));
+        lbl_result_user.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_result_user.setText("usuario");
+        getContentPane().add(lbl_result_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 10, -1, -1));
+
+        lbl_user2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        lbl_user2.setForeground(new java.awt.Color(110, 110, 110));
+        lbl_user2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_user2.setText("Usuario:");
+        getContentPane().add(lbl_user2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 10, -1, -1));
+
+        btn_ficha1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        btn_ficha1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ficha.png"))); // NOI18N
+        btn_ficha1.setText("Nueva ficha");
+        btn_ficha1.setBorder(null);
+        btn_ficha1.setBorderPainted(false);
+        btn_ficha1.setContentAreaFilled(false);
+        btn_ficha1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_ficha1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_ficha1.setIconTextGap(20);
+        btn_ficha1.setInheritsPopupMenu(true);
+        btn_ficha1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btn_ficha1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_ficha1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ficha1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_ficha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 150, 160, 160));
 
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenuBar1.setMinimumSize(new java.awt.Dimension(800, 600));
@@ -469,7 +450,7 @@ public class Home extends JFrame {
     
     
     
-  /*---------------------------------------------------------
+/*---------------------------------------------------------
     $metodo para llamar el formulario modificar clientes
  ----------------------------------------------------------*/
     private void mnu_cliente_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnu_cliente_modificarActionPerformed
@@ -557,15 +538,21 @@ public class Home extends JFrame {
        dispose();   
     }//GEN-LAST:event_btn_buscar_membresiaActionPerformed
 
-    private void btn_fichaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_fichaActionPerformed
-         Form_ficha frm_ficha = new Form_ficha();
-        frm_ficha.setVisible(true);
+    private void btn_rutinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_rutinaActionPerformed
+        Frm_rutina frm_rutina = new Frm_rutina();
+        frm_rutina.setVisible(true);
         dispose();
-    }//GEN-LAST:event_btn_fichaActionPerformed
+    }//GEN-LAST:event_btn_rutinaActionPerformed
 
     private void btn_membresia1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_membresia1ActionPerformed
-        // TODO add your handling code here:
+        Form_membresia frm_membresia = new Form_membresia();
+       frm_membresia.setVisible(true);
+       dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_btn_membresia1ActionPerformed
+
+    private void btn_ficha1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ficha1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_ficha1ActionPerformed
 
     
     
@@ -581,7 +568,7 @@ public class Home extends JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new  Home().setVisible(true);
             }
         });
     }
@@ -593,16 +580,21 @@ public class Home extends JFrame {
     private javax.swing.JButton btn_buscar_cliente;
     private javax.swing.JButton btn_buscar_membresia;
     private javax.swing.JButton btn_clientes;
-    private javax.swing.JButton btn_ficha;
+    private javax.swing.JButton btn_ficha1;
     private javax.swing.JButton btn_membresia;
     private javax.swing.JButton btn_membresia1;
     private javax.swing.JButton btn_pago;
+    private javax.swing.JButton btn_rutina;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JLabel lbl_bienvenido;
     private javax.swing.JLabel lbl_bienvenido1;
+    private javax.swing.JLabel lbl_bienvenido2;
+    public javax.swing.JLabel lbl_result_tipo;
+    public javax.swing.JLabel lbl_result_user;
+    private javax.swing.JLabel lbl_tipo;
+    private javax.swing.JLabel lbl_user2;
     private javax.swing.JMenu mnu_archivo;
     private javax.swing.JMenuItem mnu_cliente_asistencia;
     private javax.swing.JMenuItem mnu_cliente_modificar;

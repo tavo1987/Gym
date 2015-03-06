@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package forms;
 
 import Mysql.Conexion;
@@ -11,10 +6,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import validaciones.Validar;
+import general.User;
 
 
 
 public class Login extends javax.swing.JFrame {
+    
+  /*/instanceamos una clase tipo user como estatica y para poder leer desde otro form su oontenido*/
+    static User usuario = new User();
 
  
     public Login() {
@@ -184,10 +183,10 @@ public class Login extends javax.swing.JFrame {
         Connection conexion = cn.getConexion();
         PreparedStatement ps;
         ResultSet rs;
-        String sql,user,pass,result_user,result_tipo;
+        String sql,user,pass,result_tipo;
         
         
-        Home frm_home = new Home();
+       
 
         user = Validar.quitarEspaciosEnBlanco(txt_usuario);
         pass = Validar.quitarEspaciosEnBlanco(txt_password);
@@ -201,19 +200,32 @@ public class Login extends javax.swing.JFrame {
 
                 if(rs.next()){
                     result_tipo = rs.getString("tipo");
-
+                    usuario.setTipo(result_tipo); //primero guardamos el usuario 
+                     Home frm_home = new Home();//luego llamamos el metodo de home
+                    
                     if(result_tipo.equalsIgnoreCase("administrador")){
                         JOptionPane.showMessageDialog(this, "Login correcto");
-                        frm_home.bloquearMenu(true, true);
+                         
+                        frm_home.lbl_result_tipo.setText(result_tipo);
+                        frm_home.lbl_result_user.setText(user);
+                        
+                       
+                        setVisible(false);
                         frm_home.setVisible(true);
-                        dispose();
+                        
                                                 
 
                     }else{
                         JOptionPane.showMessageDialog(this, "Login correcto");
-                         frm_home.bloquearMenu(true, false);
-                         frm_home.setVisible(true);
-                         dispose();
+                         
+                        frm_home.lbl_result_tipo.setText(result_tipo);
+                        frm_home.lbl_result_user.setText(user); 
+                        
+                       
+                        setVisible(false);
+                        frm_home.setVisible(true);
+                         
+                         
                     }
                 }else{
                     JOptionPane.showMessageDialog(this, "Usuario o contraseña no existen");
