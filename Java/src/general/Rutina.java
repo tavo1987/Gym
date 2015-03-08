@@ -1,6 +1,7 @@
 package general;
 import Mysql.*;
 import java.awt.Component;
+import java.io.FileInputStream;
 import java.sql.*;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -85,13 +86,86 @@ public class Rutina {
     
     
 
+/*-----------------------------------------------------------------------------------------------------------------------------------------
+        Metodos insertar rutina 
+ ------------------------------------------------------------------------------------------------------------------------------------------*/
+    public void insertarRutina(String nivel, FileInputStream img ,int longitud){
+        
+        sql="insert into  rutinas(nivel,archivo) values(?,?)";
+        
+        try
+        {
+            ps = conexion.prepareStatement(sql);
+            ps.setString(1,nivel);
+            ps.setBlob(2,img, longitud);
+            
+            int a  = ps.executeUpdate();
+            if(a > 0){
+                JOptionPane.showMessageDialog(null, "Rutina insertada con éxito");
+            }
+            
+    
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    
+    }
     
     
     
+/*-----------------------------------------------------------------------------------------------------------------------------------------
+        Metodos insertar rutina 
+ ------------------------------------------------------------------------------------------------------------------------------------------*/
+    public void eliminarRutina(){
+          sql="delete from rutinas where id_rutina = "+id_rutina+"";
+        
+        try
+        {
+            ps = conexion.prepareStatement(sql);
+            int a  = ps.executeUpdate();
+            
+            if(a > 0){
+                JOptionPane.showMessageDialog(null, "Se elimino con éxito");
+            }
+            
+    
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+        
+    
+    }
+    
+    
+    
+    
+    /*-----------------------------------------------------------------------------------------------------------------------------------------
+        Metodos insertar rutina 
+ ------------------------------------------------------------------------------------------------------------------------------------------*/
+    public void actulizarRutina(String nivel,FileInputStream img,int largo){
+        
+          sql="update rutinas set nivel = ?,archivo = ? where id_rutina = "+id_rutina+"";
+        
+        try
+        {
+            ps = conexion.prepareStatement(sql);
+            ps = conexion.prepareStatement(sql);
+            ps.setString(1,nivel);
+            ps.setBlob(2,img, largo);
+            int a  = ps.executeUpdate();
+            
+            if(a > 0){
+                JOptionPane.showMessageDialog(null, "Se actulizo con éxito");
+            }
+            
+    
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+        
+    
+    }
 
- 
- 
-    
 
     
     

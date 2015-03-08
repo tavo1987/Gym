@@ -28,6 +28,7 @@ public class Form_membresia extends javax.swing.JFrame {
         
         //para limitar en ingreso de caracteres
         txt_id.setDocument(new Validar(txt_id,5));
+        txt_result_costo.setDocument(new Validar(txt_result_costo,10));
         
         //para bloquer los botones de acciones
         btn_editar.setEnabled(false);
