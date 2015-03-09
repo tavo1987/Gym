@@ -428,9 +428,9 @@
           <Font name="Verdana" size="18" style="0"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/img/busca_membresia.png"/>
+          <Image iconType="3" name="/img/reporte.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Buscar membresia"/>
+        <Property name="text" type="java.lang.String" value="Reportes"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>
@@ -450,7 +450,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="210" y="340" width="170" height="160"/>
+          <AbsoluteConstraints x="380" y="340" width="170" height="160"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -625,16 +625,35 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btn_buscar_membresia1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="reporte 2"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="18" style="0"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/img/busca_membresia.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Buscar membresia"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="null"/>
+        </Property>
+        <Property name="borderPainted" type="boolean" value="false"/>
+        <Property name="contentAreaFilled" type="boolean" value="false"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Cursor de Mano"/>
+        </Property>
+        <Property name="horizontalTextPosition" type="int" value="0"/>
+        <Property name="iconTextGap" type="int" value="20"/>
+        <Property name="inheritsPopupMenu" type="boolean" value="true"/>
+        <Property name="verticalAlignment" type="int" value="3"/>
+        <Property name="verticalTextPosition" type="int" value="3"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_buscar_membresia1ActionPerformed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="540" y="470" width="220" height="120"/>
+          <AbsoluteConstraints x="210" y="340" width="170" height="160"/>
         </Constraint>
       </Constraints>
     </Component>

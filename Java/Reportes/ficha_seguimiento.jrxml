@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ficha_seguimiento" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0416a637-f8c8-4ce7-83fb-15f9b8692d67">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="dataset1" uuid="74075d2c-861f-495c-a188-52798c5d6794"/>
+	<parameter name="num_cedula" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select *  from fichaseguimiento
+where cedula = $P{num_cedula}]]>
+	</queryString>
+	<field name="id_ficha" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cedula" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_rutina" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="peso" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="altura" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cintura" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cuello" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cadera" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="imc" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="imc_cintura_altura" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="grasa_corporal" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="masa_magra" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sobrepeso" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nivel_cliente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="7ae8d02c-e10e-4cfa-91e5-1e8155e0b71f" x="0" y="0" width="802" height="79" forecolor="#0099CC" backcolor="#0099CC"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="7693bd18-8463-4b2b-bbeb-9f78c22fe560" x="115" y="18" width="529" height="50" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte ficha de seguimiento]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="19f8a6a6-b081-402a-bc8a-9d763859ebd8" x="0" y="0" width="37" height="20" forecolor="#0099CC"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ficha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="87aa7eb3-1ddd-4f60-b604-97ee35573b81" x="37" y="0" width="78" height="20" forecolor="#0099CC"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cedula]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c95cb5e1-a344-482e-8dfc-270a7e9cd76b" x="115" y="0" width="40" height="20" forecolor="#0099CC"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rutina]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="689d3a8d-b4a2-492b-a69c-89e2288f69f1" x="169" y="0" width="35" height="20" forecolor="#0099CC"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Peso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="215d2c4c-7f6a-4e24-9cd0-e3306b610d95" x="204" y="0" width="44" height="20" forecolor="#0099CC"/>
+				<textElement>
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Altura]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e60531d1-3407-49ef-86a5-43408012e679" x="248" y="0" width="41" height="20" forecolor="#0099CC"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cintura]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f1dc138c-5df5-4206-b432-bd1a737a4756" x="300" y="0" width="42" height="20" forecolor="#0099CC"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cuello]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f474e5db-e62a-43c2-9e27-cc133c2e36db" x="752" y="0" width="50" height="20" forecolor="#0099CC"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[cadera]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="855c881d-9f88-40be-b568-8df121c7f1dc" x="342" y="0" width="38" height="20" forecolor="#0099CC"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cadera]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6660f47b-e3a9-44c3-8a21-623de7831763" x="380" y="0" width="49" height="20" forecolor="#0099CC"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[imc]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fd572873-6904-4d7a-a99e-b5218f03f1bd" x="429" y="0" width="51" height="20" forecolor="#0099CC"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[imc/altura]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="23fecdb3-9b24-424b-9918-387f50b3b042" x="480" y="0" width="54" height="20" forecolor="#0099CC"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grasa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5dd6c5e0-6d8a-49bd-8872-9ced5a3b86a5" x="534" y="2" width="64" height="20" forecolor="#0099CC"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Masa magra]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="aa53f1ae-80c3-49d8-a060-9cf7e8b27991" x="598" y="2" width="65" height="20" forecolor="#0099CC"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[sobrepeso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4ac5675b-9e99-43ee-bc9a-96b312048b46" x="677" y="2" width="64" height="20" forecolor="#0099CC"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nivel]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="137" splitType="Stretch">
+			<textField>
+				<reportElement uuid="5541f67e-84e7-488e-a6c7-3b53481c689b" x="0" y="0" width="37" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{id_ficha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f342d972-20bd-40e4-a24e-ed5597e3b16a" x="115" y="0" width="28" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{id_rutina}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="19658794-5940-40ee-9ebe-a91cc2f6a4cb" x="169" y="0" width="35" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{peso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f0a6385c-0dfd-442c-88f2-93cb8214e566" x="204" y="0" width="44" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{altura}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6265c04e-b7e5-4347-b1d6-f7ae9a02b705" x="248" y="0" width="41" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cintura}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b347e37a-7924-47e8-ac9b-8443edcf3cee" x="300" y="0" width="42" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cuello}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d2928626-c785-41e9-985b-bad5a0ab9f27" x="752" y="0" width="50" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cadera}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8846a50d-6523-44a5-91f1-97f166e79a59" x="37" y="0" width="78" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cedula}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8d680d2b-0d52-498f-9f17-47df123b5ec9" x="342" y="0" width="38" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cadera}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="78ccd3ed-2e38-433e-b52b-6f380b5f6fe1" x="380" y="0" width="49" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{imc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8179ce54-fed1-45f3-b287-32cedfd2019d" x="429" y="0" width="51" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{imc_cintura_altura}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a6393a15-dcdc-481d-bb01-f0f3ae8d4c67" x="480" y="0" width="54" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{grasa_corporal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="df1e4a64-a64e-4090-ab17-9d385bd32828" x="534" y="0" width="64" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{masa_magra}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6f8c5bf7-6d3e-4b1c-8a16-8181b6ea953e" x="598" y="0" width="65" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{sobrepeso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5923eecf-260c-4057-832f-0b74463a4949" x="677" y="0" width="64" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nivel_cliente}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="7ae8d02c-e10e-4cfa-91e5-1e8155e0b71f" x="0" y="10" width="802" height="35" forecolor="#0099CC" backcolor="#0099CC"/>
+			</rectangle>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="987f42e8-de77-49d8-9423-ec52094d9ff8" x="0" y="14" width="248" height="31" forecolor="#FFFFFF"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

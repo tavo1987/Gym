@@ -1,21 +1,7 @@
 package forms;
-import Mysql.Conexion;
-import general.Reportes;
 import javax.swing.*;
-import general.User;
-import java.awt.HeadlessException;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.filechooser.FileNameExtensionFilter;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.view.JasperViewer;
+
+
 
 
 
@@ -73,7 +59,7 @@ public class Home extends JFrame {
         lbl_result_user = new javax.swing.JLabel();
         lbl_user2 = new javax.swing.JLabel();
         btn_ficha1 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btn_buscar_membresia1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnu_archivo = new javax.swing.JMenu();
         mnu_salir = new javax.swing.JMenuItem();
@@ -200,8 +186,8 @@ public class Home extends JFrame {
         getContentPane().add(btn_pago, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 150, 150));
 
         btn_buscar_membresia.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        btn_buscar_membresia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/busca_membresia.png"))); // NOI18N
-        btn_buscar_membresia.setText("Buscar membresia");
+        btn_buscar_membresia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/reporte.png"))); // NOI18N
+        btn_buscar_membresia.setText("Reportes");
         btn_buscar_membresia.setBorder(null);
         btn_buscar_membresia.setBorderPainted(false);
         btn_buscar_membresia.setContentAreaFilled(false);
@@ -216,7 +202,7 @@ public class Home extends JFrame {
                 btn_buscar_membresiaActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_buscar_membresia, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 170, 160));
+        getContentPane().add(btn_buscar_membresia, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, 170, 160));
 
         jSeparator3.setBackground(new java.awt.Color(110, 110, 110));
         jSeparator3.setForeground(new java.awt.Color(51, 153, 255));
@@ -291,13 +277,24 @@ public class Home extends JFrame {
         });
         getContentPane().add(btn_ficha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 150, 160, 160));
 
-        jButton1.setText("reporte 2");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_buscar_membresia1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        btn_buscar_membresia1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/busca_membresia.png"))); // NOI18N
+        btn_buscar_membresia1.setText("Buscar membresia");
+        btn_buscar_membresia1.setBorder(null);
+        btn_buscar_membresia1.setBorderPainted(false);
+        btn_buscar_membresia1.setContentAreaFilled(false);
+        btn_buscar_membresia1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_buscar_membresia1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_buscar_membresia1.setIconTextGap(20);
+        btn_buscar_membresia1.setInheritsPopupMenu(true);
+        btn_buscar_membresia1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btn_buscar_membresia1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_buscar_membresia1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_buscar_membresia1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 470, 220, 120));
+        getContentPane().add(btn_buscar_membresia1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 170, 160));
 
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenuBar1.setMinimumSize(new java.awt.Dimension(800, 600));
@@ -557,8 +554,8 @@ public class Home extends JFrame {
     }//GEN-LAST:event_btn_pagoActionPerformed
 
     private void btn_buscar_membresiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscar_membresiaActionPerformed
-        Form_membresia frm_membresia = new Form_membresia();
-       frm_membresia.setVisible(true);
+        Form_reportes frm_reportes = new Form_reportes();
+       frm_reportes.setVisible(true);
        dispose();   
     }//GEN-LAST:event_btn_buscar_membresiaActionPerformed
 
@@ -580,37 +577,9 @@ public class Home extends JFrame {
         dispose();
     }//GEN-LAST:event_btn_ficha1ActionPerformed
 
-    /*------------------------------------------------------------------------
-            Exportar reporte pdf Reporte
-    -------------------------------------------------------------------------_*/
-    
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Reportes re = new Reportes();//CREAMOS UN OBJETO DE LA CLASE REPORTES
-        String ruta = "Reportes\\reporte_nuevo_cliente.jasper";//RUTA DONDE TIENEN SU REPORTE --
-        //ABRIR CUADRO DE DIALOGO PARA GUARDAR EL ARCHIVO         
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("todos los archivos *.PDF", "pdf", "PDF"));//filtro para ver solo archivos .pdf
-        int seleccion = fileChooser.showSaveDialog(null);
-        try {
-            if (seleccion == JFileChooser.APPROVE_OPTION) {//comprueba si ha presionado el boton de aceptar
-                File JFC = fileChooser.getSelectedFile();
-                String PATH = JFC.getAbsolutePath();//obtenemos la direccion del archivo + el nombre a guardar
-                try (PrintWriter printwriter = new PrintWriter(JFC)) {
-                    printwriter.print(ruta);
-                }
-                re.resportesPDF(ruta, PATH);//mandamos como parametros la ruta del archivo a compilar y el nombre y ruta donde se guardaran    
-                //comprobamos si a la hora de guardar obtuvo la extension y si no se la asignamos
-                if (!(PATH.endsWith(".pdf"))) {
-                    File temp = new File(PATH + ".pdf");
-                    JFC.renameTo(temp);//renombramos el archivo
-                }
-                JOptionPane.showMessageDialog(null, "Esto puede tardar unos segundos,espere porfavor", "Estamos Generando el Reporte", JOptionPane.WARNING_MESSAGE);
-                JOptionPane.showMessageDialog(null, "Documento Exportado Exitosamente!", "Guardado exitoso!", JOptionPane.INFORMATION_MESSAGE);
-            }
-        } catch (FileNotFoundException | HeadlessException e) {//por alguna excepcion salta un mensaje de error
-            JOptionPane.showMessageDialog(null, "Error al Exportar el archivo!", "Oops! Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btn_buscar_membresia1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscar_membresia1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_buscar_membresia1ActionPerformed
 
     
     
@@ -629,7 +598,7 @@ public class Home extends JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new  Home().setVisible(true);
+                new  Login().setVisible(true);
             }
         });
     }
@@ -640,13 +609,13 @@ public class Home extends JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_buscar_cliente;
     private javax.swing.JButton btn_buscar_membresia;
+    private javax.swing.JButton btn_buscar_membresia1;
     private javax.swing.JButton btn_clientes;
     private javax.swing.JButton btn_ficha1;
     private javax.swing.JButton btn_membresia;
     private javax.swing.JButton btn_membresia1;
     private javax.swing.JButton btn_pago;
     private javax.swing.JButton btn_rutina;
-    private javax.swing.JButton jButton1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JSeparator jSeparator2;

@@ -7,11 +7,7 @@ import java.awt.Component;
 import java.awt.TextField;
 import java.util.*;
 import java.sql.*;
-import java.util.logging.*;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.view.JasperViewer;
+
 
 public class Form_clientes extends JFrame {
     
@@ -1589,7 +1585,7 @@ public class Form_clientes extends JFrame {
                     year2 = this.cbo_year.getSelectedItem().toString();
                     
  
-                  if(Validar.Numero(cedula) && Validar.VerificarCedula(cedula)){
+                  if(Validar.Numero(cedula) && Validar.VerificarCedula(cedula) && !cedula.equals("2222222222")){
                       
                         try {
                             sql = "select * from clientes where cedula = "+cedula+"";
@@ -1618,8 +1614,8 @@ public class Form_clientes extends JFrame {
                                     txt_cadera.setVisible(false);
                                   }
 
-                                JOptionPane.showMessageDialog(rootPane, "Todo ok " + cliente.getFechaNacimiento() +"  "+ cliente.getSexo() + " " + cliente.getDir());
-                                JOptionPane.showMessageDialog(rootPane, "Datos ingresados conexito");
+                                //JOptionPane.showMessageDialog(rootPane, "Todo ok " + cliente.getFechaNacimiento() +"  "+ cliente.getSexo() + " " + cliente.getDir());
+                                //JOptionPane.showMessageDialog(rootPane, "Datos ingresados conexito");
                                
                                 this.panelPrincipal.setEnabledAt(0, false);
                                 this.panelPrincipal.setEnabledAt(1, true);
@@ -1780,7 +1776,7 @@ public class Form_clientes extends JFrame {
                 pagos.setTotal(total);
                 
                 
-               JOptionPane.showMessageDialog(rootPane, membresia.getIdTipoMembresia() +" - "+ membresia.getFechaInicio() +" - "+ membresia.getFechaFin());
+               //JOptionPane.showMessageDialog(rootPane, membresia.getIdTipoMembresia() +" - "+ membresia.getFechaInicio() +" - "+ membresia.getFechaFin());
                 this.panelPrincipal.setEnabledAt(1, false);
                 this.panelPrincipal.setEnabledAt(2, true);
                 panelPrincipal.setSelectedIndex(2);         
@@ -1974,7 +1970,7 @@ public class Form_clientes extends JFrame {
                                lbl_total.setText(String.valueOf("$"+pagos.getTotal())+" dólares");
                                
                                
-                               JOptionPane.showMessageDialog(null, "id_rutina:" + rutinas.getIdRutina());
+                               //JOptionPane.showMessageDialog(null, "id_rutina:" + rutinas.getIdRutina());
 
                                
                                

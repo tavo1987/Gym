@@ -80,6 +80,110 @@ public class Reportes {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
                 }
     }
+      
+      
+      
+      
+/*-----------------------------------------------------------------------------------
+             aqui mandamos a imprimir el reporte del ciente
+-------------------------------------------------------------------------------------*/
+      public void resportesSexoClientes(String sexo) {
+               try {
+                                       
+                    String rutaInforme = "Reportes\\Clientes.jasper";
+                    Map parametros  =  new HashMap(9);
+                    parametros.put("input_sexo", sexo);
+                    JasperPrint informe = JasperFillManager.fillReport(rutaInforme, parametros, conexion.getConexion());
+                                        
+                    JasperViewer ventanaVisor = new JasperViewer(informe,false);
+                    ventanaVisor.setTitle("Reporte cliente");
+                    ventanaVisor.setVisible(true);
+
+
+                } catch (JRException ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                }
+    }
+      
+      
+      
+      
+            
+/*-----------------------------------------------------------------------------------
+             aqui mandamos a imprimir el reporte por edad
+-------------------------------------------------------------------------------------*/
+      public void resportesEdad(String edad) {
+               try {
+                   
+                    
+                    String rutaInforme = "Reportes\\cliente_edad.jasper";
+                    Map parametros  =  new HashMap(9);
+                    parametros.put("input_edad", edad);
+                    JasperPrint informe = JasperFillManager.fillReport(rutaInforme, parametros, conexion.getConexion());
+                                        
+                    JasperViewer ventanaVisor = new JasperViewer(informe,false);
+                    ventanaVisor.setTitle("Reporte cliente");
+                    ventanaVisor.setVisible(true);
+
+
+                } catch (JRException ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                }
+    }
+      
+      
+      
+      
+/*-----------------------------------------------------------------------------------
+             aqui mandamos a imprimir el reporte por edad
+-------------------------------------------------------------------------------------*/
+      public void reportesFicha(String cedula) {
+               try {
+                   
+                    
+                    String rutaInforme = "Reportes\\ficha_seguimiento.jasper";
+                    Map parametros  =  new HashMap(9);
+                    parametros.put("num_cedula", cedula);
+                    JasperPrint informe = JasperFillManager.fillReport(rutaInforme, parametros, conexion.getConexion());
+                                        
+                    JasperViewer ventanaVisor = new JasperViewer(informe,false);
+                    ventanaVisor.setTitle("Reporte Ficha");
+                    ventanaVisor.setVisible(true);
+
+
+                } catch (JRException ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                }
+    }
+      
+      
+      
+      
+/*-----------------------------------------------------------------------------------
+             reporte de pago por cliente
+-------------------------------------------------------------------------------------*/
+      public void reportesPagoCliente(String cedula) {
+               try {
+                   
+                    
+                    String rutaInforme = "Reportes\\pagos_cliente.jasper";
+                    Map parametros  =  new HashMap(9);
+                    parametros.put("num_cedula", cedula);
+                    JasperPrint informe = JasperFillManager.fillReport(rutaInforme, parametros, conexion.getConexion());
+                                        
+                    JasperViewer ventanaVisor = new JasperViewer(informe,false);
+                    ventanaVisor.setTitle("Reporte Ficha");
+                    ventanaVisor.setVisible(true);
+
+
+                } catch (JRException ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                }
+    }
     
+  
+      
+      
+      
    
 }

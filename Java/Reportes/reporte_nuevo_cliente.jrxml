@@ -362,7 +362,7 @@ order by cedula desc limit 1]]>
 	<columnFooter>
 		<band height="243" splitType="Stretch">
 			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
-				<reportElement uuid="ab6e2027-0ec2-41f8-ae87-25bf71ddd0e1" x="391" y="0" width="412" height="243"/>
+				<reportElement uuid="ab6e2027-0ec2-41f8-ae87-25bf71ddd0e1" x="390" y="0" width="412" height="243"/>
 				<imageExpression><![CDATA[$F{archivo}]]></imageExpression>
 			</image>
 			<rectangle radius="10">
@@ -467,6 +467,6 @@ order by cedula desc limit 1]]>
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="84" splitType="Stretch"/>
+		<band height="28" splitType="Stretch"/>
 	</summary>
 </jasperReport>

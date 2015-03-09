@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pagos_cliente" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cd4db0bb-271c-4b72-a148-0f0193b5ac40">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="47"/>
+	<parameter name="num_cedula" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select id_pago,tipo.tipo, clientes.cedula,membresia.id_membresia,date_ini,date_end,pagos.costo,total
+from clientes,membresia,pagos,tipo
+where clientes.cedula = membresia.cedula and
+		clientes.cedula = pagos.cedula and
+        clientes.cedula =pagos.cedula and
+        tipo.id_tipo = membresia.id_tipo and
+       clientes.cedula = 1714261235
+       order by id_pago desc]]>
+	</queryString>
+	<field name="id_pago" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cedula" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_membresia" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="date_ini" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="date_end" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="costo" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="total" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="7ae8d02c-e10e-4cfa-91e5-1e8155e0b71f" x="0" y="0" width="802" height="79" forecolor="#0099CC" backcolor="#0099CC"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="7693bd18-8463-4b2b-bbeb-9f78c22fe560" x="115" y="29" width="529" height="50" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte de pago por cliente]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="77b0c63f-869a-4eb2-b8c6-a61358c4de0b" x="0" y="2" width="100" height="20" forecolor="#0099CC"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[id pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="98314e4e-b9aa-48c0-81af-033f990f1ed4" x="100" y="0" width="100" height="20" forecolor="#0099CC"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dbffe46d-11d0-40b5-9835-e82c91af1485" x="200" y="0" width="100" height="20" forecolor="#0099CC"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cedula]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f11149fd-967d-4c44-939f-427aed89926a" x="312" y="0" width="100" height="20" forecolor="#0099CC"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[id membresia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="92cc9e2f-fc52-41b0-b06e-3646511e73d9" x="412" y="2" width="100" height="20" forecolor="#0099CC"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="37ef7a83-a5d4-41ce-bbbe-72d7c34ddbd1" x="523" y="2" width="100" height="20" forecolor="#0099CC"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vence]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6801c58e-b0e9-4628-8962-a630f6c80f05" x="623" y="2" width="70" height="20" forecolor="#0099CC"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Costo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="779232e1-efcc-4f53-b985-8e1c01084810" x="723" y="2" width="69" height="20" forecolor="#0099CC"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="238" splitType="Stretch">
+			<textField>
+				<reportElement uuid="70f4e78e-4cfa-4f9d-87ea-dc224a671d7d" x="100" y="5" width="100" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7c32445e-ddfc-4e7f-b60e-cec8fe8b42bc" x="423" y="5" width="89" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{date_ini}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="584b5d0f-5586-4416-a435-a72f92a7afc5" x="523" y="5" width="100" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{date_end}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d5650b2a-fe5c-4d28-abc1-0ab2e346a368" x="623" y="5" width="70" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{costo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a9025bf4-0795-43de-9182-24bd6e417a01" x="200" y="5" width="112" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cedula}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6964ebe3-0554-4b9c-92f9-919c055ce6ad" x="312" y="5" width="100" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{id_membresia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8f1489b2-039b-4dd6-97c7-24b38d35c9f9" x="0" y="5" width="100" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{id_pago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d0301aeb-dd92-44a7-8b7a-a944f100fbde" x="723" y="5" width="79" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="70" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="7ae8d02c-e10e-4cfa-91e5-1e8155e0b71f" x="0" y="9" width="802" height="45" forecolor="#0099CC" backcolor="#0099CC"/>
+			</rectangle>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="987f42e8-de77-49d8-9423-ec52094d9ff8" x="0" y="13" width="248" height="41" forecolor="#FFFFFF"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

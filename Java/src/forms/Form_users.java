@@ -83,6 +83,7 @@ public class Form_users extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -144,30 +145,65 @@ public class Form_users extends javax.swing.JFrame {
         jScrollPane3.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(960, 768));
 
         jTabbedPane1.setForeground(new java.awt.Color(110, 110, 110));
         jTabbedPane1.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jTabbedPane1.setPreferredSize(new java.awt.Dimension(960, 768));
+
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(960, 768));
 
         jPanel1.setBackground(new java.awt.Color(250, 250, 250));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setPreferredSize(new java.awt.Dimension(960, 758));
+        jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jSeparator2.setBackground(new java.awt.Color(51, 204, 255));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 600, 10));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 26;
+        gridBagConstraints.ipadx = 599;
+        gridBagConstraints.ipady = 9;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 90, 0, 270);
+        jPanel1.add(jSeparator2, gridBagConstraints);
 
         jLabel18.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(110, 110, 110));
         jLabel18.setText("Últimos usuario agregados");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 540, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridwidth = 11;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(50, 6, 0, 0);
+        jPanel1.add(jLabel18, gridBagConstraints);
 
         jLabel10.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(110, 110, 110));
         jLabel10.setText("Tipo de usario:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 375, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(32, 74, 0, 0);
+        jPanel1.add(jLabel10, gridBagConstraints);
 
         txt_user.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         txt_user.setForeground(new java.awt.Color(110, 110, 110));
         txt_user.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
-        jPanel1.add(txt_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(337, 180, 350, 39));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 17;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 348;
+        gridBagConstraints.ipady = 16;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(40, 10, 0, 0);
+        jPanel1.add(txt_user, gridBagConstraints);
 
         btn_guardar.setBackground(new java.awt.Color(0, 153, 204));
         btn_guardar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -182,7 +218,15 @@ public class Form_users extends javax.swing.JFrame {
                 btn_guardarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 450, 100, 40));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.ipadx = 36;
+        gridBagConstraints.ipady = 19;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(54, 99, 0, 0);
+        jPanel1.add(btn_guardar, gridBagConstraints);
 
         btn_cancelar.setBackground(new java.awt.Color(0, 153, 204));
         btn_cancelar.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -196,27 +240,65 @@ public class Form_users extends javax.swing.JFrame {
                 btn_cancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 450, 100, 40));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 12;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridwidth = 12;
+        gridBagConstraints.ipadx = 30;
+        gridBagConstraints.ipady = 19;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(54, 8, 0, 0);
+        jPanel1.add(btn_cancelar, gridBagConstraints);
 
         jLabel11.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(110, 110, 110));
         jLabel11.setText("Contraseña:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 246, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(27, 74, 0, 0);
+        jPanel1.add(jLabel11, gridBagConstraints);
 
         txt_password.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         txt_password.setForeground(new java.awt.Color(110, 110, 110));
         txt_password.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
-        jPanel1.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(337, 237, 350, 39));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 17;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 348;
+        gridBagConstraints.ipady = 16;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 10, 0, 0);
+        jPanel1.add(txt_password, gridBagConstraints);
 
         jLabel12.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(110, 110, 110));
         jLabel12.setText("Repetir contraseña:");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 313, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(37, 74, 0, 0);
+        jPanel1.add(jLabel12, gridBagConstraints);
 
         txt_password2.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         txt_password2.setForeground(new java.awt.Color(110, 110, 110));
         txt_password2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(202, 202, 202), 1, true));
-        jPanel1.add(txt_password2, new org.netbeans.lib.awtextra.AbsoluteConstraints(337, 304, 350, 39));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 17;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 348;
+        gridBagConstraints.ipady = 16;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(28, 10, 0, 0);
+        jPanel1.add(txt_password2, gridBagConstraints);
 
         btn_nuevo.setBackground(new java.awt.Color(0, 153, 204));
         btn_nuevo.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -230,7 +312,14 @@ public class Form_users extends javax.swing.JFrame {
                 btn_nuevoActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 450, 100, 40));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.ipadx = 49;
+        gridBagConstraints.ipady = 19;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(54, 23, 0, 0);
+        jPanel1.add(btn_nuevo, gridBagConstraints);
 
         btn_volver.setBackground(new java.awt.Color(250, 250, 250));
         btn_volver.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -251,7 +340,14 @@ public class Form_users extends javax.swing.JFrame {
                 btn_volverActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 24, 70, 80));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 6;
+        gridBagConstraints.ipady = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(24, 21, 0, 0);
+        jPanel1.add(btn_volver, gridBagConstraints);
 
         table_users.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         table_users.setForeground(new java.awt.Color(0, 153, 255));
@@ -268,12 +364,28 @@ public class Form_users extends javax.swing.JFrame {
         table_users.setSelectionBackground(new java.awt.Color(137, 215, 245));
         jScrollPane4.setViewportView(table_users);
 
-        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 610, 620, 205));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 13;
+        gridBagConstraints.gridwidth = 26;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 598;
+        gridBagConstraints.ipady = 179;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 70, 73, 270);
+        jPanel1.add(jScrollPane4, gridBagConstraints);
 
         jLabel13.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(110, 110, 110));
         jLabel13.setText("Usuario:");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 189, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(49, 74, 0, 0);
+        jPanel1.add(jLabel13, gridBagConstraints);
 
         cbo_tipos_users.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         cbo_tipos_users.setForeground(new java.awt.Color(110, 110, 110));
@@ -285,15 +397,37 @@ public class Form_users extends javax.swing.JFrame {
                 cbo_tipos_usersActionPerformed(evt);
             }
         });
-        jPanel1.add(cbo_tipos_users, new org.netbeans.lib.awtextra.AbsoluteConstraints(337, 363, -1, 33));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipady = 8;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 10, 0, 0);
+        jPanel1.add(cbo_tipos_users, gridBagConstraints);
 
         jLabel19.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(110, 110, 110));
         jLabel19.setText("Nuevo usuario");
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(80, 10, 0, 0);
+        jPanel1.add(jLabel19, gridBagConstraints);
 
         jSeparator3.setBackground(new java.awt.Color(51, 204, 255));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 590, 620, 10));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 12;
+        gridBagConstraints.gridwidth = 26;
+        gridBagConstraints.ipadx = 619;
+        gridBagConstraints.ipady = 9;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 70, 0, 270);
+        jPanel1.add(jSeparator3, gridBagConstraints);
 
         jScrollPane1.setViewportView(jPanel1);
 
@@ -472,20 +606,7 @@ public class Form_users extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Modificar usarios", jScrollPane2);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1015, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1011, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        getContentPane().add(jTabbedPane1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
