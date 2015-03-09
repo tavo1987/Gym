@@ -8,6 +8,10 @@ import java.awt.TextField;
 import java.util.*;
 import java.sql.*;
 import java.util.logging.*;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class Form_clientes extends JFrame {
     
@@ -56,6 +60,7 @@ public class Form_clientes extends JFrame {
              this.panelPrincipal.setEnabledAt(1,false);
              this.panelPrincipal.setEnabledAt(2,false);
              this.panelPrincipal.setEnabledAt(3,false);
+             this.panelPrincipal.setEnabledAt(4,false);
              
                 try{
                     
@@ -412,6 +417,10 @@ public class Form_clientes extends JFrame {
         jLabel45 = new javax.swing.JLabel();
         lbl_celular = new javax.swing.JLabel();
         jSeparator29 = new javax.swing.JSeparator();
+        panel_final1 = new javax.swing.JPanel();
+        jLabel46 = new javax.swing.JLabel();
+        jSeparator28 = new javax.swing.JSeparator();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1379,6 +1388,32 @@ public class Form_clientes extends JFrame {
 
         panelPrincipal.addTab("Datos finales", spanel_finales);
 
+        panel_final1.setBackground(new java.awt.Color(250, 250, 250));
+        panel_final1.setPreferredSize(new java.awt.Dimension(800, 900));
+        panel_final1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel46.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
+        jLabel46.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel46.setText("Imprimir");
+        panel_final1.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, 120, -1));
+
+        jSeparator28.setBackground(new java.awt.Color(0, 153, 255));
+        panel_final1.add(jSeparator28, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 330, 10));
+
+        jButton1.setBackground(new java.awt.Color(0, 153, 204));
+        jButton1.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Imprimir");
+        jButton1.setBorder(null);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        panel_final1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 160, 60));
+
+        panelPrincipal.addTab("Imprimir", panel_final1);
+
         getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 991, 958));
 
         pack();
@@ -2131,12 +2166,38 @@ public class Form_clientes extends JFrame {
                 pagos.setPago(cliente.getCi());
                 ficha.setFicha(cliente.getCi(),rutinas.getIdRutina(), cliente.getSexo());
                 
-           JOptionPane.showMessageDialog(rootPane, "Cliente Ingresado con éxito");
-           
-           int confirm = JOptionPane.showConfirmDialog(rootPane, "¿Desea registrar otro cliente?");
-           
-           if(confirm == JOptionPane.YES_OPTION){
+                JOptionPane.showMessageDialog(rootPane, "Cliente Ingresado con éxito");
                 this.panelPrincipal.setEnabledAt(3,false);
+                this.panelPrincipal.setEnabledAt(4,true);
+                panelPrincipal.setSelectedIndex(4);
+           
+          
+           
+       }else{
+           JOptionPane.showMessageDialog(rootPane, "algo falló");
+          
+       }
+    }//GEN-LAST:event_btn_guardarActionPerformed
+
+    private void txt_diasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_diasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_diasActionPerformed
+
+    private void txt_diasInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txt_diasInputMethodTextChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_diasInputMethodTextChanged
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        //Aquí imprimimos el reporte
+        Reportes reporte_cliente = new Reportes();
+        reporte_cliente.resportesPDF2(String.valueOf(cliente.getCi()));//llamanos al metodo y le enciamos el parametro cedula del cliente
+        
+        
+        int confirm = JOptionPane.showConfirmDialog(rootPane, "¿Desea registrar otro cliente?");
+
+           if(confirm == JOptionPane.YES_OPTION){
+                this.panelPrincipal.setEnabledAt(4,false);
                 this.panelPrincipal.setEnabledAt(0,true);
                 panelPrincipal.setSelectedIndex(0);
                 
@@ -2162,20 +2223,7 @@ public class Form_clientes extends JFrame {
                dispose();
                
            }
-           
-       }else{
-           JOptionPane.showMessageDialog(rootPane, "algo falló");
-          
-       }
-    }//GEN-LAST:event_btn_guardarActionPerformed
-
-    private void txt_diasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_diasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_diasActionPerformed
-
-    private void txt_diasInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txt_diasInputMethodTextChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_diasInputMethodTextChanged
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     
     
@@ -2215,6 +2263,7 @@ public class Form_clientes extends JFrame {
     private javax.swing.JComboBox cbo_nivel;
     private javax.swing.JComboBox cbo_year;
     private javax.swing.JComboBox cbo_years1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2250,6 +2299,7 @@ public class Form_clientes extends JFrame {
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel56;
@@ -2284,6 +2334,7 @@ public class Form_clientes extends JFrame {
     private javax.swing.JSeparator jSeparator25;
     private javax.swing.JSeparator jSeparator26;
     private javax.swing.JSeparator jSeparator27;
+    private javax.swing.JSeparator jSeparator28;
     private javax.swing.JSeparator jSeparator29;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
@@ -2322,6 +2373,7 @@ public class Form_clientes extends JFrame {
     private javax.swing.JTabbedPane panelPrincipal;
     private javax.swing.JPanel panel_ficha;
     private javax.swing.JPanel panel_final;
+    private javax.swing.JPanel panel_final1;
     private javax.swing.JPanel panel_membresia;
     private javax.swing.JPanel panel_personales;
     private javax.swing.JRadioButton radio_femenino;

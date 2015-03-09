@@ -155,7 +155,7 @@ public class Rutina {
             int a  = ps.executeUpdate();
             
             if(a > 0){
-                JOptionPane.showMessageDialog(null, "Se actulizo con éxito");
+                JOptionPane.showMessageDialog(null, "Se actualizó con éxito");
             }
             
     

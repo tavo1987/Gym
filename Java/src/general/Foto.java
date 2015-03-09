@@ -31,7 +31,7 @@ public class Foto {
         ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
         
                 
-        Iterator readers = ImageIO.getImageReadersByFormatName("jpeg");
+        Iterator readers = ImageIO.getImageReadersByFormatName("jpg");
         
                
         ImageReader reader = (ImageReader) readers.next();
